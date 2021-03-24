@@ -1,0 +1,283 @@
+<search-input></search-input>
+
+<scroll-view scroll-x="true" class="tab-region" scroll-left="{{scrollLeft}}" scroll-with-animation="{{true}}">
+  <block wx:for="{{tabs}}" wx:key="index">
+    <view class="tab-item {{chosenTabIndex == index ?'chosen-tab':''}}" data-index="{{index}}" bindtap="handleTabTap">
+      {{item}}
+    </view>
+  </block>
+  <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>
+</scroll-view>
+
+<view>
+  <swiper style="height: {{swiperHeight?swiperHeight+'px':'auto'}}" current="{{chosenTabIndex}}" class="swiper-region"
+    bindchange="handleSwiperChange">
+    <swiper-item class="swiper-item">
+      <!-- <scroll-view scroll-y="{{true}}" style="height: {{swiperHeight?swiperHeight+'px':'auto'}}"> -->
+      <view class="slide-view">
+        <post-display></post-display>
+        <post-display></post-display>
+        <post-display></post-display>
+        <post-display></post-display>
+        <post-display></post-display>
+        <post-display></post-display>
+      </view>
+      <!-- </scroll-view> -->
+    </swiper-item>
+
+    <swiper-item class="swiper-item">
+      <view class="slide-view">
+        <post-display></post-display>
+      </view>
+    </swiper-item>
+
+    <swiper-item class="swiper-item">
+      <scroll-view scroll-y="{{true}}" style="height: {{swiperHeight?swiperHeight+'px':'auto'}}">
+        <view class="slide-view">tab2
+          <view>开始李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>李光耀</view>
+          <view>最后李光耀</view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item class="swiper-item">
+      <view class="slide-view">tab3</view>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="slide-view">tab4</view>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="slide-view">tab5</view>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="slide-view">tab6</view>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="slide-view">tab6</view>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="slide-view">tab6</view>
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <view class="slide-view">tab6</view>
+    </swiper-item>
+  </swiper>
+</view>

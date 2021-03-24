@@ -1,0 +1,32 @@
+<navigator class="await-payment">
+	<van-card num="2" tag="待付款" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill" custom-class="order-card" price-class="price">
+		<view slot="footer">
+			<van-button size="small">去付款</van-button>
+		</view>
+	</van-card>
+</navigator>
+
+<navigator class="await-sending">
+	<van-card num="2" tag="待发货" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill" custom-class="order-card" price-class="price">
+		<view slot="footer">
+			<van-button size="small">催促卖家</van-button>
+		</view>
+	</van-card>
+</navigator>
+
+<navigator class="await-receiving">
+	<van-card num="2" tag="待收货" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill" custom-class="order-card" price-class="price">
+		<view slot="footer">
+			<van-button size="small">查询物流</van-button>
+			<van-button size="small">确认收货</van-button>
+		</view>
+	</van-card>
+</navigator>
+
+<navigator class="await-comment">
+	<van-card num="2" tag="待评价" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill" custom-class="order-card" price-class="price">
+		<view slot="footer">
+			<van-button size="small">去评价</van-button>
+		</view>
+	</van-card>
+</navigator>

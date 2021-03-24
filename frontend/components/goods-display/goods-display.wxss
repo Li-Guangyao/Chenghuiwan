@@ -1,0 +1,32 @@
+.list {
+	padding: 20rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.list .list-half {
+	width: 346rpx;
+	box-sizing: border-box;
+}
+
+.list-half .card {
+	background-color: #fff;
+	border-radius: 10rpx;
+	overflow: hidden;
+	margin-bottom: 30rpx;
+	padding-bottom: 20rpx;
+}
+
+.card image{
+	width: 100%;
+}
+
+.card .price{
+	float: left;
+}
+
+.card .sales{
+	float: right;
+	margin-right: 20rpx;
+}

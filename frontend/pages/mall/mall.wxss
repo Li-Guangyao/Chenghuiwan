@@ -1,0 +1,68 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.swiper-region swiper {
+	width: 95%;
+	height: 340rpx;
+	margin: auto;
+}
+
+.swiper-region swiper image {
+	width: 100%;
+}
+
+.goods-rank{
+	display: flex;
+	align-items: center;
+	background-color:white;
+	margin: 15rpx 15rpx;
+	border-radius: 5rpx;
+	height: 70rpx;
+}
+
+.goods-rank navigator {
+	font-size: 35rpx;
+	margin: 0rpx 10rpx;
+}
+
+.goods-cate{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 20rpx;
+	background-color: white;
+	width: 95%;
+}
+
+.goods-cate navigator{
+	display: flex;
+	margin: 10rpx 10rpx;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 24%;
+	height: auto;
+}
+
+.goods-cate navigator text{
+	margin: 10rpx;
+	text-align: center;
+	font-size: 30rpx;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis:auto;
+}
+
+.goods-cate navigator image{
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis:auto;
+	align-items: center;
+	justify-content: center;
+	width: 120rpx;
+	height: 120rpx;
+	padding: 10rpx;
+}
+
+

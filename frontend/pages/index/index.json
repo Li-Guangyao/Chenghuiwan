@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "search-input": "../../components/SearchInput/SearchInput",
+    "post-edit": "../../components/post-edit/post-edit",
+    "post-display": "../../components/post-display/post-display"
+  },
+  "navigationBarBackgroundColor": "#1ae6e6",
+  "navigationBarTitleText": "诚会玩",
+  "navigationBarTextStyle": "black"
+}

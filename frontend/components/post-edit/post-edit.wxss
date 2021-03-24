@@ -1,0 +1,33 @@
+#titleTip,#contentTip{
+	margin: 20rpx;
+	font-size: 20rpx;
+	color: red;
+}
+
+#contentInput{
+	margin: 20rpx 0;
+	background: #ffffff;
+}
+
+.location-topic{
+	font-size: 30rpx;
+}
+
+
+.buttons{
+	position: fixed;
+	bottom: 0;
+}
+
+/* .van-button{
+	display: inline !important;
+} */
+
+.clearContent{
+	width: 150rpx !important;
+} 
+
+.uploadPost{
+	width: 600rpx !important;
+	background-color:var(--themecolor) !important;
+}

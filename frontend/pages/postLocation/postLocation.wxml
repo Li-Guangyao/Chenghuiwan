@@ -1,0 +1,1 @@
+<van-button type="primary" block bindtap="getLocation">定位</van-button>

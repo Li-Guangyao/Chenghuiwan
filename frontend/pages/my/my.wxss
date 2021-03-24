@@ -1,0 +1,54 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.profile {
+	background: #ffffff;
+	border-radius: 36rpx;
+	margin-bottom: 20rpx;
+}
+
+.profile-photo {
+	height: 160rpx;
+	width: 160rpx;
+	border-radius: 80rpx;
+	margin: 35rpx;
+}
+
+.user-name {
+	font-size: 45rpx;
+	margin: 45rpx;
+	position: fixed;
+	left: 200rpx;
+}
+
+.gender-img{
+	position: fixed;
+	height: 22px;
+    width: 40rpx;
+    top: 54rpx;
+    left: 384rpx;
+}
+
+.user-introduction {
+	font-size: 25rpx;
+	position: fixed;
+    left: 244rpx;
+    top: 143rpx;
+}
+
+.arrow{
+	float: right;
+	color: #d8d8d8;
+	margin-top: 75rpx;
+}
+
+.order {
+	margin-bottom: 20rpx;
+}
+
+#likes{
+	text-align: center;
+	font-size: 25rpx;
+	margin-top: 25rpx;
+}

@@ -1,0 +1,22 @@
+<tabbar tabbar="{{tabbar}}" bindtabbarChange="handleTabbarChange">
+</tabbar>
+
+
+<swiper style="height: {{swiperHeight?swiperHeight+'px':'auto'}}" current="{{chosenTabIndex}}" class="swiper-region"
+	bindchange="handleSwiperChange">
+	<swiper-item class="swiper-item">
+		<scroll-view scroll-y="{{true}}" style="height: {{swiperHeight?swiperHeight+'px':'auto'}}">
+			<view class="slide-view">
+				<post-display></post-display>
+			</view>
+		</scroll-view>
+	</swiper-item>
+
+	<swiper-item class="swiper-item">
+		<scroll-view scroll-y="{{true}}" style="height: {{swiperHeight?swiperHeight+'px':'auto'}}">
+			<view class="slide-view">
+				<post-display></post-display>
+			</view>
+		</scroll-view>
+	</swiper-item>
+</swiper>

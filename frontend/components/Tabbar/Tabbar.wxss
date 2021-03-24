@@ -1,0 +1,17 @@
+.tabbar_title {
+  display: flex;
+  padding: 5rpx;
+  font-size: 40rpx;
+}
+
+.title_item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.isChosen {
+  color: aqua;
+  border-bottom: 5rpx solid currentColor;
+}

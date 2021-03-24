@@ -1,0 +1,30 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+/* slide-view{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+} */
+
+/* scroll-view {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+post-display {
+	width: 375rpx;
+	flex: 1;
+} */
+
+.slide-view {
+	/* display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin: 20rpx;
+	overflow: hidden; */
+	column-count: 2;
+	column-gap: 0rpx;
+}

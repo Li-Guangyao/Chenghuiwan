@@ -1,0 +1,13 @@
+page {
+	background-color: var(--themebackgroundcolor);
+  }
+
+.goods-card{
+	background-color: white !important;
+	margin: 5rpx 3rpx !important;
+	border-radius: 5rpx !important;
+}
+
+.price{
+	color: black !important;
+}

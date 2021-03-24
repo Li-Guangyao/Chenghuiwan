@@ -1,0 +1,13 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+
+
+.add-address {
+	position: fixed;
+	width: 100%;
+	border-radius: 10rpx;
+	bottom: 0;
+	padding-bottom: env(safe-area-inset-bottom);
+}

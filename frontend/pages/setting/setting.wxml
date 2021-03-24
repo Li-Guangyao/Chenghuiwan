@@ -1,0 +1,22 @@
+<view>
+	<navigator class="setting-item" url="/pages/feedback/feedback">
+		<text>意见反馈</text>
+		<van-icon class="arrow" name="arrow" />
+	</navigator>
+
+	<navigator class="setting-item" url="/pages/userAgreement/userAgreement">
+		<text>用户协议</text>
+		<van-icon class="arrow" name="arrow" />
+	</navigator>
+
+	<navigator class="setting-item" url="/pages/privacyAgreement/privacyAgreement">
+		<text>隐私协议</text>
+		<van-icon class="arrow" name="arrow" />
+	</navigator>
+
+	<navigator class="setting-item" url="/pages/businessLicense/businessLicense">
+		<text>营业执照</text>
+		<van-icon class="arrow" name="arrow" />
+	</navigator>
+
+</view>

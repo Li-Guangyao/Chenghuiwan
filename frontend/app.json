@@ -1,0 +1,90 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/community/community",
+		"pages/mall/mall",
+		"pages/my/my",
+		"pages/addAddress/addAddress",
+		"pages/addressList/addressList",
+		"pages/addressEdit/addressEdit",
+		"pages/collection/collection",
+		"pages/customerService/customerService",
+		"pages/fanList/fanList",
+		"pages/goodsCate/goodsCate",
+		"pages/goodsDetail/goodsDetail",
+		"pages/goodsList/goodsList",
+		"pages/goodsRank/goodsRank",
+		"pages/orderDetail/orderDetail",
+		"pages/orderGenerate/orderGenerate",
+		"pages/orders/orders",
+		"pages/peopleLikeList/peopleLikeList",
+		"pages/postDetail/postDetail",
+		"pages/postEdit/postEdit",
+		"pages/search/search",
+		"pages/searchResult/searchResult",
+		"pages/setting/setting",
+		"pages/userAgreement/userAgreement",
+		"pages/privacyAgreement/privacyAgreement",
+		"pages/businessLicense/businessLicense",
+		"pages/feedback/feedback",
+		"pages/person/person",
+		"pages/authorize/authorize",
+		"pages/postLocation/postLocation",
+		"pages/topic/topic"
+	],
+	"window": {
+		"backgroundColor": "#f6f6f6",
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#f8f8f8",
+		"navigationBarTitleText": "诚会玩",
+		"navigationBarTextStyle": "black"
+	},
+	"sitemapLocation": "sitemap.json",
+	"tabBar": {
+		"color": "#000",
+		"selectedColor": "#1AE6E6",
+		"backgroundColor": "#FFF",
+		"position": "bottom",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "icon/index.png",
+				"selectedIconPath": "icon/index_s.png"
+			},
+			{
+				"pagePath": "pages/community/community",
+				"text": "社区",
+				"iconPath": "icon/community.png",
+				"selectedIconPath": "icon/community_s.png"
+			},
+			{
+				"pagePath": "pages/postEdit/postEdit",
+				"text": "发布",
+				"iconPath": "icon/add.png",
+				"selectedIconPath": "icon/add_s.png"
+			},
+			{
+				"pagePath": "pages/mall/mall",
+				"text": "商城",
+				"iconPath": "./icon/mall.png",
+				"selectedIconPath": "./icon/mall_s.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "./icon/person.png",
+				"selectedIconPath": "./icon/person_s.png"
+			}
+		]
+	},
+	"usingComponents": {
+		"van-button": "@vant/weapp/button/index"
+	},
+	"permission": {
+		"scope.userLocation": {
+		  "desc": "你的位置信息只用于发布帖子，不做其他用途"
+		}
+	}
+}

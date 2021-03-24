@@ -1,0 +1,36 @@
+.post-panel{
+	width: 98%;
+	margin: 0 0 10rpx 2rpx;
+	border-radius: 5rpx;
+	background: #ffffff;
+	break-inside:avoid;
+}
+
+.post-photo{
+	display: flex;
+	width: 100%;
+	height: auto;
+}
+
+.post-title{
+	text-align: left;
+	font-size: 35rpx;
+	margin: 10rpx 20rpx;
+}
+
+.user-avatar{
+	display: inline-block;
+	width: 30rpx;
+	height: 30rpx;
+	border-radius: 15rpx;
+	margin: 0 0 0rpx 20rpx;
+}
+
+.likes {
+	margin: 20rpx 0rpx 15rpx 120rpx;
+	display: inline-block;
+}
+
+van-icon, .like-number{
+	display: inline-block;
+}

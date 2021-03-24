@@ -1,0 +1,19 @@
+page{
+	background-color:var(--themebackgroundcolor);
+  }
+.setting-item{
+	font-size:35rpx;
+	padding:35rpx;
+	border-bottom: 10rpx solid #f8f8f8;
+	background-color: #ffffff;
+	margin-left: 10rpx;
+	margin-right: 10rpx;
+	border-radius: 5rpx;
+}
+
+.arrow{
+	float: right;
+	color: #d8d8d8;
+	height: 50rpx;
+	width: 50rpx;
+}

@@ -1,0 +1,59 @@
+<van-search value="{{ value }}" use-left-icon-slot="false" placeholder="搜索商品" />
+
+<view class="swiper-region" hover-class="none" hover-stop-propagation="false">
+  <swiper autoplay="true" interval="2500">
+    <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+      <navigator>
+        <image mode="widthFix" src="{{item.image_src}}"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="goods-rank">
+  <navigator url="../goodsRank/goodsRank">
+    好物排名 >
+  </navigator>
+</view>
+
+<view class="goods-cate">
+  <navigator>
+    <image mode="widthFix" src="../../image/digit.png"></image>
+    <text>数码</text>
+  </navigator>
+  <navigator>
+    <image mode="widthFix" src="../../image/acg.png"></image>
+    <text>ACG</text>
+  </navigator>
+  <navigator>
+    <image mode="widthFix" src="../../image/toy.png"></image>
+    <text>玩具</text>
+  </navigator>
+  <navigator>
+    <image mode="widthFix" src="../../image/art.png"></image>
+    <text>美术</text>
+  </navigator>
+</view>
+
+<view class="goods-cate">
+  <navigator>
+    <image mode="widthFix" src="../../image/music.png"></image>
+    <text>音乐</text>
+  </navigator>
+  <navigator>
+    <image mode="widthFix" src="../../image/model.png"></image>
+    <text>模型</text>
+  </navigator>
+  <navigator>
+    <image mode="widthFix" src="../../image/lives.png"></image>
+    <text>生活</text>
+  </navigator>
+  <navigator>
+    <image mode="widthFix" src="../../image/others.png"></image>
+    <text>全部</text>
+  </navigator>
+</view>
+
+<view class="goods-list">
+  <goods-display></goods-display>
+</view>

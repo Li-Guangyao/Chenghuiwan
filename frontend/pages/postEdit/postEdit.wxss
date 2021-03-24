@@ -1,0 +1,62 @@
+.van-field--textarea{
+	height: 900rpx;
+	background: black;
+}
+page{
+	background-color: var(--themebackgroundcolor)
+}
+
+.title-tip, .content-tip{
+	margin: 20rpx;
+	font-size: 35rpx;
+}
+
+.title-input{
+	height: 40rpx;
+	width: 95%;
+	margin: auto;
+	background-color: #ffffff;
+	border-radius: 5rpx;
+}
+
+.content-input{
+	width: 95%;
+	margin: auto;
+	background-color: #ffffff;
+	border-radius: 5rpx;
+}
+
+
+.location-topic{
+	font-size: 30rpx;
+}
+
+#add-location{
+	margin: 25rpx 20rpx;
+	font-size: 30rpx
+}
+
+#add-topic{
+	margin: 25rpx 27rpx;
+	font-size: 30rpx;
+}
+
+van-uploader{
+	margin: 20rpx 20rpx !important;
+	width: 150rpx !important;
+	background-color: #ffffff;
+}
+
+.buttons{
+	position: fixed;
+	bottom: 0;
+}
+
+.clearContent{
+	width: 150rpx !important;
+} 
+
+.uploadPost{
+	width: 600rpx !important;
+	background-color:var(--themecolor) !important;
+}

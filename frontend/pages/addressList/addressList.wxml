@@ -1,0 +1,6 @@
+<van-cell-group>
+  <van-cell title="李光耀" value="广东省广州市" label="15937106471" border="{{true}}" is-link bindtap="editAddress" />
+  <van-cell title="李光耀" value="河南省郑州市啦啦啦啦啦啦啦啦啦啦" label="15937106471" is-link/>
+</van-cell-group>
+
+<button class="add-address" bindtap="addAddress">添加收获地址</button>

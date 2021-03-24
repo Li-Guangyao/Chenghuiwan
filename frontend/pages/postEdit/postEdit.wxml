@@ -1,0 +1,33 @@
+<!-- <van-cell-group>
+	<text>标题</text>
+	<van-field value="{{postTitle}}" size="large" clearable bind:click-icon="onClickIcon" />
+	<text>添加正文</text>
+	<van-field value="{{postContent}}" type="textarea" style="background:black" autosize border="{{false}}"/>
+</van-cell-group> -->
+
+<view class="input-region">
+	<view class="title-tip">标题</view>
+	<input class="title-input" focus="true" />
+	<view class="content-tip">添加正文</view>
+	<editor class="content-input"></editor>
+</view>
+
+<view class="location-topic">
+	<navigator id="add-location" url="../../pages/postLocation/postLocation">
+		<van-icon name="location-o" />
+		<text>添加地点</text>
+		<van-icon class="location" name="arrow" />
+	</navigator>
+
+	<navigator id="add-topic" url="../../pages/topic/topic">
+		<text>#添加话题</text>
+		<van-icon class="topic" name="arrow" />
+	</navigator>
+</view>
+
+<van-uploader file-list="{{fileList}}" accept="media" use-before-read bind:before-read="beforeRead"
+	bind:after-read="afterRead" max-count="9" />
+<view class="buttons">
+	<van-button custom-class="clearContent" bindtap="clearContent">清空内容</van-button>
+	<van-button custom-class="uploadPost" bindtap="uploadPost">发布笔记</van-button>
+</view>

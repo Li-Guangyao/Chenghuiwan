@@ -1,0 +1,9 @@
+<van-search
+  value="{{ value }}"
+  placeholder="请输入话题"
+  use-action-slot
+  bind:search="onSearch"
+  bind:change="onChange"
+>
+  <view slot="action" bind:tap="onClick">搜索</view>
+</van-search>

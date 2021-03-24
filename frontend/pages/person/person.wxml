@@ -1,0 +1,8 @@
+<view class="profile">
+	<navigator url="/pages/person/person">
+		<image class="profile-photo" src="{{userInfo.avatarUrl}}"></image>
+		<text class="user-name">{{userInfo.nickName}}</text>
+		<test class="user-introduction">{{userInfo.introduction}}</test>
+		<van-icon class="arrow" name="arrow" size="80rpx"/>
+	</navigator>
+</view>

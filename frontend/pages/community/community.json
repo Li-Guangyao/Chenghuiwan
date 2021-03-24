@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "tabbar": "../../components/Tabbar/Tabbar",
+    "post-edit": "../../components/post-edit/post-edit",
+    "post-display": "../../components/post-display/post-display",
+    "van-field": "@vant/weapp/field/index",
+		"van-icon": "@vant/weapp/icon/index",
+		"van-uploader": "@vant/weapp/uploader/index",
+		"van-button": "@vant/weapp/button/index"
+  },
+  "navigationBarTitleText": "社区"
+}

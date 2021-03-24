@@ -1,0 +1,1 @@
+<van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onSubmit" />

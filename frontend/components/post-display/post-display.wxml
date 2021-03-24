@@ -1,0 +1,11 @@
+<view class="post-panel">
+	<navigator>
+		<image mode="widthFix" class="post-photo" src="../../image/postphoto.jpg"></image>
+		<view class="post-title">帖子标题</view>
+	</navigator>
+	<image class="user-avatar" src="../../image/postavatar.png"></image>
+	<view class="likes">
+		<van-icon class="like-o" name="like-o" />
+		<view class="like-number">点赞数量</view>
+	</view>
+</view>
