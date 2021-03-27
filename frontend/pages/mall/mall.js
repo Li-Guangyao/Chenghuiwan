@@ -69,5 +69,12 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    searchGoods(e){
+        console.log(e);
+        wx.navigateTo({
+          url: '../goodsList/goodsList',
+        })
     }
 })

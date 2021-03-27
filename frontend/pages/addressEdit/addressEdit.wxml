@@ -7,8 +7,12 @@
 		bindtap="showPopup" border="{{true}}" />
 	<van-field value="{{ detailedAddress }}" size="large" label="详细地址" placeholder="街道门牌信息" required
 		border="{{true}}"/>
-
 </van-cell-group>
+
+<view class="default-address">
+	<view class="tip">设为默认地址</view>
+	<van-switch checked="{{ isDefaultAddress }}" active-color="#1ae6e6" bind:change="changeDefaultAddress" />
+</view>
 
 <van-popup show="{{show}}" bind:close="closePopup" position="bottom" round="true" safe-area-inset-bottom="true">
 	<van-area area-list="{{ areaList }}" />

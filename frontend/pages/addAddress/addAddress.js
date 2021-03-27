@@ -1,33 +1,42 @@
-// pages/addAddress/addAddress.js
+const db = wx.cloud.database();
+
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		show:false,
-		areaList:{
+		showPopup: false,
+		areaList: {
 			province_list: {
-			  110000: '北京市',
-			  120000: '天津市'
+				110000: '北京市',
+				120000: '天津市'
 			},
 			city_list: {
-			  110100: '北京市',
-			  120100: '天津市',
+				110100: '北京市',
+				120100: '天津市',
 			},
 			county_list: {
-			  110101: '东城区',
-			  110102: '西城区',
-			  110105: '朝阳区',
-			  110106: '丰台区',
-			  120101: '和平区',
-			  120102: '河东区',
-			  120103: '河西区',
-			  120104: '南开区',
-			  120105: '河北区',
+				110101: '东城区',
+				110102: '西城区',
+				110105: '朝阳区',
+				110106: '丰台区',
+				120101: '和平区',
+				120102: '河东区',
+				120103: '河西区',
+				120104: '南开区',
+				120105: '河北区',
 			}
-		  }
-
+		},
+		newAddress: {
+			receiverName: '',
+			province: '',
+			city: '',
+			district: '',
+			phoneNumber: '',
+			isDefault: false,
+			isDeleted: false
+		}
 	},
 
 	/**
@@ -86,15 +95,61 @@ Page({
 
 	},
 
-	showPopup(){
+	outOfFocus(e){
+		console.log(e)
+	},
+
+	showPopup() {
 		this.setData({
-			show:true
+			showPopup: true
 		})
 	},
 
-	closePopup(){
+	closePopup() {
 		this.setData({
-			show: false
+			showPopup: false
 		})
+	},
+
+	confirmOverallAddress(e) {
+		this.setData({
+			showPopup:false,
+			'newAddress.province':e.detail.values[0],
+			'newAddress.city':e.detail.values[1],
+			'newAddress.district':e.detail.values[2],
+		})
+	},
+
+	changeDefaultAddress(e) {
+		this.setData({
+			'newAddress.isDefault': e.detail
+		})
+	},
+
+	saveAddress() {
+		wx.showModal({
+			content: '确认保存地址',
+			cancelColor: 'cancelColor',
+			confirmColor: "#1ae6e6"
+		}).then(res => {
+			if (res.confirm == true) {
+				const newAddress = this.data.newAddress
+				db.collection('t_address').add({
+						data: {
+							receiverName: newAddress.receiverName,
+							province: newAddress.province,
+							city: newAddress.city,
+							district: newAddress.district,
+							phoneNumber: newAddress.phoneNumber,
+							isDefault: newAddress.receiverName,
+							isDeleted: newAddress.receiverName,
+						}
+					})
+					.then(res => {
+						console.log("插入成功")
+						console.log(res)
+					})
+			}
+		}).catch()
 	}
 })

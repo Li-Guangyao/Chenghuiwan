@@ -1,18 +1,22 @@
 <van-cell-group>
-	<van-field value="{{ username }}" size="large" required clearable label="收件人" icon="contact" placeholder="请输入名字"
-		bind:click-icon="onClickIcon" border="{{true}}" />
-	<van-field value="{{ phonenumber }}" size="large" type="digit" label="手机号码" placeholder="11位手机号" required
+	<van-field value="{{ receiverNname }}" size="large" required clearable label="收件人" icon="contact"
+		placeholder="请输入名字" auto-focus bind:click-icon="onClickIcon" bind:blur='receiverNameOutOfFocus' border="{{true}}" />
+	<van-field value="{{ phoneNumber }}" size="large" type="digit" label="手机号码" placeholder="11位手机号" required bind:blur='phoneNumberOutOfFocus'
 		border="{{true}}" />
-	<van-field value="{{ overallAddress }}" size="large" label="选择地区" icon="location-o" placeholder="地区信息" required
+	<van-field value="{{ overallAddress }}" size="large" label="选择地区" icon="location-o" placeholder="{{overallAddress}}" required
 		bindtap="showPopup" border="{{true}}" />
 	<van-field value="{{ detailedAddress }}" size="large" label="详细地址" placeholder="街道门牌信息" required
-		border="{{true}}"/>
-
+		border="{{true}}" type="textarea" autosize maxlength="100"/>
 </van-cell-group>
 
-<van-popup show="{{show}}" bind:close="closePopup" position="bottom" round="true" safe-area-inset-bottom="true">
-	<van-area area-list="{{ areaList }}" />
+<view class="default-address">
+	<view class="tip">设为默认地址</view>
+	<van-switch checked="{{ isDefaultAddress }}" active-color="#1ae6e6" bind:change="changeDefaultAddress" />
+</view>
+
+<van-popup show="{{showPopup}}" bind:close="closePopup" position="bottom" round="true" safe-area-inset-bottom="true">
+	<van-area area-list="{{ areaList }}" bind:cancel="closePopup" bind:confirm="confirmOverallAddress" />
 </van-popup>
 
 
-<button class="save">保存</button>
+<button class="save" bindtap="saveAddress">保存</button>

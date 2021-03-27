@@ -43,5 +43,16 @@ Page({
      */
     onHide: function () {
 
+    },
+
+    tapOrders(e){
+        wx.navigateTo({
+          url: '../orders/orders',
+          success:(res)=>{
+              console.log(res)
+              console.log(e)
+              res.eventChannel.emit('acceptDataFromOpenerPage', { data: e.currentTarget.dataset.ordertype})
+          }
+        })
     }
 })

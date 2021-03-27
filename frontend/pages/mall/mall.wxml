@@ -1,6 +1,6 @@
-<van-search value="{{ value }}" use-left-icon-slot="false" placeholder="搜索商品" />
+<van-search value="{{ value }}" use-left-icon-slot="{{false}}" placeholder="搜索商品" bind:search="searchGoods"/>
 
-<view class="swiper-region" hover-class="none" hover-stop-propagation="false">
+<view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
   <swiper autoplay="true" interval="2500">
     <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
       <navigator>

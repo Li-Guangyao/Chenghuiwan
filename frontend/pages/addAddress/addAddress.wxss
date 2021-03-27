@@ -9,3 +9,15 @@ page{
 	bottom: 0;
 	padding-bottom: env(safe-area-inset-bottom);
 }
+
+.default-address{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 10rpx 10rpx;
+}
+
+.tip{
+	margin: 20rpx 20rpx;
+	
+}

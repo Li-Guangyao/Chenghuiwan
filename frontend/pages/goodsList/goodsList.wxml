@@ -4,7 +4,7 @@
 	<van-dropdown-item value="{{ value3 }}" options="{{ option3 }}" />
 </van-dropdown-menu>
 
-<van-card price="10.00" desc="描述信息" title="商品标题" thumb="../../image/postphoto2.png" thumb-mode="aspectFill" custom-class="goods-card" price-class="price">
+<van-card price="10.00" desc="描述信息" title="商品标题" thumb="../../image/postphoto2.png" thumb-mode="aspectFill" custom-class="goods-card" price-class="price" bindtap="viewGoods">
 	<view slot="footer">
 		<van-button size="mini">购买</van-button>
 	</view>

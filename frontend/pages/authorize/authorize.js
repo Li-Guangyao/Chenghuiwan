@@ -1,4 +1,3 @@
-import requestUrl from '../../utils/requestUrl.js'
 const db = wx.cloud.database();
 
 Page({

@@ -5,13 +5,20 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+		orderType: ""
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function () {
+		const eventChannel = this.getOpenerEventChannel();
+		eventChannel.on('acceptDataFromOpenerPage', (e) => {
+			console.log(e.data)
+			this.setData({
+				orderType: e.data
+			})
+		})
 
 	},
 

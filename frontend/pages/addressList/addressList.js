@@ -1,10 +1,12 @@
-// pages/addressDisplay/addressDisplay.js
+const db = wx.cloud.database();
+
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
+		addressList: []
 
 	},
 
@@ -12,6 +14,13 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		var openId = wx.getStorageSync('openId')
+		console.log(openId)
+		db.collection('t_order').doc(openId).get().then(res=>{
+			console.log(res)
+		}).catch(err=>{
+			console.log(err)
+		})
 
 	},
 

@@ -1,1 +1,8 @@
-/* pages/goodsDetail/goodsDetail.wxss */
+page{
+	background-color: var(--themebackgroundcolor);
+}
+
+.swiper-region{
+	height: 700rpx;
+	border: 1rpx solid black;
+}

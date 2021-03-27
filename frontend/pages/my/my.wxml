@@ -11,10 +11,10 @@
 
 <view class="order">
 	<van-grid clickable column-num="4">
-		<van-grid-item icon="credit-pay" link-type="navigateTo" info="99+" text="待付款" />
-		<van-grid-item icon="paid" link-type="reLaunch" text="待发货" />
-		<van-grid-item icon="logistics" link-type="reLaunch" text="待收货" />
-		<van-grid-item icon="completed" link-type="reLaunch" text="待评价" />
+		<van-grid-item icon="credit-pay" link-type="navigateTo" info="99+" text="待付款" data-ordertype="awaitPayment" bindtap="tapOrders"/>
+		<van-grid-item icon="paid" link-type="reLaunch" text="待发货" data-ordertype="awaitSending" bindtap="tapOrders"/>
+		<van-grid-item icon="logistics" link-type="reLaunch" text="待收货" data-ordertype="awaitReceiving" bindtap="tapOrders"/>
+		<van-grid-item icon="completed" link-type="reLaunch" text="待评价" data-ordertype="awaitComment" bindtap="tapOrders"/>
 	</van-grid>
 </view>
 

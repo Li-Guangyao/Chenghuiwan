@@ -5,6 +5,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		radio: '',
+		isDefaultAddress: false
 
 	},
 
@@ -62,5 +64,12 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
+	},
+
+	changeDefaultAddress(e){
+		console.log(e.detail)
+		this.setData({
+			isDefaultAddress: e.detail
+		})
 	}
 })
