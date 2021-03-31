@@ -1,11 +1,11 @@
 <van-cell-group>
-	<van-field value="{{ receiverNname }}" size="large" required clearable label="收件人" icon="contact"
-		placeholder="请输入名字" auto-focus bind:click-icon="onClickIcon" bind:blur='receiverNameOutOfFocus' border="{{true}}" />
-	<van-field value="{{ phoneNumber }}" size="large" type="digit" label="手机号码" placeholder="11位手机号" required bind:blur='phoneNumberOutOfFocus'
-		border="{{true}}" />
-	<van-field value="{{ overallAddress }}" size="large" label="选择地区" icon="location-o" placeholder="{{overallAddress}}" required
+	<van-field model:value="{{ receiverName }}" size="large" required clearable label="收件人" icon="contact"
+		placeholder="请输入名字" auto-focus bind:click-icon="onClickIcon" border="{{true}}" />
+	<van-field model:value="{{ phoneNumber }}" size="large" type="digit" label="手机号码" placeholder="11位手机号" required
+		type="digit" maxlength="11" border="{{true}}" />
+	<van-field value="{{province+city+district}}" size="large" label="选择地区" icon="location-o" placeholder="选择省市区" required
 		bindtap="showPopup" border="{{true}}" />
-	<van-field value="{{ detailedAddress }}" size="large" label="详细地址" placeholder="街道门牌信息" required
+	<van-field model:value="{{ detailedAddress }}" size="large" label="详细地址" placeholder="街道门牌信息" required
 		border="{{true}}" type="textarea" autosize maxlength="100"/>
 </van-cell-group>
 

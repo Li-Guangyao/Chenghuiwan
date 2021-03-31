@@ -28,15 +28,15 @@ Page({
 				120105: '河北区',
 			}
 		},
-		newAddress: {
-			receiverName: '',
-			province: '',
-			city: '',
-			district: '',
-			phoneNumber: '',
-			isDefault: false,
-			isDeleted: false
-		}
+
+		//新地址
+		receiverName:'',
+		province: '',
+		city: '',
+		district: '',
+		phoneNumber: '',
+		detailedAddress:'',
+		isDefaultAddress: false,
 	},
 
 	/**
@@ -95,10 +95,6 @@ Page({
 
 	},
 
-	outOfFocus(e){
-		console.log(e)
-	},
-
 	showPopup() {
 		this.setData({
 			showPopup: true
@@ -113,16 +109,16 @@ Page({
 
 	confirmOverallAddress(e) {
 		this.setData({
-			showPopup:false,
-			'newAddress.province':e.detail.values[0],
-			'newAddress.city':e.detail.values[1],
-			'newAddress.district':e.detail.values[2],
+			showPopup: false,
+			province: e.detail.values[0].name,
+			city: e.detail.values[1].name,
+			district: e.detail.values[2].name,
 		})
 	},
 
 	changeDefaultAddress(e) {
 		this.setData({
-			'newAddress.isDefault': e.detail
+			isDefaultAddress: e.detail
 		})
 	},
 
@@ -133,21 +129,42 @@ Page({
 			confirmColor: "#1ae6e6"
 		}).then(res => {
 			if (res.confirm == true) {
-				const newAddress = this.data.newAddress
+				if(this.data.isDefaultAddress==true){
+					var openId = wx.getStorageSync('openId')
+					//如果用户把该地址设为默认的，就把其他的地址取消默认
+					db.collection('t_address').where({
+						_openid: openId
+					})
+					.update({
+						data:{
+							isDefaultAddress: false
+						}
+					})
+					console.log("把其他地址的默认选项都设为false")
+				}
+				//保存地址到数据库
 				db.collection('t_address').add({
 						data: {
-							receiverName: newAddress.receiverName,
-							province: newAddress.province,
-							city: newAddress.city,
-							district: newAddress.district,
-							phoneNumber: newAddress.phoneNumber,
-							isDefault: newAddress.receiverName,
-							isDeleted: newAddress.receiverName,
+							receiverName: this.data.receiverName,
+							province: this.data.province,
+							city: this.data.city,
+							district: this.data.district,
+							phoneNumber: this.data.phoneNumber,
+							detailedAddress: this.data.detailedAddress,
+							isDefaultAddress: this.data.isDefaultAddress,
 						}
 					})
 					.then(res => {
-						console.log("插入成功")
-						console.log(res)
+						console.log("保存地址成功")
+						wx.showModal({
+							showCancel:false,
+							content:"保存成功",
+							confirmText:'确定'
+						}).then(res=>{
+							wx.redirectTo({
+							  url: '../addressList/addressList',
+							})
+						})
 					})
 			}
 		}).catch()

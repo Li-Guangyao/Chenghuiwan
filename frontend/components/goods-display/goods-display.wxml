@@ -1,21 +1,6 @@
-<!-- <view class="list">
-	<view class='list-half'>
-		<view wx:for="{{listData}}" wx:key="index" wx:if="{{index%2 == 0}}" class='card'>
-			<image src="../../image/postphoto.jpg"></image>
-			<text></text>
-		</view>
-	</view>
-	<view class='list-half'>
-		<view wx:for="{{listData}}" wx:key="index" wx:if="{{index%2 != 0}}" class='card'>
-			<image src="../../image/postphoto.jpg"></image>
-			<text></text>
-		</view>
-	</view>
-</view> -->
-
 <view class="list">
 	<view class='list-half'>
-		<navigator class='card'>
+		<navigator class='card' url='../../pages/goodsDetail/goodsDetail?goods_id="{{item._id}}"'>
 			<image mode="widthFix" src="../../image/postphoto.jpg"></image>
 			<text id="desc">商品描述商品描述商品描述</text>
 			<text id="price">￥300</text>
@@ -23,7 +8,7 @@
 		</navigator>
 	</view>
 	<view class='list-half'>
-		<navigator class='card'>
+		<navigator class='card' url='../../pages/goodsDetail/goodsDetail?goods_id="{{item._id}}"'>
 			<image mode="widthFix" src="../../image/postphoto.jpg"></image>
 			<text class="desc">商品描述商品描述商品描述</text>
 			<text class="price">￥300</text>

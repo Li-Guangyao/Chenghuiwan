@@ -45,6 +45,19 @@
                 {
                     "name": "pages/orders",
                     "pathName": "pages/orders/orders",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/postDetail",
+                    "pathName": "pages/postDetail/postDetail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/postEdit",
+                    "pathName": "pages/postEdit/postEdit",
+                    "query": "",
                     "scene": null
                 }
             ]

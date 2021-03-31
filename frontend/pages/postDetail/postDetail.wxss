@@ -1,3 +1,93 @@
 page{
-	background-color:var(--themebackgroundcolor);
-  }
+	background-color: var(--themebackgroundcolor);
+}
+
+.swiper-region{
+	height: 800rpx;
+	border: 1rpx solid black;
+	border-radius: 10rpx;
+	margin:0 5rpx;
+	background: white;
+}
+
+.post-text{
+	background: white;
+	border: 1rpx solid green;
+	border-radius: 10rpx;
+	margin: 5rpx 5rpx;
+}
+
+.comment{
+	background: white;
+	border: 1rpx solid red;
+	font-size: 30rpx;
+	display: flex;
+	flex-direction: column;
+	margin: 5rpx 5rpx;
+	padding: 0rpx 25rpx;
+	border-radius: 10rpx;
+	align-items: center;
+}
+
+.comment .viewer-info{
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.comment .viewer-info .viewer-avatar{
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	margin: 10rpx 10rpx;
+}
+
+.comment .viewer-info .viewer-nickname{
+	color: grey;
+	font-size: 20rpx;
+	margin: 0 30rpx;
+}
+
+.comment .comment-content{
+	font-size: 25rpx;
+	margin: 20rpx 20rpx;
+
+}
+
+.post-image{
+	display: flex;
+	flex-direction: column;
+	border: 1rpx solid blue;
+	background-color: white;
+	margin: 5rpx 5rpx;
+	border-radius: 10rpx;
+}
+
+.fixed-region{
+	position: fixed;
+	bottom: 0rpx;
+	width: 100%;
+	display: flex;
+	background: white;
+	border-radius: 10rpx;
+	margin: 5rpx 5rpx;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: env(safe-area-inset-bottom);
+}
+
+.fixed-region text{
+	flex: 1;
+	margin: 10rpx 5rpx;
+	text-align: center;
+	font-size: 35rpx;
+}
+
+.input-comment{
+	flex: 4;
+	border-radius: 15rpx;
+	border: 1rpx solid grey;
+	margin: 10rpx 10rpx;
+}

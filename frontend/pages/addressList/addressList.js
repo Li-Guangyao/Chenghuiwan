@@ -16,9 +16,13 @@ Page({
 	onLoad: function (options) {
 		var openId = wx.getStorageSync('openId')
 		console.log(openId)
-		db.collection('t_order').doc(openId).get().then(res=>{
-			console.log(res)
-		}).catch(err=>{
+		db.collection('t_address').where({
+			_openid: openId
+		}).get().then(res => {
+			this.setData({
+				addressList: res.data
+			})
+		}).catch(err => {
 			console.log(err)
 		})
 
@@ -73,16 +77,21 @@ Page({
 
 	},
 
-	addAddress(){
+	addAddress() {
 		wx.navigateTo({
-		  url: '../addAddress/addAddress',
+			url: '../addAddress/addAddress',
 		})
 	},
 
-	editAddress(e){
-		console.log(e)
+	editAddress(e) {
+		console.log(this.data.addressList[e.currentTarget.dataset.index])
 		wx.navigateTo({
-		  url: '../addressEdit/addressEdit',
+			url: '../addressEdit/addressEdit',
+			success: (res)=>{
+				res.eventChannel.emit('acceptDataFromOpenerPage', { 
+					sentData: this.data.addressList[e.currentTarget.dataset.index]
+				})
+			}
 		})
 	}
 })

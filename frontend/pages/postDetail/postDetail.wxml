@@ -1,2 +1,29 @@
-<!--pages/postDetail/postDetail.wxml-->
-<text>pages/postDetail/postDetail.wxml</text>
+<view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
+  <swiper autoplay="false" interval="2500">
+    <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+      <navigator>
+        <image mode="widthFix" src="{{item.image_src}}" />
+      </navigator>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="post-text">
+  <rich-text>帖子文本</rich-text>
+  <view class="pub-time">发表日期</view>
+</view>
+
+<view class="comment">
+  <view class="viewer-info">
+    <image class="viewer-avatar" mode="aspectFill" src="../../image/postavatar.png"></image>
+    <view class="viewer-nickname">评论者昵称</view>
+  </view>
+  <view class="comment-content">用户评论</view>
+</view>
+
+
+<view class="fixed-region">
+  <text class="iconfont icon-like">点赞</text>
+  <text class="iconfont icon-collect">收藏</text>
+  <textarea class="input-comment" placeholder="说点什么吧！" placeholder-style="text-align:center" auto-height="true" />
+</view>
