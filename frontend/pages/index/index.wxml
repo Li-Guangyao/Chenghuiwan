@@ -16,11 +16,6 @@
       <!-- <scroll-view scroll-y="{{true}}" style="height: {{swiperHeight?swiperHeight+'px':'auto'}}"> -->
       <view class="slide-view">
         <post-display></post-display>
-        <post-display></post-display>
-        <post-display></post-display>
-        <post-display></post-display>
-        <post-display></post-display>
-        <post-display></post-display>
       </view>
       <!-- </scroll-view> -->
     </swiper-item>

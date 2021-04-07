@@ -45,6 +45,7 @@
     "appid": "wx05707d575cb2685c",
     "projectname": "Chenghuiwan",
     "libVersion": "2.16.0",
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
     "condition": {
         "search": {
             "list": []

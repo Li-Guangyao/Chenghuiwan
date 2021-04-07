@@ -7,25 +7,22 @@ page{
 }
 
 .title-tip, .content-tip{
-	margin: 20rpx;
+	margin: 10rpx;
 	font-size: 35rpx;
 }
 
 .title-input{
-	height: 40rpx;
-	width: 95%;
-	margin: auto;
+	height: 50rpx;
+	margin: 0 10rpx;
 	background-color: #ffffff;
 	border-radius: 5rpx;
 }
 
 .content-input{
-	width: 95%;
-	margin: auto;
+	margin: 0 10rpx;
 	background-color: #ffffff;
 	border-radius: 5rpx;
 }
-
 
 .location-topic{
 	font-size: 30rpx;
@@ -33,21 +30,27 @@ page{
 
 #add-location{
 	margin: 25rpx 20rpx;
-	font-size: 30rpx
+	font-size: 30rpx;
+	display: flex;
+	align-items: center;
 }
 
 #add-topic{
 	margin: 25rpx 27rpx;
 	font-size: 30rpx;
+	display:flex;
+	align-items: center;
 }
 
-van-uploader{
-	margin: 20rpx 20rpx !important;
-	width: 150rpx !important;
+.upload-photo{
+	padding: 10rpx 10rpx;
+	margin: 0 0 70rpx 0;
+	width: 100% !important;
 	background-color: #ffffff;
 }
 
 .buttons{
+	margin: 30rpx 0 0 0;
 	position: fixed;
 	bottom: 0;
 }
@@ -56,7 +59,7 @@ van-uploader{
 	width: 150rpx !important;
 } 
 
-.uploadPost{
+.publishPost{
 	width: 600rpx !important;
 	background-color:var(--themecolor) !important;
 }

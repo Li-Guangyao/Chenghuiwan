@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "post-display":"../../components/post-display/post-display"
+  },
+  "navigationBarTitleText": "我的主页"
 }

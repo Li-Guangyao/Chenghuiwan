@@ -25,6 +25,5 @@ post-display {
 	width: 100%;
 	margin: 20rpx;
 	overflow: hidden; */
-	column-count: 2;
 	column-gap: 0rpx;
 }

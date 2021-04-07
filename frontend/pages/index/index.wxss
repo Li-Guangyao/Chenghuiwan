@@ -30,7 +30,7 @@ page {
 }
 
 .slide-view{
-  column-count: 2;
+  /* column-count: 2; */
 }
 
 post-display{

@@ -1,17 +1,16 @@
 Page({
 	data: {
-		value: '',
+		topic: '',
 	},
+
 	onChange(e) {
 		console.log(e)
 		this.setData({
-			value: e.detail,
+			topic: e.detail,
 		});
 	},
-	onSearch() {
+
+	searchTopic() {
 		console.log("onsearch")
-	},
-	onClick() {
-		console.log("onclick")
-	},
+	}
 });

@@ -1,8 +1,16 @@
-<view class="profile">
-	<navigator url="/pages/person/person">
-		<image class="profile-photo" src="{{userInfo.avatarUrl}}"></image>
-		<text class="user-name">{{userInfo.nickName}}</text>
-		<test class="user-introduction">{{userInfo.introduction}}</test>
-		<van-icon class="arrow" name="arrow" size="80rpx"/>
-	</navigator>
+<view class="profile" url="/pages/person/person">
+    <image class="profile-photo" src="{{userInfo.avatarUrl}}"></image>
+    <!-- <text class="user-name">{{userInfo.nickName}}</text> -->
+    <view class="user-info">
+        <view>
+            <text class="user-name">liguangyao</text>
+            <image mode="widthFix" class="gender-img" src="../../image/male.png"></image>
+        </view>
+        <text class="user-introduction">啦啦啦啦啦啦</text>
+    </view>
+</view>
+
+
+<view class="post">
+    <post-display></post-display>
 </view>

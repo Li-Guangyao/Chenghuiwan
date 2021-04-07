@@ -1,25 +1,36 @@
-// pages/mall/mall.js
+const db = wx.cloud.database()
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {},
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        wx.request({
-            url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
-            // url: 'https://www.fastmock.site/mock/6a7cf8cb5c42cda6181f1696b06383cc/test/api/public/v1/home/swiperdata',
-            success: (res) => {
-                this.setData({
-                    swiperList: res.data.message
-                })
-                console.log(this.data.swiperList)
-            }
+
+        wx.cloud.callFunction({
+            name: 'updateMallSwiperImage',
+        }).then(console.log)
+
+        db.collection('t_mall_swiper').get().then(res=>{
+            this.setData({
+                swiperList: res.data
+            })
+
+            console.log(this.data.swiperList)
         })
+
+        // wx.request({
+        //     url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+        //     // url: 'https://www.fastmock.site/mock/6a7cf8cb5c42cda6181f1696b06383cc/test/api/public/v1/home/swiperdata',
+        //     success: (res) => {
+        //         this.setData({
+        //             swiperList: res.data.message
+        //         })
+        //         console.log(this.data.swiperList)
+        //     }
+        // })
     },
 
     /**

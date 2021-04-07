@@ -2,18 +2,13 @@
 
 <view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
   <swiper autoplay="true" interval="2500">
-    <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+    <swiper-item wx:for="{{swiperList}}" wx:key="index">
       <navigator>
-        <image mode="widthFix" src="{{item.image_src}}"></image>
+        <!-- <image mode="widthFix" src="{{item.image_src}}"></image> -->
+        <image mode="widthFix" src="{{item.url}}"></image>
       </navigator>
     </swiper-item>
   </swiper>
-</view>
-
-<view class="goods-rank">
-  <navigator url="../goodsRank/goodsRank">
-    好物排名 >
-  </navigator>
 </view>
 
 <view class="goods-cate">

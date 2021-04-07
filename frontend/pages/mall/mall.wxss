@@ -2,35 +2,21 @@ page {
 	background-color: var(--themebackgroundcolor);
 }
 
-.swiper-region swiper {
+.swiper-region swiper{
 	width: 95%;
-	height: 340rpx;
+	height: 400rpx;
 	margin: auto;
 }
 
 .swiper-region swiper image {
-	width: 100%;
-}
-
-.goods-rank{
-	display: flex;
-	align-items: center;
-	background-color:white;
-	margin: 15rpx 15rpx;
-	border-radius: 5rpx;
-	height: 70rpx;
-}
-
-.goods-rank navigator {
-	font-size: 35rpx;
-	margin: 0rpx 10rpx;
+	width: 100%; 
 }
 
 .goods-cate{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin: 0 20rpx;
+	margin: 10rpx 20rpx;
 	background-color: white;
 	width: 95%;
 }

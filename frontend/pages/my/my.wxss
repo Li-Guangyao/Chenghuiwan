@@ -1,54 +1,55 @@
 page {
-	background-color: var(--themebackgroundcolor);
+    background-color: var(--themebackgroundcolor);
 }
 
 .profile {
-	background: #ffffff;
-	border-radius: 36rpx;
-	margin-bottom: 20rpx;
+    height: 240rpx;
+    background: #ffffff;
+    border-radius: 30rpx;
+    margin-bottom: 20rpx;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .profile-photo {
-	height: 160rpx;
-	width: 160rpx;
-	border-radius: 80rpx;
-	margin: 35rpx;
+    height: 160rpx;
+    width: 160rpx;
+    border-radius: 80rpx;
+
+    margin: 20rpx 35rpx;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 140rpx 0 0;
+
 }
 
 .user-name {
-	font-size: 45rpx;
-	margin: 45rpx;
-	position: fixed;
-	left: 200rpx;
+    font-size: 45rpx;
+    margin: 20rpx 15rpx;
 }
 
-.gender-img{
-	position: fixed;
-	height: 22px;
-    width: 40rpx;
-    top: 54rpx;
-    left: 384rpx;
+.gender-img {
+    height: 25rpx;
+    width: 25rpx;
 }
 
 .user-introduction {
-	font-size: 25rpx;
-	position: fixed;
-    left: 244rpx;
-    top: 143rpx;
+    font-size: 25rpx;
+    margin: 20rpx 15rpx;
 }
 
-.arrow{
-	float: right;
-	color: #d8d8d8;
-	margin-top: 75rpx;
+.arrow {
+    float: right !important;
+    color: #d8d8d8;
 }
 
 .order {
-	margin-bottom: 20rpx;
-}
-
-#likes{
-	text-align: center;
-	font-size: 25rpx;
-	margin-top: 25rpx;
+    margin-bottom: 20rpx;
 }

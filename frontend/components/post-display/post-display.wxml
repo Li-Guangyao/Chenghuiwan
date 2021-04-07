@@ -1,4 +1,4 @@
-<view class="post-panel">
+<!-- <view class="post-panel">
 	<navigator>
 		<image mode="widthFix" class="post-photo" src="../../image/postphoto.jpg"></image>
 		<view class="post-title">帖子标题</view>
@@ -7,5 +7,32 @@
 	<view class="likes">
 		<van-icon class="like-o" name="like-o" />
 		<view class="like-number">点赞数量</view>
+	</view>
+</view> -->
+
+<!-- 以上是之前的方案，写的比较死，我想换成向goods-display一样的两列展示方案 -->
+
+<view class="list">
+	<view class="list-half">
+		<navigator class="post-panel">
+			<image mode="widthFix" class="post-photo" src="../../image/postphoto.jpg"></image>
+			<view class="post-title">帖子标题</view>
+			<image class="user-avatar" src="../../image/postavatar.png"></image>
+			<view class="likes">
+				<van-icon class="like-o" name="like-o" />
+				<view class="like-number">点赞数量</view>
+			</view>
+		</navigator>
+	</view>
+	<view class="list-half">
+		<navigator class="post-panel">
+			<image mode="widthFix" class="post-photo" src="../../image/postphoto.jpg"></image>
+			<view class="post-title">帖子标题</view>
+			<image class="user-avatar" src="../../image/postavatar.png"></image>
+			<view class="likes">
+				<van-icon class="like-o" name="like-o" />
+				<view class="like-number">点赞数量</view>
+			</view>
+		</navigator>
 	</view>
 </view>
