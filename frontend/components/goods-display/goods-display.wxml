@@ -1,4 +1,4 @@
-<view class="list">
+<view class="list" >
 	<view class='list-half'>
 		<navigator class='card' url='../../pages/goodsDetail/goodsDetail?goods_id="{{item._id}}"'>
 			<image mode="widthFix" src="../../image/postphoto.jpg"></image>

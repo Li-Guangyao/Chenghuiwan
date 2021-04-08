@@ -59,6 +59,11 @@
                     "pathName": "pages/postEdit/postEdit",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/authorize",
+                    "pathName": "pages/authorize/authorize",
+                    "scene": null
                 }
             ]
         }

@@ -31,7 +31,6 @@ App({
         //session_key 已经失效，需要重新执行登录流程
         console.log("用户登录态过期了")
         /**登录态过期后开发者可以再调用 wx.login 获取新的用户登录态。
-         * 调用成功说明当前 session_key 未过期，调用失败说明 session_key 已过期。
          */
         wx.login({
           success: res => {
@@ -56,6 +55,7 @@ App({
       }
     })
   },
+
   globalData: {
     userInfo: "",//用户信息
     openId: "",//登录用户的唯一标识

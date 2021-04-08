@@ -3,7 +3,7 @@
     <!-- <text class="user-name">{{userInfo.nickName}}</text> -->
     <view class="user-info">
         <view>
-            <text class="user-name">liguangyao</text>
+            <text class="user-name">{{userInfo.nickName}}</text>
             <image mode="widthFix" class="gender-img" src="../../image/male.png"></image>
         </view>
         <text class="user-introduction">啦啦啦啦啦啦</text>
@@ -12,5 +12,5 @@
 
 
 <view class="post">
-    <post-display></post-display>
+    <post-display postList="{{postList}}" bindtap="chosePost"></post-display>
 </view>

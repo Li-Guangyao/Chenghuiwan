@@ -23,7 +23,7 @@ page {
 .user-info {
     display: flex;
     flex-direction: column;
-    margin: 0 230rpx 0 0;
+    margin: 0 330rpx 0 0;
 }
 
 .user-name {

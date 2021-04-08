@@ -3,11 +3,10 @@
 	<!-- <text class="user-name">{{userInfo.nickName}}</text> -->
 	<view class="user-info">
 		<view>
-			<text class="user-name">liguangyao</text>
+			<text class="user-name">{{userInfo.nickname}}</text>
 			<image mode="widthFix" class="gender-img" src="../../image/male.png"></image>
 		</view>
 		<text class="user-introduction">啦啦啦啦啦啦</text>
-		<!-- {{userInfo.introduction}} -->
 	</view>
 	<van-icon class="arrow" name="arrow" size="80rpx" />
 </navigator>
