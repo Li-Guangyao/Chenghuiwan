@@ -96,6 +96,8 @@ Page({
                     this.setData({
                         userInfo: e.data[0]
                     })
+                    //每次加载完都设置一次
+                    wx.setStorageSync('userInfo', e.data[0])
                 }
             },
         })

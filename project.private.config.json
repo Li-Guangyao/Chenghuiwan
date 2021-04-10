@@ -63,6 +63,12 @@
                 {
                     "name": "pages/authorize",
                     "pathName": "pages/authorize/authorize",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/person/person",
+                    "pathName": "pages/person/person",
                     "scene": null
                 }
             ]

@@ -1,17 +1,26 @@
-// pages/postDetail/postDetail.js
+const db = wx.cloud.database()
+
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-
+		post:{}
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function (e) {
+		//从post-display组件中直接跳转过来，会接受一个post对象
+		db.collection('t_post').doc(e.postId).get().then(e=>{
+			console.log(e)
+			this.setData({
+				post:e.data
+			})
+		})
+
 
 	},
 
@@ -62,5 +71,18 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
+	},
+
+
+	previewImage(e){
+		console.log(e)
+		wx.previewImage({
+		  urls: [],
+		  current: 'current',
+		  showmenu: true,
+		  success: (res) => {},
+		  fail: (res) => {},
+		  complete: (res) => {},
+		})
 	}
 })

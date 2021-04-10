@@ -19,6 +19,8 @@ Component({
                 },
 
                 methods: {
-
+                    chosePost(e){
+                        console.log(e)
+                    }
                 }
             })

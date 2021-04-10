@@ -1,16 +1,15 @@
 <view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
-  <swiper autoplay="false" interval="2500">
-    <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
-      <navigator>
-        <image mode="widthFix" src="{{item.image_src}}" />
-      </navigator>
+  <swiper autoplay="{{false}}">
+    <swiper-item wx:for="{{post.post_photo}}" wx:key="index">
+      <image class="post-image" mode="widthFix" src="{{item.url}}" bindtap="previewImage" />
     </swiper-item>
   </swiper>
 </view>
 
 <view class="post-text">
-  <rich-text>帖子文本</rich-text>
-  <view class="pub-time">发表日期</view>
+  <rich-text>{{post.title}}</rich-text>
+  <rich-text>{{post.content}}</rich-text>
+  <view class="pub-time">{{post.created_at}}</view>
 </view>
 
 <view class="comment">
@@ -26,4 +25,4 @@
   <text class="iconfont icon-like">点赞</text>
   <text class="iconfont icon-collect">收藏</text>
   <textarea class="input-comment" placeholder="说点什么吧！" placeholder-style="text-align:center" auto-height="true" />
-</view>
+  </view>

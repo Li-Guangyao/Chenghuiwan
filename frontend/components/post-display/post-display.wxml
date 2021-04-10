@@ -13,9 +13,10 @@
 <!-- 以上是之前的方案，写的比较死，我想换成向goods-display一样的两列展示方案 -->
 
 <view class="list">
-	<view class="list-half" wx:for="{{postList}}" wx:key="index" wx:if="index%2==0">
-		<navigator class="post-panel">
-			<image mode="widthFix" class="post-photo" src="../../image/postphoto.jpg"></image>
+	<view class="list-half">
+		<navigator class="post-panel" wx:for="{{postList}}" wx:key="index" wx:if="{{index%2==0}}"
+			url="../../pages/postDetail/postDetail?postId={{item._id}}">
+			<image mode="widthFix" class="post-photo" src="{{item.post_photo[0].url}}"></image>
 			<view class="post-title">{{item.title}}</view>
 			<image class="user-avatar" src="../../image/postavatar.png"></image>
 			<view class="likes">
@@ -25,9 +26,9 @@
 		</navigator>
 	</view>
 	<view class="list-half">
-		<view>{{index%2}}</view>
-		<navigator class="post-panel">
-			<image mode="widthFix" class="post-photo" src="../../image/postphoto.jpg"></image>
+		<navigator class="post-panel" wx:for="{{postList}}" wx:key="index" wx:if="{{index%2==1}}"
+			url="../../pages/postDetail/postDetail?postId={{item._id}}">
+			<image mode="widthFix" class="post-photo" src="{{item.post_photo[0].url}}"></image>
 			<view class="post-title">{{item.title}}</view>
 			<image class="user-avatar" src="../../image/postavatar.png"></image>
 			<view class="likes">

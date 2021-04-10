@@ -10,6 +10,11 @@ page{
 	background: white;
 }
 
+.post-image{
+	width: 100%;
+	
+}
+
 .post-text{
 	background: white;
 	border: 1rpx solid green;
