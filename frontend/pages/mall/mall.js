@@ -17,9 +17,9 @@ Page({
             this.setData({
                 swiperList: res.data
             })
-
-            console.log(this.data.swiperList)
         })
+
+	},
 
         // wx.request({
         //     url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
@@ -31,13 +31,19 @@ Page({
         //         console.log(this.data.swiperList)
         //     }
         // })
-    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        //获取全部分类列表，并保存到storage，当用户点击分类列表时，减少等待时间
+        wx.cloud.callFunction({
+			name: 'getGoodsCate',
+		}).then(res => {
+			console.log(res)
+			wx.setStorageSync('firstLevelCate', res.result.firstLevelCate)
+			wx.setStorageSync('goodsCateTrans', res.result.goodsCateTrans)				
+		})
     },
 
     /**

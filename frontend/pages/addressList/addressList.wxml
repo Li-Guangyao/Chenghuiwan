@@ -1,5 +1,8 @@
 <van-cell-group wx:for="{{addressList}}" wx:key="index">
-  <van-cell title="{{item.receiverName}}" value="{{item.province+item.city+item.district+item.detailedAddress}}" label="{{item.phoneNumber}}" border="{{true}}" is-link data-index="{{index}}" bindtap="editAddress" />
+  <van-cell title="{{item.receiverName}}" label="{{item.province+item.city+item.district+item.detailedAddress}}"
+    value="{{item.phoneNumber}}" border="{{true}}" is-link data-index="{{index}}" bindtap="editAddress" />
 </van-cell-group>
+
+<view>长按选择地址</view>
 
 <button class="add-address" bindtap="addAddress">添加收获地址</button>

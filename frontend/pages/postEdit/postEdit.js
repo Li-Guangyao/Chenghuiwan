@@ -1,5 +1,8 @@
 const db = wx.cloud.database()
 
+//获取标准的时间格式yyyy-mm-dd hh:mm，而非时间戳
+import date from '../../utils/date'
+
 Page({
 	data: {
 		title: '',
@@ -7,6 +10,10 @@ Page({
 		location: '',
 		topic: [],
 		fileList: [],
+	},
+
+	onLoad(){
+		console.log(date())
 	},
 
 	titleInput(e) {
@@ -129,7 +136,7 @@ Page({
 							data:{
 								title: this.data.title,
 								content: this.data.content,
-								created_at: Date.now(),
+								created_at: date(),
 								post_photo: uploadedFileList,
 								like_amount: 0,
 								is_deleted: false,

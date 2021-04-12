@@ -1,3 +1,6 @@
+<!-- 该页面左右分栏，总共把商品分为2个层级，例如乐器-吉他，再点就是商品列表goodsList
+跳转到本页面触发条件：用户在商城中，点击了“全部” -->
+
 <view class="cates">
 	<view class="cates_container">
 		<scroll-view scroll-y="{{true}}" class="left_menu">
@@ -8,7 +11,7 @@
 		</scroll-view>
 
 		<scroll-view scroll-top="{{scrolltop}}" scroll-y="{{true}}" class="right_content">
-			<view class="right_content" wx:for="{{rightcontent}}" wx:for-index="index1" wx:for-item="item1">
+			<view class="right_content" wx:for="{{rightcontent}}" wx:key="index" wx:for-index="index1" wx:for-item="item1">
 				
 				<view class="goods_title">
 					<text class="delimiter"></text>

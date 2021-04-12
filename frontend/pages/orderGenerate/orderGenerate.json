@@ -1,5 +1,9 @@
 {
   "usingComponents": {
-    "van-submit-bar": "@vant/weapp/submit-bar/index"
-  }
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
+  },
+
+  "navigationBarTitleText": "确认订单"
 }

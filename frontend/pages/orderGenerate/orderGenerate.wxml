@@ -1,1 +1,4 @@
+<van-cell title="name" value="phoneNumber" size="large" label="address" arrow-direction="right"
+url="../addressList/addressList?source='orderGenerate'" />
+
 <van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onSubmit" />

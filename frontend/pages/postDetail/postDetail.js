@@ -6,20 +6,26 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		post:{}
+		post: {},
+		postPhotoList: [],
+		currentPhotoIndex:1,
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (e) {
-		//从post-display组件中直接跳转过来，会接受一个post对象
-		db.collection('t_post').doc(e.postId).get().then(e=>{
+		//从post-display组件中直接跳转过来，传递这个帖子的_id
+		//下次优化，可以使用JSON.parse，前端使用data-index绑定index，后端用JSON传递对象
+		db.collection('t_post').doc(e.postId).get().then(e => {
 			console.log(e)
+			let postPhotoList = e.data.post_photo.map(item => item.url)
 			this.setData({
-				post:e.data
+				post: e.data,
+				postPhotoList:postPhotoList
 			})
 		})
+
 
 
 	},
@@ -74,15 +80,23 @@ Page({
 	},
 
 
-	previewImage(e){
+	previewImage(e) {
 		console.log(e)
+
 		wx.previewImage({
-		  urls: [],
-		  current: 'current',
-		  showmenu: true,
-		  success: (res) => {},
-		  fail: (res) => {},
-		  complete: (res) => {},
+			urls: this.data.postPhotoList,
+			current: this.data.postPhotoList[e.currentTarget.dataset.index],
+			showmenu: true,
+			success: (res) => {
+				console.log('预览图片chenggong')
+			},
+			fail: (res) => {
+				console.log(res)
+				console.log(this.data.postPhotoList[e.currentTarget.dataset.index])
+			},
+			complete: (res) => {
+				console.log('预览图片jieshu')
+			},
 		})
 	}
 })

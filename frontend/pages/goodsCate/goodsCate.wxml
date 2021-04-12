@@ -1,2 +1,25 @@
-<!--pages/goodsCate/goodsCate.wxml-->
-<text>pages/goodsCate/goodsCate.wxml</text>
+<!-- 该页面左右分栏，总共把商品分为2个层级，例如乐器-吉他，再点就是商品列表goodsList
+跳转到本页面触发条件：用户在商城中，点击了“全部” -->
+
+<view class="cates">
+	<view class="cates-container">
+
+		<!-- <scroll-view scroll-y="{{true}}" class="left-menu">
+			<view class="left_menu {{index===currentindex?'active':''}}" wx:for="{{firstLevelCate}}" wx:key="index"
+				bindtap="handleCateChange" data-index="{{index}}">
+				{{item}}
+			</view>
+		</scroll-view> -->
+
+		<van-sidebar active-key="{{ activeKey }}" bind:change="handleCateChange" custom-style="left-menu">
+			<van-sidebar-item title="{{item}}" wx:for="{{firstLevelCate}}" wx:key="index" />
+		</van-sidebar>
+
+		<scroll-view scroll-top="{{scrolltop}}" scroll-y="{{true}}" class="right-menu">
+			<navigator class="right-content" wx:for="{{secondLevelCate}}" wx:key="index">
+				{{item}}
+			</navigator>
+		</scroll-view>
+
+	</view>
+</view>

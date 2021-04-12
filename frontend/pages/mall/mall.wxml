@@ -43,7 +43,7 @@
     <image mode="widthFix" src="../../image/lives.png"></image>
     <text>生活</text>
   </navigator>
-  <navigator>
+  <navigator url="../goodsCate/goodsCate">
     <image mode="widthFix" src="../../image/others.png"></image>
     <text>全部</text>
   </navigator>

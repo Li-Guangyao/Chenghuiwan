@@ -7,12 +7,11 @@ Page({
 		rightcontent: [],
 		currentindex: 0,
 		scrolltop: 0
-
 	},
 	cates: [],
 
 	onLoad: function (options) {
-		const cates = wx.getStorageSync("cates");
+		const goodsCate = wx.getStorageSync("cates");
 		if (!cates) {
 			this.getcates();
 		} else {

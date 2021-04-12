@@ -1,1 +1,7 @@
-/* pages/goodsCate/goodsCate.wxss */
+.left-menu{
+	width: 200rpx !important;
+}
+
+.right-menu{
+	width: 500rpx;
+}
