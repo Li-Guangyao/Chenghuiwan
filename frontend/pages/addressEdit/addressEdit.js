@@ -24,7 +24,12 @@ Page({
 				120105: '河北区',
 			}
 		},
-		//需要编辑的地址
+
+		// 由addressList页面跳转而来，记录当前地址的index
+		// 方便返回的时候在addressList页面上更新，而不必通过数据库
+		addressIndex: null,
+
+		//需要编辑的地址，和数据库保持一致
 		_id: null,
 		receiverName: '',
 		province: '',
@@ -32,7 +37,7 @@ Page({
 		district: '',
 		phoneNumber: '',
 		detailedAddress: '',
-		isDefaultAddress: null,
+		isDefaultAddress: false,
 	},
 
 	/**
@@ -41,8 +46,10 @@ Page({
 	onLoad: function (options) {
 		const eventChannel = this.getOpenerEventChannel()
 
-		eventChannel.on('acceptDataFromOpenerPage', (sentData) => {
+		eventChannel.on('acceptDataFromOpenerPage', (sentData, addressIndex) => {
 			this.setData({
+				addressIndex: addressIndex,
+				// 地址属性
 				_id: sentData.sentData._id,
 				receiverName: sentData.sentData.receiverName,
 				province: sentData.sentData.province,
@@ -53,55 +60,6 @@ Page({
 				isDefaultAddress: sentData.sentData.isDefaultAddress,
 			})
 		})
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
 	},
 
 	showPopup() {
@@ -122,6 +80,7 @@ Page({
 		})
 	},
 
+	//在弹出框里面选择完省市，点击确定
 	confirmOverallAddress(e) {
 		this.setData({
 			showPopup: false,
@@ -138,56 +97,81 @@ Page({
 			confirmColor: "#1ae6e6"
 		}).then(res => {
 			if (res.confirm == true) {
-				if (this.data.isDefaultAddress == true) {
-					var openId = wx.getStorageSync('openId')
-					//如果用户把该地址设为默认的，就把其他的地址取消默认
-					db.collection('t_address').where({
-							_openid: openId
-						})
-						.update({
-							data: {
-								isDefaultAddress: false
-							}
-						})
-					console.log("把其他地址的默认选项都设为false")
-				}
-				//保存地址到数据库
-				db.collection('t_address').doc(this.data._id).update({
-						data: {
-							receiverName: this.data.receiverName,
-							province: this.data.province,
-							city: this.data.city,
-							district: this.data.district,
-							phoneNumber: this.data.phoneNumber,
-							detailedAddress: this.data.detailedAddress,
-							isDefaultAddress: this.data.isDefaultAddress,
-						}
+				wx.showLoading({
+				  title: '保存中',
+				  mask: true,
+				})
+				wx.cloud.callFunction({
+					name: 'saveAddress',
+					data: {
+						_id: this.data._id,
+						receiverName: this.data.receiverName,
+						province: this.data.province,
+						city: this.data.city,
+						district: this.data.district,
+						phoneNumber: this.data.phoneNumber,
+						detailedAddress: this.data.detailedAddress,
+						isDefaultAddress: this.data.isDefaultAddress,
+					}
+				}).then(res => {
+					console.log("保存地址成功")
+					wx.hideLoading({
+					  success: (res) => {},
 					})
-					.then(res => {
-						console.log("保存地址成功")
-						wx.showModal({
-							showCancel: false,
-							content: "保存成功",
-							confirmText: '确定'
-						}).then(res => {
-							wx.redirectTo({
-								url: '../addressList/addressList',
-							})
+					wx.showToast({
+					  title: '保存成功',
+					}).then(res => {
+						wx.navigateBack({
+						  delta: 1,
 						})
 					})
+				})
+
+
+
+				// if (this.data.isDefaultAddress == true) {
+				// 	var openId = wx.getStorageSync('openId')
+				// 	//如果用户把该地址设为默认的，就把其他的地址取消默认
+				// 	db.collection('t_address').where({
+				// 			_openid: openId
+				// 		})
+				// 		.update({
+				// 			data: {
+				// 				isDefaultAddress: false
+				// 			}
+				// 		})
+				// }
+				// //保存地址到数据库
+				// db.collection('t_address').doc(this.data._id).update({
+				// 		data: {
+				// 			receiverName: this.data.receiverName,
+				// 			province: this.data.province,
+				// 			city: this.data.city,
+				// 			district: this.data.district,
+				// 			phoneNumber: this.data.phoneNumber,
+				// 			detailedAddress: this.data.detailedAddress,
+				// 			isDefaultAddress: this.data.isDefaultAddress,
+				// 		}
+				// 	})
+				// 	.then(res => {
+				// 		console.log("保存地址成功")
+				// 		wx.showModal({
+				// 			showCancel: false,
+				// 			content: "保存成功",
+				// 			confirmText: '确定'
+				// 		}).then(res => {
+				// 			wx.redirectTo({
+				// 				url: '../addressList/addressList',
+				// 			})
+				// 		})
+				// 	})
+
+
+
 			}
 		}).catch()
+
 	},
 
-	deleteAddress() {
-		wx.showModal({
-			content: '确认删除地址',
-			cancelColor: 'cancelColor',
-			confirmColor: "#1ae6e6"
-		}).then(res => {
-			if (res.confirm == true) {
-				db.collection('t_address').doc(this.data._id).remove()
-			}
-		})
-	}
+
 })

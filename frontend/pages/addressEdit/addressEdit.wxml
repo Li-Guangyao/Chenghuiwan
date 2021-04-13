@@ -20,6 +20,5 @@
 
 <view class="buttons">
 	<button class="save" bindtap="saveAddress">保存</button>
-	<button class="delete" bindtap="deleteAddress">删除</button>
 </view>
 

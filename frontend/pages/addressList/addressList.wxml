@@ -1,8 +1,17 @@
 <van-cell-group wx:for="{{addressList}}" wx:key="index">
-  <van-cell title="{{item.receiverName}}" label="{{item.province+item.city+item.district+item.detailedAddress}}"
-    value="{{item.phoneNumber}}" border="{{true}}" is-link data-index="{{index}}" bindtap="editAddress" />
+
+  <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" data-index="{{index}}">
+    <van-cell label="{{item.province+item.city+item.district+item.detailedAddress}}" value="{{item.phoneNumber}}"
+      border="{{true}}" is-link data-index="{{index}}" bindtap="choseAddress">
+      <view slot="title" style="display:flex">
+        <view>{{item.receiverName}}</view>
+        <van-tag type="danger" round wx:if="{{item.isDefaultAddress==true}}">默认</van-tag>
+      </view>
+    </van-cell>
+  </mp-slideview>
+
 </van-cell-group>
 
-<view>长按选择地址</view>
+<view wx:if="{{source=='orderGenerate'}}">长按选择地址</view>
 
 <button class="add-address" bindtap="addAddress">添加收获地址</button>

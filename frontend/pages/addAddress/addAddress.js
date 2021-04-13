@@ -161,8 +161,8 @@ Page({
 							content:"保存成功",
 							confirmText:'确定'
 						}).then(res=>{
-							wx.redirectTo({
-							  url: '../addressList/addressList',
+							wx.navigateBack({
+							  delta: 1,
 							})
 						})
 					})

@@ -2,23 +2,14 @@ page {
 	background-color: var(--themebackgroundcolor);
 }
 
-.buttons{
+.buttons .save{
+	width: 100%;
+	border-radius: 10rpx;
+	background: white;
 	width: 100%;
 	position: fixed;
 	bottom: 0;
 	padding-bottom: env(safe-area-inset-bottom);
-}
-
-.save {
-	width: 100%;
-	border-radius: 10rpx;
-	background: white;
-}
-
-.delete {
-	width: 100%;
-	border-radius: 10rpx;
-	background: rgb(243, 57, 57);
 }
 
 .default-address{

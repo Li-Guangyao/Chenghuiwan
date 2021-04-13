@@ -1,4 +1,5 @@
-<van-cell title="name" value="phoneNumber" size="large" label="address" arrow-direction="right"
-url="../addressList/addressList?source='orderGenerate'" />
+<van-cell title="{{defaultAddress.receiverName}}" value="{{defaultAddress.phoneNumber}}" size="large"
+	label="{{defaultAddress.province+defaultAddress.city+defaultAddress.district+defaultAddress.detailedAddress}}"
+	is-link url="../addressList/addressList?source=1" />
 
 <van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onSubmit" />

@@ -5,6 +5,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		defaultAddress: {}
 
 	},
 
@@ -12,7 +13,22 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		wx.showLoading({
+		  title: '生成订单中',
+		})
 
+		wx.cloud.callFunction({
+			name: 'getDefaultAddress'
+		}).then(res => {
+			console.log(res)
+			this.setData({
+				defaultAddress: res.result.defaultAddress
+			})
+		})
+
+		wx.hideLoading({
+		  success: (res) => {},
+		})
 	},
 
 	/**
