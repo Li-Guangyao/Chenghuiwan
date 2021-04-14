@@ -4,3 +4,12 @@
 		<view slot="action" bind:tap="handleSearch">搜索</view>
 	</van-search>
 </view>
+
+<view class="history" wx:for="{{history}}" wx:key="index">
+	<view class="history-item">
+		<view class="history-item-name" data-index="{{index}}" bindtap="choseHisItem">
+			{{item}}
+		</view>
+		<van-icon name="cross" data-index="{{index}}" bind:click="delHisItem"/>
+	</view>
+</view>

@@ -12,6 +12,4 @@
 
 </van-cell-group>
 
-<view wx:if="{{source=='orderGenerate'}}">长按选择地址</view>
-
-<button class="add-address" bindtap="addAddress">添加收获地址</button>
+<button class="add-address" bindtap="addAddress">添加地址</button>

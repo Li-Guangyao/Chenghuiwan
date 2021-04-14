@@ -75,6 +75,13 @@
                 {
                     "name": "pages/mall/mall",
                     "pathName": "pages/mall/mall",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/testPage",
+                    "pathName": "pages/testPage/testPage",
+                    "query": "",
                     "scene": null
                 }
             ]

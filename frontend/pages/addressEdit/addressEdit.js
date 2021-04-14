@@ -114,6 +114,7 @@ Page({
 						isDefaultAddress: this.data.isDefaultAddress,
 					}
 				}).then(res => {
+					console.log(res)
 					console.log("保存地址成功")
 					wx.hideLoading({
 					  success: (res) => {},

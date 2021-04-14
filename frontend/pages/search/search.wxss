@@ -1,3 +1,20 @@
 page{
 	background-color:var(--themebackgroundcolor);
-  }
+}
+
+.history{
+	float: left;
+}
+
+.history-item{
+	background-color: white;
+	border-radius: 6rpx;
+	box-shadow:5rpx 5rpx 5rpx rgb(212, 212, 212)  ;
+	margin: 15rpx 15rpx 0rpx 10rpx;
+	
+	display: flex;
+}
+
+.history-item-name{
+	margin: 3rpx 10rpx 3rpx 10rpx;
+}

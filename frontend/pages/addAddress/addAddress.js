@@ -30,12 +30,12 @@ Page({
 		},
 
 		//新地址
-		receiverName:'',
+		receiverName: '',
 		province: '',
 		city: '',
 		district: '',
 		phoneNumber: '',
-		detailedAddress:'',
+		detailedAddress: '',
 		isDefaultAddress: false,
 	},
 
@@ -129,44 +129,34 @@ Page({
 			confirmColor: "#1ae6e6"
 		}).then(res => {
 			if (res.confirm == true) {
-				if(this.data.isDefaultAddress==true){
-					var openId = wx.getStorageSync('openId')
-					//如果用户把该地址设为默认的，就把其他的地址取消默认
-					db.collection('t_address').where({
-						_openid: openId
-					})
-					.update({
-						data:{
-							isDefaultAddress: false
-						}
-					})
-					console.log("把其他地址的默认选项都设为false")
-				}
-				//保存地址到数据库
-				db.collection('t_address').add({
-						data: {
-							receiverName: this.data.receiverName,
-							province: this.data.province,
-							city: this.data.city,
-							district: this.data.district,
-							phoneNumber: this.data.phoneNumber,
-							detailedAddress: this.data.detailedAddress,
-							isDefaultAddress: this.data.isDefaultAddress,
-						}
-					})
-					.then(res => {
-						console.log("保存地址成功")
-						wx.showModal({
-							showCancel:false,
-							content:"保存成功",
-							confirmText:'确定'
-						}).then(res=>{
-							wx.navigateBack({
-							  delta: 1,
-							})
+				wx.showLoading({
+					title: '保存中',
+					mask: true,
+				})
+				wx.cloud.callFunction({
+					name: 'saveNewAddress',
+					data: {
+						receiverName: this.data.receiverName,
+						province: this.data.province,
+						city: this.data.city,
+						district: this.data.district,
+						phoneNumber: this.data.phoneNumber,
+						detailedAddress: this.data.detailedAddress,
+						isDefaultAddress: this.data.isDefaultAddress,
+					}
+				}).then(res => {
+					console.log(res)
+					console.log("保存地址成功")
+					wx.hideLoading()
+					wx.showToast({
+						title: '保存成功',
+					}).then(res => {
+						wx.navigateBack({
+							delta: 1,
 						})
 					})
+				}).catch()
 			}
-		}).catch()
-	}
+		})
+	},
 })

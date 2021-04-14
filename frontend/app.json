@@ -23,6 +23,7 @@
 		"pages/search/search",
 		"pages/searchResult/searchResult",
 		"pages/setting/setting",
+		"pages/testPage/testPage",
 		"pages/userAgreement/userAgreement",
 		"pages/privacyAgreement/privacyAgreement",
 		"pages/businessLicense/businessLicense",

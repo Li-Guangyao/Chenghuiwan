@@ -6,69 +6,35 @@ Page({
 	 */
 	data: {
 		value: '',
+		// history: ['lgy', 'hu', 'nnn', 'ish', 'nhg','ddd','jinguiagjk','fidnagy','nnn'],
+		history: wx.getStorageSync('searchHistory')
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: function (options) {},
 
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
 	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+		this.setData({
+			history: wx.getStorageSync('searchHistory')
+		})
 	},
 
 	handleSearch: function () {
 		var inputContent = this.data.value;
-		wx.navigateTo({
-			url: '/pages/searchResult/searchResult?searchKeyWords='+inputContent
-		  })
+		//输入内容为空，不做任何操作
+		if (inputContent.length == 0) {} else {
+			this.data.history.push(inputContent)
+			wx.navigateTo({
+				url: '/pages/searchResult/searchResult?searchKeyWords=' + inputContent
+			})
+			this.setData({
+				history: this.data.history
+			})
+			wx.setStorageSync('searchHistory', this.data.history)
+		}
+
 	},
 
 	handleChange(e) {
@@ -78,10 +44,29 @@ Page({
 		});
 	},
 
-	handleCancel(){
+	handleCancel() {
 		wx.navigateTo({
-		  url: '/pages/index/index',
+			url: '/pages/index/index',
 		})
+	},
+
+	// 直接在history小方块中点击
+	choseHisItem(e) {
+		var inputContent = this.data.history[e.currentTarget.dataset.index]
+		wx.navigateTo({
+			url: '/pages/searchResult/searchResult?searchKeyWords=' + inputContent
+		})
+	},
+
+	// 删除搜索历史的某个项
+	delHisItem(e) {
+		console.log(e);
+		// e.currentTarget.dataset.index
+		this.data.history.splice(e.currentTarget.dataset.index, 1)
+		this.setData({
+			history: this.data.history
+		})
+		wx.setStorageSync('searchHistory', this.data.history)
 	}
 
 })
