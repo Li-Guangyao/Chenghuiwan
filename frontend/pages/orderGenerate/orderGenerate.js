@@ -5,19 +5,24 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		defaultAddress: {}
+		defaultAddress: {},
+		goodsItem: {},
+
+		//订单信息记录
+		number: 1,
+		// price: goodsItem.price
 
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	onLoad: async function (options) {
 		wx.showLoading({
-		  title: '生成订单中',
+			title: '生成订单中',
 		})
 
-		wx.cloud.callFunction({
+		await wx.cloud.callFunction({
 			name: 'getDefaultAddress'
 		}).then(res => {
 			console.log(res)
@@ -27,7 +32,7 @@ Page({
 		})
 
 		wx.hideLoading({
-		  success: (res) => {},
+			success: (res) => {},
 		})
 	},
 
@@ -78,5 +83,31 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	}
+	},
+
+	submitOrder() {
+		wx.showToast({
+			title: '完成支付,订单已创建',
+		})
+
+		wx.navigateBack({
+		  delta: 2,
+		})
+	},
+
+	// addOne() {
+	// 	this.setData({
+	// 		number: this.data.number + 1,
+	// 		price: this.data.price + this.data.goodsItem.price
+	// 	})
+	// },
+
+	// minusOne() {
+	// 	if (this.data.number == 1) {} else {
+	// 		this.setData({
+	// 			number: this.data.number - 1,
+	// 			price: this.data.price + this.data.goodsItem.price
+	// 		})
+	// 	}
+	// }
 })

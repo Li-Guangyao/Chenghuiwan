@@ -50,5 +50,5 @@
 </view>
 
 <view class="goods-list">
-  <goods-display></goods-display>
+  <goods-display goodsList="{{goodsList}}"></goods-display>
 </view>

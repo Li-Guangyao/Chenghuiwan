@@ -2,20 +2,29 @@ const db = wx.cloud.database()
 
 Page({
 
-    data: {},
+    data: {
+        swiperList:[],
+        goodsList:[]
+    },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
 
-        wx.cloud.callFunction({
-            name: 'updateMallSwiperImage',
-        }).then(console.log)
-
         db.collection('t_mall_swiper').get().then(res=>{
             this.setData({
                 swiperList: res.data
+            })
+        })
+
+        // 从数据库中随机获取商品，展示到前端
+        wx.cloud.callFunction({
+            name: 'getRandomGoods'
+        }).then(res=>{
+            console.log(res.result)
+            this.setData({
+                goodsList: res.result
             })
         })
 

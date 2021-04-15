@@ -15,37 +15,27 @@ Page({
 			type: 'warn',
 			text: '删除',
 		}],
+		//由于底部设置了保存按键，如果列表太长，就会把他覆盖
+		//用这个高度，初始化列表内容
+		addressListHeight:null,
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (e) {
-		wx.showLoading({
-			title: '加载中',
-		})
-
 		this.setData({
 			source: e.source
 		})
 
-		// 获取用户地址，并渲染到前端
-		var openId = wx.getStorageSync('openId')
-		console.log(openId)
-		db.collection('t_address').where({
-			_openid: openId
-		}).get().then(res => {
+		var query = wx.createSelectorQuery()
+		query.select('.add-address').boundingClientRect()
+		query.exec(res=>{
+			console.log(res)
 			this.setData({
-				addressList: res.data
+				addressListHeight: res[0].top
 			})
-		}).catch(err => {
-			console.log(err)
 		})
-
-		wx.hideLoading({
-			success: (res) => {},
-		})
-
 	},
 
 	/**

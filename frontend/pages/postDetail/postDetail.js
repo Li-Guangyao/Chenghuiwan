@@ -25,9 +25,6 @@ Page({
 				postPhotoList:postPhotoList
 			})
 		})
-
-
-
 	},
 
 	/**
@@ -81,8 +78,6 @@ Page({
 
 
 	previewImage(e) {
-		console.log(e)
-
 		wx.previewImage({
 			urls: this.data.postPhotoList,
 			current: this.data.postPhotoList[e.currentTarget.dataset.index],

@@ -1,26 +1,26 @@
 Component({
 
-            properties: {
-                postList: {
-                    type: Array,
-                    value: []
-                },
+    properties: {
+        postList: {
+            type: Array,
+            value: []
+        },
 
-                getMode: {
-                    type: Array,
-                    value: [{
-                        modeName: 'getSelfPost'
-                    }]
-				}
-			},
+        getMode: {
+            type: Array,
+            value: [{
+                modeName: 'getSelfPost'
+            }]
+        }
+    },
 
-                data: {
+    data: {
 
-                },
+    },
 
-                methods: {
-                    chosePost(e){
-                        console.log(e)
-                    }
-                }
-            })
+    methods: {
+        chosePost(e) {
+            console.log(e)
+        }
+    }
+})

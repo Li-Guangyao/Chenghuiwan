@@ -2,6 +2,10 @@ page {
 	background-color: var(--themebackgroundcolor);
 }
 
+.address-list{
+	overflow: scroll;
+}
+
 .add-address {
 	position: fixed;
 	width: 100%;

@@ -1,15 +1,15 @@
-<van-cell-group wx:for="{{addressList}}" wx:key="index">
-
-  <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" data-index="{{index}}">
-    <van-cell label="{{item.province+item.city+item.district+item.detailedAddress}}" value="{{item.phoneNumber}}"
-      border="{{true}}" is-link data-index="{{index}}" bindtap="choseAddress">
-      <view slot="title" style="display:flex">
-        <view>{{item.receiverName}}</view>
-        <van-tag type="danger" round wx:if="{{item.isDefaultAddress==true}}">默认</van-tag>
-      </view>
-    </van-cell>
-  </mp-slideview>
-
-</van-cell-group>
+<view class="address-list" style="height: {{addressListHeight?addressListHeight+'px':'auto'}}">
+  <van-cell-group wx:for="{{addressList}}" wx:key="index">
+    <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" data-index="{{index}}">
+      <van-cell label="{{item.province+item.city+item.district+item.detailedAddress}}" value="{{item.phoneNumber}}"
+        border="{{true}}" is-link data-index="{{index}}" bindtap="choseAddress">
+        <view slot="title" style="display:flex">
+          <view>{{item.receiverName}}</view>
+          <van-tag type="danger" round wx:if="{{item.isDefaultAddress==true}}">默认</van-tag>
+        </view>
+      </van-cell>
+    </mp-slideview>
+  </van-cell-group>
+</view>
 
 <button class="add-address" bindtap="addAddress">添加地址</button>

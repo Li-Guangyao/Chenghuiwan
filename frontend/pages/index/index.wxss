@@ -29,9 +29,9 @@ page {
   align-items: center;
 }
 
-.slide-view{
+/* .slide-view{ */
   /* column-count: 2; */
-}
+/* } */
 
 post-display{
   flex:1;

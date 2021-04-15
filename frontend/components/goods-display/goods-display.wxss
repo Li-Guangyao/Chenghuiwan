@@ -1,5 +1,5 @@
 .list {
-	padding: 20rpx;
+	padding: 15rpx;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
@@ -10,23 +10,33 @@
 	box-sizing: border-box;
 }
 
-.list-half .card {
+.list-half .goods-panel {
 	background-color: #fff;
 	border-radius: 10rpx;
 	overflow: hidden;
 	margin-bottom: 30rpx;
 	padding-bottom: 20rpx;
+
+	display: flex;
+	flex-direction: column;
 }
 
-.card image{
+.goods-panel image{
 	width: 100%;
 }
 
-.card .price{
+.goods-panel .desc{
+	font-size: 35rpx;
+	margin: 7rpx;
+}
+
+.goods-panel .price{
+	font-size: 30rpx;
+
 	float: left;
 }
 
-.card .sales{
+.goods-panel .sales{
 	float: right;
 	margin-right: 20rpx;
 }
