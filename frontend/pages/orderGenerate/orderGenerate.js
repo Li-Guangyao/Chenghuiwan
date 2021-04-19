@@ -1,27 +1,30 @@
-// pages/orderGenerate/orderGenerate.js
-Page({
+const db = wx.cloud.database()
 
-	/**
-	 * 页面的初始数据
-	 */
+//获取标准的时间格式yyyy-mm-dd hh:mm，而非时间戳
+import date from '../../utils/date'
+Page({
 	data: {
 		defaultAddress: {},
 		goodsItem: {},
 
-		//订单信息记录
+		// 买几个
 		number: 1,
-		// price: goodsItem.price
+		// 订单总价，单位为分
+		totalPrice: 0,
+
+		// 订单的留言
+		remark: null
 
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: async function (options) {
+	onLoad: async function (e) {
+		console.log(e)
+
 		wx.showLoading({
 			title: '生成订单中',
 		})
 
+		//找到默认地址
 		await wx.cloud.callFunction({
 			name: 'getDefaultAddress'
 		}).then(res => {
@@ -31,83 +34,94 @@ Page({
 			})
 		})
 
+		// 获取商品
+		await db.collection('t_goods').doc(e.goodsId).get().then(res => {
+			this.setData({
+				goodsItem: res.data
+			})
+		})
+
+		this.setData({
+			totalPrice: this.data.goodsItem.price * 100
+		})
+
 		wx.hideLoading({
 			success: (res) => {},
 		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
-	},
-
+	// 点击提交订单按钮
 	submitOrder() {
-		wx.showToast({
-			title: '完成支付,订单已创建',
-		})
+		wx.showModal({
+			title: '点击确认，完成支付',
+			showCancel: true
+		}).then(res => {
+			if (res.confirm) {
+				this.orderToCloud(1)
+				setTimeout(() => {
+					wx.showToast({
+						title: '下单成功',
+						icon: "success",
+					});
 
-		wx.navigateBack({
-		  delta: 2,
+					setTimeout(() => {
+						wx.hideToast();
+					}, 2000)
+				}, 0);
+
+				//返回mall页面
+				wx.navigateBack({
+					delta: 2,
+				})
+			} else if (res.cancel) {
+				// 生成未支付
+				this.orderToCloud(0)
+				wx.showModal({
+					title: '请在30分钟内完成支付，否则订单会自动取消',
+					showCancel: false
+				}).then(res => {
+					if (res.confirm) {
+						// 到订单列表，催促支付
+						wx.redirectTo({
+							url: '../orders/orders?orderType=awaitPayment',
+						})
+					}
+				})
+			} else {}
 		})
 	},
 
-	// addOne() {
-	// 	this.setData({
-	// 		number: this.data.number + 1,
-	// 		price: this.data.price + this.data.goodsItem.price
-	// 	})
-	// },
+	// 多买一个
+	addOne() {
+		this.setData({
+			number: this.data.number + 1,
+			totalPrice: this.data.totalPrice + this.data.goodsItem.price * 100
+		})
+	},
 
-	// minusOne() {
-	// 	if (this.data.number == 1) {} else {
-	// 		this.setData({
-	// 			number: this.data.number - 1,
-	// 			price: this.data.price + this.data.goodsItem.price
-	// 		})
-	// 	}
-	// }
+	// 少买一个
+	minusOne() {
+		if (this.data.number == 1) {} else {
+			this.setData({
+				number: this.data.number - 1,
+				totalPrice: this.data.totalPrice - this.data.goodsItem.price * 100
+			})
+		}
+	},
+
+	orderToCloud(orderStatus) {
+		wx.cloud.callFunction({
+			name: 'orderGenerate',
+			data: {
+				address: this.data.defaultAddress,
+				goods: this.data.goodsItem,
+				number: this.data.number,
+				remark: this.data.remark,
+				totalPrice: this.data.totalPrice,
+				createdDate: date(),
+				// 订单生成未支付
+				orderStatus: orderStatus
+			}
+		})
+	}
 })

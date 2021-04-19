@@ -2,12 +2,14 @@
 	label="{{defaultAddress.province+defaultAddress.city+defaultAddress.district+defaultAddress.detailedAddress}}"
 	is-link url="../addressList/addressList?source=1" />
 
-<van-card custom-class="order-card" price="10.00" desc="描述信息" title="商品标题" thumb="../../image/themephoto.jpg"
-	thumb-mode="aspectFill" price-class="price" num="{{number}}">
+<van-card custom-class="order-card" price="{{goodsItem.price}}" title="{{goodsItem.title}}"
+	thumb="{{goodsItem.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{number}}">
 	<view slot="footer">
 		<van-button size="mini" bind:click="minusOne">-1</van-button>
 		<van-button size="mini" bind:click="addOne">+1</van-button>
 	</view>
 </van-card>
 
-<van-submit-bar price="{{200}}" button-text="提交订单" bind:submit="submitOrder" />
+<van-field model:value="{{ remark }}" placeholder="留言备注" border="{{ true }}"/>
+
+<van-submit-bar price="{{totalPrice}}" button-text="提交订单" bind:submit="submitOrder" />

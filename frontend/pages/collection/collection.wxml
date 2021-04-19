@@ -1,7 +1,7 @@
-<navigator class="await-payment">
-	<van-card num="2" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill" custom-class="goods-card" price-class="price">
+<navigator class="await-payment" wx:for="{{collectionList}}" wx:key="index" url="../goodsDetail?goodsId={{item._id}}">
+	<van-card price="{{item.price}}" desc="" title="{{item.title}}" thumb="{{ item.display_photo[0]}}" thumb-mode="aspectFill" custom-class="goods-card" price-class="price">
 		<view slot="footer">
-			<van-button size="small">去购买</van-button>
+			<van-button size="small" bind:click="buy" data-index="{{index}}">去购买</van-button>
 		</view>
 	</van-card>
 </navigator>

@@ -11,13 +11,17 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function () {
-		const eventChannel = this.getOpenerEventChannel();
-		eventChannel.on('acceptDataFromOpenerPage', (e) => {
-			console.log(e.data)
-			this.setData({
-				orderType: e.data
-			})
+	onLoad: function (e) {
+
+		this.setData({
+			orderType: e.orderType
+		})
+
+		wx.cloud.callFunction({
+			name: 'getOrder',
+			data:{
+				orderType: this.data.orderType
+			}
 		})
 
 	},

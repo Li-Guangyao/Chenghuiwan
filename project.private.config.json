@@ -33,7 +33,7 @@
                 {
                     "name": "pages/goodsDetail/goodsDetail",
                     "pathName": "pages/goodsDetail/goodsDetail",
-                    "query": "",
+                    "query": "goodsId=b00064a76077f3370e7f0bfe435d2b97",
                     "scene": null
                 },
                 {

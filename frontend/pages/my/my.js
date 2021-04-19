@@ -142,14 +142,14 @@ Page({
 
     tapOrders(e) {
         wx.navigateTo({
-            url: '../orders/orders',
-            success: (res) => {
-                console.log(res)
-                console.log(e)
-                res.eventChannel.emit('acceptDataFromOpenerPage', {
-                    data: e.currentTarget.dataset.ordertype
-                })
-            }
+            url: '../orders/orders?orderType='+ e.currentTarget.dataset.ordertype,
+            // success: (res) => {
+            //     console.log(res)
+            //     console.log(e)
+            //     res.eventChannel.emit('acceptDataFromOpenerPage', {
+            //         data: e.currentTarget.dataset.ordertype
+            //     })
+            // }
         })
     }
 })

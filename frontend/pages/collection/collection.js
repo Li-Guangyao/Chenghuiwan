@@ -5,13 +5,22 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+		collectionList:[]
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		wx.cloud.callFunction({
+			name: 'getCollection'
+		}).then(res=>{
+			this.setData({
+				collectionList: res.result
+			})
+		})
+
+		
 
 	},
 
@@ -62,5 +71,12 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
+	},
+
+	buy(e){
+		var goodsId = this.data.collectionList[e.currentTarget.dataset.index]._id
+		wx.navigateTo({
+		  url: '../orderGenerate/orderGenerate?goodsId='+ goodsId,
+		})
 	}
 })

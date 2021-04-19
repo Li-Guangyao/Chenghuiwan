@@ -1,4 +1,4 @@
-<navigator class="await-payment" wx:if="{{orderType=='awaitPayment'}}">
+<navigator class="await-payment" wx:if="{{orderType==0}}">
 	<van-card num="2" tag="待付款" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill"
 		custom-class="order-card" price-class="price">
 		<view slot="footer">
@@ -7,7 +7,7 @@
 	</van-card>
 </navigator>
 
-<navigator class="await-sending" wx:if="{{orderType=='awaitSending'}}">
+<navigator class="await-sending" wx:if="{{orderType==1}}">
 	<van-card num="2" tag="待发货" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill"
 		custom-class="order-card" price-class="price">
 		<view slot="footer">
@@ -16,7 +16,7 @@
 	</van-card>
 </navigator>
 
-<navigator class="await-receiving" wx:if="{{orderType=='awaitReceiving'}}">
+<navigator class="await-receiving" wx:if="{{orderType==2}}">
 	<van-card num="2" tag="待收货" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill"
 		custom-class="order-card" price-class="price">
 		<view slot="footer">
@@ -26,7 +26,7 @@
 	</van-card>
 </navigator>
 
-<navigator class="await-comment" wx:if="{{orderType=='awaitComment'}}">
+<navigator class="await-comment" wx:if="{{orderType==3}}">
 	<van-card num="2" tag="待评价" price="10.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" thumb-mode="aspectFill"
 		custom-class="order-card" price-class="price">
 		<view slot="footer">
