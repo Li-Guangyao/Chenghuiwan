@@ -1,0 +1,69 @@
+page {
+    background-color: var(--themebackgroundcolor);
+}
+
+.goods{
+	background-color: white;
+	border-radius: 10rpx;
+	margin: 5rpx 5rpx;
+
+	display: flex;
+	flex-direction: row;
+}
+
+.goods .goods-image{
+	width: 180rpx;
+	height: 180rpx;
+	margin: 30rpx;
+}
+
+.goods .good-desc{
+	display: flex;
+	flex-direction: column;
+}
+
+.goods .goods-desc .goods-title{
+	font-size: 35rpx;
+	color: rgb(24, 24, 24)
+}
+
+.goods .goods-desc .goods-option{
+	font-size: 25rpx;
+	color: rgb(41, 41, 41);
+}
+
+.comment{
+	background-color: white;
+	margin: 5rpx 5rpx;
+}
+
+.score-region{
+	background-color: white;
+	margin: 10rpx 5rpx;
+	border-radius: 10rpx;
+	padding: 10rpx 0 0 20rpx;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.score-region .score-item{
+	display: flex;
+	justify-content: left;
+}
+
+.score-region .score-item .desc{
+	margin: 0 20rpx 0 0;
+
+	display: flex;
+	align-items: center;
+}
+
+.save{
+	position: fixed;
+	width: 100%;
+	border-radius: 10rpx;
+	bottom: 0;
+	background-color: white;
+	padding-bottom: env(safe-area-inset-bottom);
+}

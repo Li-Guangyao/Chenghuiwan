@@ -9,6 +9,7 @@
 		"pages/addressEdit/addressEdit",
 		"pages/buyerComments/buyerComments",
 		"pages/collection/collection",
+		"pages/commentOrder/commentOrder",
 		"pages/customerService/customerService",
 		"pages/fanList/fanList",
 		"pages/goodsCate/goodsCate",

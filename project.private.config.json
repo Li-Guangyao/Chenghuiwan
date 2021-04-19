@@ -83,6 +83,12 @@
                     "pathName": "pages/testPage/testPage",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/commentOrder",
+                    "pathName": "pages/commentOrder/commentOrder",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

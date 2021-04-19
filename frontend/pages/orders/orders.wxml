@@ -7,8 +7,8 @@
 			thumb="{{ item.goods.display_photo[0]}}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price">
 			<view slot="footer">
-				<van-button size="small">取消订单</van-button>
-				<van-button size="small">去付款</van-button>
+				<van-button size="small" data-index="{{index}}" bind:click="cancelOrder">取消订单</van-button>
+				<van-button size="small" data-index="{{index}}" bind:click="payOrder">去付款</van-button>
 			</view>
 		</van-card>
 	</view>
@@ -20,8 +20,8 @@
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price">
 			<view slot="footer">
-				<van-button size="small">取消订单</van-button>
-				<van-button size="small" bind:click="urgeSending">提醒卖家</van-button>
+				<van-button size="small" data-index="{{index}}" bind:click="cancelOrder">取消订单</van-button>
+				<van-button size="small" data-index="{{index}}" bind:click="urgeSending">提醒卖家</van-button>
 			</view>
 		</van-card>
 	</view>
@@ -33,8 +33,8 @@
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price">
 			<view slot="footer">
-				<van-button size="small">查询物流</van-button>
-				<van-button size="small">确认收货</van-button>
+				<van-button size="small" data-index="{{index}}" bind:click="expressStatus">查询物流</van-button>
+				<van-button size="small" data-index="{{index}}" bind:click="confirmReceiving">确认收货</van-button>
 			</view>
 		</van-card>
 	</view>

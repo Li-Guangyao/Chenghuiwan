@@ -42,15 +42,68 @@ Page({
 		wx.hideLoading({})
 	},
 
-	clickOrder(){
+	clickOrder(e) {
+		wx.navigateTo({
+			url: '../orderDetail/orderDetail?goods=' + this.data.orderList[e.currentTarget.dataset.index].goods,
+		})
+	},
 
+	cancelOrder(e) {
+		wx.showModal({
+			title: '确定取消订单？',
+			showCancel: true
+		}).then(res => {
+			if (res.confirm) {
+				// cancel
+				wx.cloud.callFunction({
+					name: 'cancelOrder',
+					data: {
+						orderId: this.data.orderList[e.currentTarget.dataset.index]._id
+					}
+				})
+			} else {}
+		})
+	},
+
+	payOrder(){
+		wx.showModal({
+			title: '确定支付订单',
+			showCancel: true
+		}).then(res => {
+			if (res.confirm) {
+				// cancel
+				wx.cloud.callFunction({
+					name: 'payOrder',
+					data: {
+						orderId: this.data.orderList[e.currentTarget.dataset.index]._id
+					}
+				})
+			} else {}
+		})
 	},
 
 	// 催促发货
-	urgeSending(){
+	urgeSending(e) {
 		wx.showModal({
 			title: '已经提醒卖家快点发货',
 			showCancel: false
 		})
+	},
+
+	expressStatus(e){
+		wx.showModal({
+			title: '查询快递信息',
+			showCancel: false
+		})
+	},
+
+	confirmReceiving(e){
+		wx.cloud.callFunction({
+			name: 'confirmReceiving',
+			data: {
+				orderId: this.data.orderList[e.currentTarget.dataset.index]._id
+			}
+		})
 	}
+
 })

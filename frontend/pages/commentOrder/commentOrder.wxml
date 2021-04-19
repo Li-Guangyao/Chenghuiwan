@@ -1,0 +1,38 @@
+<!-- 用户针对某个订单发表评论 -->
+<view class="goods">
+	<image class="goods-image" url="{{goods.display_photo[0]}}"></image>
+	<view class="goods-desc">
+		<view class="goods-title">{{goods.title}}</view>
+		<view class="goods-option"></view>
+	</view>
+</view>
+
+<view class="comment">
+	<editor class="content-input" model:value="{{content}}" placeholder="说点什么吧……" bindinput="contentInput" bindready="onEditorReady"></editor>
+	<van-uploader file-list="{{fileList}}" accept="image" bind:after-read="chosenImage" bind:delete="removeImage"
+		multiple preview-size="235rpx" image-fit="aspectFill" preview-image="true" max-count="9" />
+</view>
+
+<view class="score-region">
+
+	<view class="score-item">
+		<view class="desc">描述相符</view>
+		<van-rate value="{{ value }}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star"
+			bind:change="onChange" />
+	</view>
+
+	<view class="score-item">
+		<view class="desc">物流服务</view>
+		<van-rate value="{{ value }}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star"
+			bind:change="onChange" />
+	</view>
+
+	<view class="score-item">
+		<view class="desc">服务态度</view>
+		<van-rate value="{{ value }}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star"
+			bind:change="onChange" />
+	</view>
+
+</view>
+
+<button class="save" bindtap="saveComment">保存评论</button>
