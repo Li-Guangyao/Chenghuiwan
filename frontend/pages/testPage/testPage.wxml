@@ -1,0 +1,1 @@
+<button bindtap="tapButton">按钮</button>

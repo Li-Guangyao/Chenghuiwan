@@ -2,7 +2,20 @@ const db = wx.cloud.database()
 
 Page({
     data: {
-        userInfo: {}
+        userInfo: {},
+
+        // 本来想以数字作为key，没想到前端识别不了orderNum.0这种格式
+        // 所以在订单状态数字前面加上个status
+        
+        orderNum: {
+            status0: null,
+            status1: null,
+            status2: null,
+            status3: null
+        },
+        test: {
+            1:33
+        }
     },
 
     /**
@@ -85,14 +98,11 @@ Page({
             _openid: openId
         }).get({
             success: (e) => {
-                console.log('success')
-                console.log(e)
-
                 if (e.data.length == 0) {
                     wx.redirectTo({
                         url: '../authorize/authorize', //授权页面
                     })
-                }else{
+                } else {
                     this.setData({
                         userInfo: e.data[0]
                     })
@@ -100,6 +110,20 @@ Page({
                     wx.setStorageSync('userInfo', e.data[0])
                 }
             },
+        })
+
+        wx.cloud.callFunction({
+            name: 'getOrderNum'
+        }).then(res => {
+            console.log(res)
+            for (var i in res.result.list) {
+                console.log(i)
+                var item = 'orderNum.status'+res.result.list[i]._id
+                console.log(item)
+                this.setData({
+                    [item]: res.result.list[i].count,
+                })
+            }
         })
 
         // var userInfo = wx.getStorageSync('userInfo')
@@ -142,7 +166,7 @@ Page({
 
     tapOrders(e) {
         wx.navigateTo({
-            url: '../orders/orders?orderType='+ e.currentTarget.dataset.ordertype,
+            url: '../orders/orders?orderType=' + e.currentTarget.dataset.ordertype,
             // success: (res) => {
             //     console.log(res)
             //     console.log(e)

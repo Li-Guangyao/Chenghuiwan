@@ -5,73 +5,52 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		orderType: ""
+		orderType: null,
+		orderList: []
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (e) {
+	onLoad: async function (e) {
 
-		this.setData({
-			orderType: e.orderType
+		wx.showLoading({
+			title: '加载中',
 		})
 
-		wx.cloud.callFunction({
+		this.setData({
+			orderType: Number(e.orderType)
+		})
+
+		await wx.cloud.callFunction({
 			name: 'getOrder',
-			data:{
-				orderType: this.data.orderType
+			data: {
+				orderType: Number(e.orderType)
+			}
+		}).then(res => {
+			console.log(res)
+			if (res.result.data) {
+				console.log(res)
+				this.setData({
+					orderList: res.result.data
+				})
+			} else {
+				wx.showToast({
+					icon: 'error',
+					title: '空空如也',
+				})
 			}
 		})
 
+		wx.hideLoading({})
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
+	clickOrder(){
 
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+	// 催促发货
+	urgeSending(){
+		wx.showModal({
+			title: '已经提醒卖家快点发货',
+			showCancel: false
+		})
 	}
 })

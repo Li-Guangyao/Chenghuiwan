@@ -11,13 +11,17 @@
 	<van-icon class="arrow" name="arrow" size="80rpx" />
 </navigator>
 
+<navigator class="all-order" url="../orders/orders?orderType=10">
+	全部订单>
+</navigator>
+
 <view class="order">
 	<van-grid clickable column-num="4">
-		<van-grid-item icon="credit-pay" link-type="navigateTo" info="99+" text="待付款" data-ordertype="{{0}}"
+		<van-grid-item icon="credit-pay" link-type="navigateTo" info="{{orderNum.status0}}" text="待付款" data-ordertype="{{0}}"
 			bindtap="tapOrders" />
-		<van-grid-item icon="paid" link-type="reLaunch" text="待发货" data-ordertype="{{1}}" bindtap="tapOrders" />
-		<van-grid-item icon="logistics" link-type="reLaunch" text="待收货" data-ordertype="{{2}}" bindtap="tapOrders" />
-		<van-grid-item icon="completed" link-type="reLaunch" text="待评价" data-ordertype="{{3}}" bindtap="tapOrders" />
+		<van-grid-item icon="paid" link-type="reLaunch" info="{{orderNum.status1}}" text="待发货" data-ordertype="{{1}}" bindtap="tapOrders" />
+		<van-grid-item icon="logistics" link-type="reLaunch" info="{{orderNum.status2}}" text="待收货" data-ordertype="{{2}}" bindtap="tapOrders" />
+		<van-grid-item icon="completed" link-type="reLaunch" info="{{orderNum.status3}}" text="待评价" data-ordertype="{{3}}" bindtap="tapOrders" />
 	</van-grid>
 </view>
 

@@ -50,6 +50,13 @@ page {
     color: #d8d8d8;
 }
 
+.all-order{
+    background-color: white;
+    color: rgb(71, 71, 71);
+    margin: 10rpx 0;
+    padding: 10rpx 25rpx;
+}
+
 .order {
     margin-bottom: 20rpx;
 }

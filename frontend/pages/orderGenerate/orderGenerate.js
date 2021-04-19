@@ -83,7 +83,7 @@ Page({
 					if (res.confirm) {
 						// 到订单列表，催促支付
 						wx.redirectTo({
-							url: '../orders/orders?orderType=awaitPayment',
+							url: '../orders/orders?orderType=0',
 						})
 					}
 				})
@@ -117,7 +117,7 @@ Page({
 				goods: this.data.goodsItem,
 				number: this.data.number,
 				remark: this.data.remark,
-				totalPrice: this.data.totalPrice,
+				totalPrice: this.data.totalPrice/100,
 				createdDate: date(),
 				// 订单生成未支付
 				orderStatus: orderStatus
