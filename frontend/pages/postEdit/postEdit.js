@@ -2,6 +2,7 @@ const db = wx.cloud.database()
 
 //获取标准的时间格式yyyy-mm-dd hh:mm，而非时间戳
 import date from '../../utils/date'
+import judgeImageFormat from '../../utils/judgeImageFormat'
 
 Page({
 	data: {
@@ -28,13 +29,13 @@ Page({
 		})
 	},
 
+	// upload选择完会触发这个函数，把所有选择的图片生成临时地址
 	chosenImage(e) {
 		// console.log(e)
 		const openId = wx.getStorageSync('openId')
 		var fileList = e.detail.file
 		var oldArrayLength = this.data.fileList.length
 		var newArrayLength = fileList.length
-		// console.log(fileList)
 
 		if (oldArrayLength + newArrayLength > 9) {
 			wx.showModal({
@@ -45,7 +46,7 @@ Page({
 		} else {
 			for (var i = oldArrayLength, len = oldArrayLength + newArrayLength; i < len; i++) {
 				var item = 'fileList[' + i + ']'
-				var imageFormat = this.judgeImageFormat(fileList[i - oldArrayLength].url)
+				var imageFormat = judgeImageFormat(fileList[i - oldArrayLength].url)
 				this.setData({
 					[item]: {
 						url: fileList[i - oldArrayLength].url,
@@ -55,17 +56,6 @@ Page({
 				})
 			}
 		}
-		// console.log(this.data.fileList)
-	},
-
-	//在保存图片的时候，识别图片的格式
-	judgeImageFormat(filePath) {
-		//获取最后一个.的位置
-		var index = filePath.lastIndexOf(".");
-		//获取后缀
-		var ext = filePath.substr(index + 1);
-		//输出结果
-		return ext;
 	},
 
 	removeImage(e) {
@@ -129,8 +119,6 @@ Page({
 					if (e.confirm) {
 						// 用户点击了确定
 						var uploadedFileList = await this.uploadImage()
-						// console.log(uploadedFileList)
-						// console.log('publish'+Date.now())
 						
 						db.collection('t_post').add({
 							data:{
@@ -179,8 +167,6 @@ Page({
 						})
 					}
 					//把固定地址返回，保存进数据库
-					// console.log(uploadedFileList)
-					// console.log('upload'+Date.now())
 					return uploadedFileList;
 				})
 				.catch(e => {

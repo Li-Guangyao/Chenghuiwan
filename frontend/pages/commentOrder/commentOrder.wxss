@@ -12,8 +12,8 @@ page {
 }
 
 .goods .goods-image{
-	width: 180rpx;
-	height: 180rpx;
+	width: 160rpx;
+	height: 160rpx;
 	margin: 30rpx;
 }
 
@@ -23,18 +23,28 @@ page {
 }
 
 .goods .goods-desc .goods-title{
-	font-size: 35rpx;
-	color: rgb(24, 24, 24)
+	font-size: 32rpx;
+	color: rgb(24, 24, 24);
+	margin: 10rpx 10rpx;
+	overflow: hidden;
 }
 
 .goods .goods-desc .goods-option{
 	font-size: 25rpx;
 	color: rgb(41, 41, 41);
+	margin: 10rpx 10rpx;
+	overflow: hidden;
 }
 
 .comment{
 	background-color: white;
 	margin: 5rpx 5rpx;
+
+}
+
+.comment .content-input{
+	padding: 20rpx;
+	overflow: scroll;
 }
 
 .score-region{

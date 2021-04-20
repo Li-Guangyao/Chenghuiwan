@@ -1,3 +1,20 @@
-page{
-	background-color:var(--themebackgroundcolor);
-  }
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.order-card {
+	background-color: white !important;
+	margin: 10rpx 5rpx !important;
+	border-radius: 20rpx !important;
+}
+
+.order-info{
+	background-color: white;
+	margin: 10rpx 5rpx;
+	padding: 20rpx;
+	border-radius: 10rpx;
+}
+
+.order-info .info-item{
+	margin: 10rpx;
+}

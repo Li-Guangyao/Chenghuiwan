@@ -1,18 +1,13 @@
-// pages/orderDetail/orderDetail.js
 Page({
-
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
-
+		order: null,
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (options) {
-
+	onLoad: function (e) {
+		var order = JSON.parse(e.order)
+		this.setData({
+			order: order
+		})
 	},
 
 	/**

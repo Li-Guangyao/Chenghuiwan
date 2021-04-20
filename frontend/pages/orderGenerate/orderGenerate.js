@@ -123,5 +123,6 @@ Page({
 				orderStatus: orderStatus
 			}
 		})
-	}
+	},
+
 })

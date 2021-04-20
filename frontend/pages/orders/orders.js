@@ -42,12 +42,15 @@ Page({
 		wx.hideLoading({})
 	},
 
+	// 点击订单，跳转
 	clickOrder(e) {
+		var order = JSON.stringify(this.data.orderList[e.currentTarget.dataset.index])
 		wx.navigateTo({
-			url: '../orderDetail/orderDetail?goods=' + this.data.orderList[e.currentTarget.dataset.index].goods,
+			url: '../orderDetail/orderDetail?order=' + order,
 		})
 	},
 
+	// 取消订单
 	cancelOrder(e) {
 		wx.showModal({
 			title: '确定取消订单？',
@@ -65,6 +68,7 @@ Page({
 		})
 	},
 
+	// 支付
 	payOrder(){
 		wx.showModal({
 			title: '确定支付订单',
@@ -90,6 +94,7 @@ Page({
 		})
 	},
 
+	// 查询快递
 	expressStatus(e){
 		wx.showModal({
 			title: '查询快递信息',
@@ -97,12 +102,21 @@ Page({
 		})
 	},
 
+	// 确认收货
 	confirmReceiving(e){
 		wx.cloud.callFunction({
 			name: 'confirmReceiving',
 			data: {
 				orderId: this.data.orderList[e.currentTarget.dataset.index]._id
 			}
+		})
+	},
+
+	// 去评价商品的页面
+	toComment(e){
+		var order = JSON.stringify(this.data.orderList[e.currentTarget.dataset.index])
+		wx.navigateTo({
+		  url: '../commentOrder/commentOrder?order='+ order,
 		})
 	}
 

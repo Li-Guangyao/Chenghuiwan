@@ -1,2 +1,17 @@
-<!--pages/orderDetail/orderDetail.wxml-->
-<text>pages/orderDetail/orderDetail.wxml</text>
+<van-cell icon="logistics" title="物流信息" is-link></van-cell>
+
+<van-cell title="{{order.receiver_name}}" value="{{order.receiver_phone}}" size="large"
+	label="{{order.receiver_address}}" icon="location-o" />
+
+<van-card custom-class="order-card" price="{{order.price_paid}}" title="{{order.goods.title}}"
+	thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{order.item_number}}">
+</van-card>
+
+<view class="order-info">
+	<view class="info-item">订单编号：{{order._id}}</view>
+	<view class="info-item">物流公司：{{order.express_company}}</view>
+	<view class="info-item">快递单号：{{order.express_number}}</view>
+	<view class="info-item">下单时间：{{order.created_date}}</view>
+	<view class="info-item">发货时间：{{order.sent_date}}</view>
+	<view class="info-item">收货时间：{{order.delivery_date}}</view>
+</view>
