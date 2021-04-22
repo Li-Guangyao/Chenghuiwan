@@ -1,0 +1,19 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.order-card {
+	background-color: white !important;
+	margin: 10rpx 5rpx !important;
+	border-radius: 20rpx !important;
+}
+
+.option{
+	background-color: white !important;
+	margin: 10rpx 5rpx !important;
+	border-radius: 20rpx !important;
+}
+
+.arrow{
+	float: right;
+}

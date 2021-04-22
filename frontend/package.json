@@ -11,5 +11,8 @@
   "dependencies": {
     "@vant/weapp": "^1.6.8",
     "weui-miniprogram": "^1.0.7"
+  },
+  "devDependencies": {
+    "@vant/area-data": "^1.1.1"
   }
 }

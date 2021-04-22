@@ -10,7 +10,6 @@ Page({
 	},
 
 	onLoad: async function (e) {
-
 		wx.showLoading({
 			title: '加载中',
 		})
@@ -63,13 +62,22 @@ Page({
 					data: {
 						orderId: this.data.orderList[e.currentTarget.dataset.index]._id
 					}
+				}).then(res => {
+					wx.showToast({
+						title: '取消成功',
+					})
+					// 重置页面数据
+					this.data.orderList.splice(e.currentTarget.dataset.index, 1)
+					this.setData({
+						orderList: this.data.orderList
+					})
 				})
 			} else {}
 		})
 	},
 
 	// 支付
-	payOrder(){
+	payOrder() {
 		wx.showModal({
 			title: '确定支付订单',
 			showCancel: true
@@ -95,7 +103,7 @@ Page({
 	},
 
 	// 查询快递
-	expressStatus(e){
+	expressStatus(e) {
 		wx.showModal({
 			title: '查询快递信息',
 			showCancel: false
@@ -103,20 +111,28 @@ Page({
 	},
 
 	// 确认收货
-	confirmReceiving(e){
-		wx.cloud.callFunction({
-			name: 'confirmReceiving',
-			data: {
-				orderId: this.data.orderList[e.currentTarget.dataset.index]._id
-			}
+	confirmReceiving(e) {
+		wx.showModal({
+			title: '确定收货',
+			showCancel: true
+		}).then(res => {
+			if (res.confirm) {
+				// cancel
+				wx.cloud.callFunction({
+					name: 'confirmReceiving',
+					data: {
+						orderId: this.data.orderList[e.currentTarget.dataset.index]._id
+					}
+				})
+			} else {}
 		})
 	},
 
 	// 去评价商品的页面
-	toComment(e){
+	toComment(e) {
 		var order = JSON.stringify(this.data.orderList[e.currentTarget.dataset.index])
 		wx.navigateTo({
-		  url: '../commentOrder/commentOrder?order='+ order,
+			url: '../commentOrder/commentOrder?order=' + order,
 		})
 	}
 

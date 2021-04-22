@@ -2,12 +2,9 @@ const db = wx.cloud.database();
 
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		addressList: [],
-		//标识打开这个网页的上一个网页，如果是orderGenerate，可以实现长按选择地址并返回功能
+		//标识打开这个网页的上一个网页，如果是orderGenerate，赋值为1，可以实现点击返回一个地址
 		source: 0,
 		slideButtons: [{
 			text: '编辑',
@@ -20,14 +17,12 @@ Page({
 		addressListHeight:null,
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
 	onLoad: function (e) {
 		this.setData({
 			source: e.source
 		})
 
+		//设置整个页面的高度，如果不设置，地址列表过长会盖住下部的按钮
 		var query = wx.createSelectorQuery()
 		query.select('.add-address').boundingClientRect()
 		query.exec(res=>{
@@ -38,32 +33,22 @@ Page({
 		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
 	onReady: function () {
 
 	},
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
+	onShow: async function () {
 		wx.showLoading({
 			title: '加载中',
 		})
 
 		// 获取用户地址，并渲染到前端
-		var openId = wx.getStorageSync('openId')
-		console.log(openId)
-		db.collection('t_address').where({
-			_openid: openId
-		}).get().then(res => {
+		await wx.cloud.callFunction({
+			name: 'getAddress'
+		}).then(res=>{
 			this.setData({
-				addressList: res.data
+				addressList: res.result.data
 			})
-		}).catch(err => {
-			console.log(err)
 		})
 
 		wx.hideLoading({
@@ -71,37 +56,22 @@ Page({
 		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
 	onHide: function () {
 
 	},
 
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
 	onUnload: function () {
 
 	},
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
 	onPullDownRefresh: function () {
 
 	},
 
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
 	onReachBottom: function () {
 
 	},
 
-	/**
-	 * 用户点击右上角分享
-	 */
 	onShareAppMessage: function () {
 
 	},
@@ -112,6 +82,7 @@ Page({
 		})
 	},
 
+	// 修改地址
 	editAddress(addressIndex) {
 		//向addressEdit页面发送一个地址
 		wx.navigateTo({
@@ -125,6 +96,7 @@ Page({
 		})
 	},
 
+	// 删除地址
 	deleteAddress(addressIndex) {
 		wx.showModal({
 			content: '确认删除地址',
@@ -155,7 +127,6 @@ Page({
 
 	// 单击选中地址，然后返回到orderGenerate页面
 	choseAddress(e) {
-		console.log('choseAddress')
 		// 如果这个页面由orderGenerate页面跳转而来
 		if (this.data.source == 1) {
 			var pages = getCurrentPages();
@@ -169,16 +140,6 @@ Page({
 			wx.navigateBack({
 				delta: 1
 			})
-
-			// wx.navigateBack({
-			// 	delta: 1,
-			// 	success: (res) => {
-			// 		const eventChannel = this.getOpenerEventChannel()
-			// 		eventChannel.emit('acceptDataFromOpenerPage', {
-			// 			sentData: this.data.addressList[e.currentTarget.dataset.index]
-			// 		})
-			// 	}
-			// }).then()
 		}
 	}
 })

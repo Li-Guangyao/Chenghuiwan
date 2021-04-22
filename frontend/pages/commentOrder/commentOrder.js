@@ -5,6 +5,7 @@ import uploadImage from '../../utils/uploadImage'
 Page({
 	data: {
 		order: null,
+		content:'',
 		// 晒单照片
 		fileList: [],
 		// 评分项
@@ -20,15 +21,19 @@ Page({
 		})
 	},
 
+	contentInput(e) {
+		this.setData({
+			content: e.detail.text
+		})
+	},
+
 	chosenImage(e) {
-		// console.log(e)
 		const openId = wx.getStorageSync('openId')
 		var fileList = e.detail.file
 		var oldArrayLength = this.data.fileList.length
 		var newArrayLength = fileList.length
-		// console.log(fileLis)
 
-		if (oldArrayLength + newArrayLength > 9) {
+		if (oldArrayLength + newArrayLength > 8) {
 			wx.showModal({
 				showCancel: false,
 				cancelColor: 'cancelColor',
@@ -59,7 +64,8 @@ Page({
 
 	// 点击保存评论按钮
 	saveComment() {
-		if (this.data.title == '') {
+		// 三个都必须评分才能保存
+		if (this.data.descRate == 0 || this.data.expressRate == 0 || this.data.serviceRate == 0) {
 			wx.showToast({
 				title: '您没有评分',
 				icon: 'none'
@@ -70,33 +76,35 @@ Page({
 				success: async (e) => {
 					if (e.confirm) {
 						// 用户点击了确定
-						var uploadedFileList = await uploadImage()
+						var uploadedFileList = await uploadImage(this.data.fileList, 'orderComment')
 
 						wx.cloud.callFunction({
-							name: saveOrderComment,
-							data:{
-
-							}
-						})
-
-						db.collection('t_order_comment').add({
+							name: 'saveOrderComment',
 							data: {
-								title: this.data.title,
-								content: this.data.content,
-								created_at: date(),
-								post_photo: uploadedFileList,
-								like_amount: 0,
-								is_deleted: false,
+								orderId: this.data.order._id,
+								content:this.data.content,
+								// 晒单照片
+								fileList: uploadedFileList,
+								// 评分项
+								descRate: this.data.descRate,
+								expressRate: this.data.expressRate,
+								serviceRate: this.data.serviceRate,
+								createdDate: date()
 							}
+						}).then(res=>{
+							wx.showToast({
+								title: '保存成功',
+								icon: 'none'
+							});
+
+							wx.navigateBack({
+							  delta: 2,
+							})
 						})
+
 					} else {}
 				}
 			})
 		}
-	},
-
-	// 界面改变评分，data改变
-	rateChange(){
-
 	}
 })

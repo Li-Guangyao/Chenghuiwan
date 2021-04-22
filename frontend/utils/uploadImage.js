@@ -4,16 +4,12 @@ export default async function uploadImage(fileList, savePath) {
 	// uploadTasks是若干Promise对象的集合，此时已经上传成功
 	// 用下面的方法，data就是提取出来的返回结果
 	return Promise.all(uploadTasks).then(data => {
-		wx.showToast({
-			title: '保存成功',
-			icon: 'none'
-		});
 		//上传成功后，返回一个列表，fileID为图片的固定地址
 		var uploadedFileList = []
 		for (var i = 0; i < data.length; i++) {
-			uploadedFileList.push({
-				url: data[i].fileID
-			})
+			uploadedFileList.push(
+				data[i].fileID
+			)
 		}
 		//把固定地址返回，保存进数据库
 		return uploadedFileList;

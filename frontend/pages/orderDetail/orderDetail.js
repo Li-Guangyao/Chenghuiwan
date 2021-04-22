@@ -1,6 +1,25 @@
 Page({
 	data: {
 		order: null,
+
+		showPopupChange: false,
+		showPopupRefund: false,
+
+		actionsChange: [{
+			index: 0,
+			name: '未收到货',
+		}, {
+			index: 1,
+			name: '已收到货',
+		}, ],
+
+		actionsRefund: [{
+			index: 0,
+			name: '无需退货，直接退款',
+		}, {
+			index: 1,
+			name: '已收到货，退货退款',
+		}],
 	},
 
 	onLoad: function (e) {
@@ -10,52 +29,55 @@ Page({
 		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
+	// 退换货
+	changeOrRefund() {
+		var order = JSON.stringify(this.data.order)
+		wx.navigateTo({
+			url: '../changeOrRefund/changeOrRefund?order=' + order,
+		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
+	// 点击换货按钮
+	clickChange() {
+		this.setData({
+			showPopupChange: true
+		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
+	// 退货按钮
+	clickRefund() {
+		this.setData({
+			showPopupRefund: true
+		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
+	// 关闭PupupChange
+	closePopupChange() {
+		this.setData({
+			showPopupChange: false
+		});
 	},
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
+	// 关闭popupRefund
+	closePopupRefund() {
+		this.setData({
+			showPopupRefund: false
+		});
 	},
 
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
+	selectPopupChange(e) {
+		var order = JSON.stringify(this.data.order)
+		console.log(order)
+		console.log(typeof(order))
+		wx.navigateTo({
+			url: '../changeGoods/changeGoods?changeType=' + e.detail.index + '&order=' + order
+		})
 	},
 
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+	selectPopupRefund(e) {
+		var order = JSON.stringify(this.data.order)
+		wx.navigateTo({
+			url: '../refundGoods/refundGoods?refundType=' + e.detail.index + '&order=' + order
+		})
 	}
 })

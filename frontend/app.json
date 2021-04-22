@@ -8,6 +8,8 @@
 		"pages/addressList/addressList",
 		"pages/addressEdit/addressEdit",
 		"pages/buyerComments/buyerComments",
+		"pages/changeGoods/changeGoods",
+		"pages/changeOrRefund/changeOrRefund",
 		"pages/collection/collection",
 		"pages/commentOrder/commentOrder",
 		"pages/customerService/customerService",
@@ -33,7 +35,8 @@
 		"pages/person/person",
 		"pages/authorize/authorize",
 		"pages/postLocation/postLocation",
-		"pages/topic/topic"
+		"pages/topic/topic",
+		"pages/refundGoods/refundGoods"
 	],
 	"window": {
 		"backgroundColor": "#f6f6f6",

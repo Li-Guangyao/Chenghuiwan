@@ -1,34 +1,21 @@
-// pages/collection/collection.js
+// pages/changeGoods/changeGoods.js
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-		collectionList:[]
+		order: null,
+		changeType: null
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: async function (options) {
-		wx.showLoading({
-		  title: '加载中',
+	onLoad: function (e) {
+		var order = JSON.parse(e.order)
+		var changeType = e.changeType
+		this.setData({
+			order: order,
+			changeType: changeType
 		})
-
-		await wx.cloud.callFunction({
-			name: 'getCollection'
-		}).then(res=>{
-			this.setData({
-				collectionList: res.result
-			})
-		})
-
-		wx.hideLoading({
-		  success: (res) => {},
-		})
-		
-
 	},
 
 	/**
@@ -78,12 +65,5 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	},
-
-	buy(e){
-		var goodsId = this.data.collectionList[e.currentTarget.dataset.index]._id
-		wx.navigateTo({
-		  url: '../orderGenerate/orderGenerate?goodsId='+ goodsId,
-		})
 	}
 })

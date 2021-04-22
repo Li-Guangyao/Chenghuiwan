@@ -10,6 +10,6 @@
 		<view class="history-item-name" data-index="{{index}}" bindtap="choseHisItem">
 			{{item}}
 		</view>
-		<van-icon name="cross" data-index="{{index}}" bind:click="delHisItem"/>
+		<van-icon name="cross" data-index="{{index}}" bind:click="delHisItem" />
 	</view>
 </view>

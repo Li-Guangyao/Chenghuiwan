@@ -14,22 +14,17 @@ Page({
         pagesize: 10
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
+    onLoad: async function(options) {
         // 显示加载中提示框
         wx.showLoading({
           title: '加载中',
         })
         
-        const openId = wx.getStorageSync('openId')
-        db.collection('t_post').where({
-            _openid: openId
-        }).get().then(e => {
-            console.log(e)
+        await wx.cloud.callFunction({
+            name: 'getPost'
+        }).then(res=>{
             this.setData({
-                postList: e.data
+                postList: res.result.data
             })
         })
 
@@ -39,9 +34,6 @@ Page({
         })
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     onReady: function() {
 
     },
@@ -74,9 +66,6 @@ Page({
 
     },
 
-    /**
-     * 页面上拉触底事件的处理函数
-     */
     onReachBottom: function() {
         console.log('person页面触底')
     },

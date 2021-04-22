@@ -1,29 +1,10 @@
 const db = wx.cloud.database()
+import areaList from '../../utils/areaList'
 
 Page({
 	data: {
 		showPopup: false,
-		areaList: {
-			province_list: {
-				110000: '北京市',
-				120000: '天津市'
-			},
-			city_list: {
-				110100: '北京市',
-				120100: '天津市',
-			},
-			county_list: {
-				110101: '东城区',
-				110102: '西城区',
-				110105: '朝阳区',
-				110106: '丰台区',
-				120101: '和平区',
-				120102: '河东区',
-				120103: '河西区',
-				120104: '南开区',
-				120105: '河北区',
-			}
-		},
+		areaList: {},
 
 		// 由addressList页面跳转而来，记录当前地址的index
 		// 方便返回的时候在addressList页面上更新，而不必通过数据库
@@ -44,8 +25,12 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		const eventChannel = this.getOpenerEventChannel()
+		//地址列表
+		this.setData({
+			areaList: areaList
+		})
 
+		const eventChannel = this.getOpenerEventChannel()
 		eventChannel.on('acceptDataFromOpenerPage', (sentData, addressIndex) => {
 			this.setData({
 				addressIndex: addressIndex,
@@ -91,88 +76,59 @@ Page({
 	},
 
 	saveAddress() {
-		wx.showModal({
-			content: '确认保存地址',
-			cancelColor: 'cancelColor',
-			confirmColor: "#1ae6e6"
-		}).then(res => {
-			if (res.confirm == true) {
-				wx.showLoading({
-				  title: '保存中',
-				  mask: true,
-				})
-				wx.cloud.callFunction({
-					name: 'saveAddress',
-					data: {
-						_id: this.data._id,
-						receiverName: this.data.receiverName,
-						province: this.data.province,
-						city: this.data.city,
-						district: this.data.district,
-						phoneNumber: this.data.phoneNumber,
-						detailedAddress: this.data.detailedAddress,
-						isDefaultAddress: this.data.isDefaultAddress,
-					}
-				}).then(res => {
-					console.log(res)
-					console.log("保存地址成功")
-					wx.hideLoading({
-					  success: (res) => {},
+		if (this.meetRequirement()) {
+			wx.showModal({
+				content: '确认保存地址',
+				cancelColor: 'cancelColor',
+				confirmColor: "#1ae6e6"
+			}).then(res => {
+				if (res.confirm == true) {
+					wx.showLoading({
+						title: '保存中',
+						mask: true,
 					})
-					wx.showToast({
-					  title: '保存成功',
+					wx.cloud.callFunction({
+						name: 'saveAddress',
+						data: {
+							_id: this.data._id,
+							receiverName: this.data.receiverName,
+							province: this.data.province,
+							city: this.data.city,
+							district: this.data.district,
+							phoneNumber: this.data.phoneNumber,
+							detailedAddress: this.data.detailedAddress,
+							isDefaultAddress: this.data.isDefaultAddress,
+						}
 					}).then(res => {
-						wx.navigateBack({
-						  delta: 1,
+						console.log(res)
+						console.log("保存地址成功")
+						wx.hideLoading({
+							success: (res) => {},
+						})
+						wx.showToast({
+							title: '保存成功',
+						}).then(res => {
+							wx.navigateBack({
+								delta: 1,
+							})
 						})
 					})
-				})
-
-
-
-				// if (this.data.isDefaultAddress == true) {
-				// 	var openId = wx.getStorageSync('openId')
-				// 	//如果用户把该地址设为默认的，就把其他的地址取消默认
-				// 	db.collection('t_address').where({
-				// 			_openid: openId
-				// 		})
-				// 		.update({
-				// 			data: {
-				// 				isDefaultAddress: false
-				// 			}
-				// 		})
-				// }
-				// //保存地址到数据库
-				// db.collection('t_address').doc(this.data._id).update({
-				// 		data: {
-				// 			receiverName: this.data.receiverName,
-				// 			province: this.data.province,
-				// 			city: this.data.city,
-				// 			district: this.data.district,
-				// 			phoneNumber: this.data.phoneNumber,
-				// 			detailedAddress: this.data.detailedAddress,
-				// 			isDefaultAddress: this.data.isDefaultAddress,
-				// 		}
-				// 	})
-				// 	.then(res => {
-				// 		console.log("保存地址成功")
-				// 		wx.showModal({
-				// 			showCancel: false,
-				// 			content: "保存成功",
-				// 			confirmText: '确定'
-				// 		}).then(res => {
-				// 			wx.redirectTo({
-				// 				url: '../addressList/addressList',
-				// 			})
-				// 		})
-				// 	})
-
-
-
-			}
-		}).catch()
-
+				}
+			}).catch()
+		} else {
+			wx.showToast({
+				title: '地址信息没有填写完整！',
+			})
+		}
 	},
 
+	// 判断是否有信息没有填完整
+	meetRequirement() {
+		if (this.data.receiverName == '' || this.data.province == '' || this.data.city == '' || this.data.district == '' || this.data.phoneNumber == '' || this.data.detailedAddress == '') {
+			return false
+		} else {
+			return true
+		}
+	}
 
 })

@@ -7,13 +7,15 @@ Page({
 	data: {
 		value: '',
 		// history: ['lgy', 'hu', 'nnn', 'ish', 'nhg','ddd','jinguiagjk','fidnagy','nnn'],
-		history: wx.getStorageSync('searchHistory')
+		history: []
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {},
+	onLoad: function (options) {
+
+	},
 
 	onShow: function () {
 		this.setData({
@@ -25,20 +27,21 @@ Page({
 		var inputContent = this.data.value;
 		//输入内容为空，不做任何操作
 		if (inputContent.length == 0) {} else {
-			this.data.history.push(inputContent)
+			// var history = []
+			// history = this.data.history
+			// history.push(inputContent)
 			wx.navigateTo({
 				url: '/pages/searchResult/searchResult?searchKeyWords=' + inputContent
 			})
-			this.setData({
-				history: this.data.history
-			})
-			wx.setStorageSync('searchHistory', this.data.history)
+			// this.setData({
+			// 	history: history
+			// })
+			// wx.setStorageSync('searchHistory', history)
 		}
 
 	},
 
 	handleChange(e) {
-		console.log(e)
 		this.setData({
 			value: e.detail,
 		});

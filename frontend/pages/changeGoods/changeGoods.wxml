@@ -1,0 +1,16 @@
+
+<van-card custom-class="order-card" price="{{order.price_paid}}" title="{{order.goods.title}}"
+	thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{order.item_number}}">
+	<!-- 如果订单在运输途中，可以申请退换货 -->
+</van-card>
+
+<view class="option" bindtap="changeGoods">
+	换货
+	<van-icon name="arrow" custom-class="arrow"/>
+</view>
+<view class="option" bindtap="refund">
+	退货
+	<van-icon name="arrow" custom-class="arrow"/>
+</view>
+
+

@@ -112,19 +112,7 @@ Page({
             },
         })
 
-        wx.cloud.callFunction({
-            name: 'getOrderNum'
-        }).then(res => {
-            console.log(res)
-            for (var i in res.result.list) {
-                console.log(i)
-                var item = 'orderNum.status'+res.result.list[i]._id
-                console.log(item)
-                this.setData({
-                    [item]: res.result.list[i].count,
-                })
-            }
-        })
+        this.getOrderNum()
 
         // var userInfo = wx.getStorageSync('userInfo')
         // console.log(userInfo)
@@ -155,6 +143,9 @@ Page({
         // this.setData({
         //     userInfo: userInfo
         // })
+
+        //每次载入刷新
+        this.getOrderNum()
     },
 
     /**
@@ -167,13 +158,25 @@ Page({
     tapOrders(e) {
         wx.navigateTo({
             url: '../orders/orders?orderType=' + e.currentTarget.dataset.ordertype,
-            // success: (res) => {
-            //     console.log(res)
-            //     console.log(e)
-            //     res.eventChannel.emit('acceptDataFromOpenerPage', {
-            //         data: e.currentTarget.dataset.ordertype
-            //     })
-            // }
+        })
+    },
+
+    // 获取每种订单的数量，用于显示在小图标上
+    getOrderNum(){
+        wx.cloud.callFunction({
+            name: 'getOrderNum'
+        }).then(res => {
+            console.log(res)
+            // 每次重置，因为从后端获得数据之后，只改变某些对应的值
+            this.setData({
+                orderNum:{}
+            })
+            for (var i in res.result.list) {
+                var item = 'orderNum.status'+res.result.list[i]._id
+                this.setData({
+                    [item]: res.result.list[i].count,
+                })
+            }
         })
     }
 })

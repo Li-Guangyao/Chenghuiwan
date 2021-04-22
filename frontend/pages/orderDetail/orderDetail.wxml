@@ -5,13 +5,23 @@
 
 <van-card custom-class="order-card" price="{{order.price_paid}}" title="{{order.goods.title}}"
 	thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{order.item_number}}">
+	<!-- 如果订单在运输途中，可以申请退换货 -->
+	<view slot="footer" wx:if="{{order.status==2}}">
+		<van-button size="mini" bind:click="clickChange">换货</van-button>
+		<van-button size="mini" bind:click="clickRefund">退货</van-button>
+	</view>
 </van-card>
 
 <view class="order-info">
 	<view class="info-item">订单编号：{{order._id}}</view>
-	<view class="info-item">物流公司：{{order.express_company}}</view>
-	<view class="info-item">快递单号：{{order.express_number}}</view>
+	<view class="info-item">物流公司：{{order.express_company==''?order.express_company:'未发货'}}</view>
+	<view class="info-item">快递单号：{{order.express_number==''?order.express_number: '未发货'}}</view>
 	<view class="info-item">下单时间：{{order.created_date}}</view>
-	<view class="info-item">发货时间：{{order.sent_date}}</view>
-	<view class="info-item">收货时间：{{order.delivery_date}}</view>
+	<view class="info-item">发货时间：{{order.sent_date==''?order.sent_date:'未发货'}}</view>
+	<view class="info-item">收货时间：{{order.delivery_date==''?order.delivery_date:'未发货'}}</view>
 </view>
+
+<van-action-sheet show="{{ showPopupChange }}" actions="{{ actionsChange }}" bind:close="closePopupChange"
+	bind:select="selectPopupChange" />
+<van-action-sheet show="{{ showPopupRefund }}" actions="{{ actionsRefund }}" bind:close="closePopupRefund"
+	bind:select="selectPopupRefund" />
