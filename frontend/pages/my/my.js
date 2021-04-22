@@ -6,15 +6,16 @@ Page({
 
         // 本来想以数字作为key，没想到前端识别不了orderNum.0这种格式
         // 所以在订单状态数字前面加上个status
-        
+
         orderNum: {
             status0: null,
             status1: null,
             status2: null,
-            status3: null
+            status3: null,
+            status15: null
         },
         test: {
-            1:33
+            1: 33
         }
     },
 
@@ -162,19 +163,21 @@ Page({
     },
 
     // 获取每种订单的数量，用于显示在小图标上
-    getOrderNum(){
+    getOrderNum() {
         wx.cloud.callFunction({
             name: 'getOrderNum'
         }).then(res => {
             console.log(res)
             // 每次重置，因为从后端获得数据之后，只改变某些对应的值
             this.setData({
-                orderNum:{}
+                orderNum: {}
             })
+            // 返回对象
             for (var i in res.result.list) {
-                var item = 'orderNum.status'+res.result.list[i]._id
+                var item = res.result.list[i]
+                var itemId = 'orderNum.status' + item._id
                 this.setData({
-                    [item]: res.result.list[i].count,
+                    [itemId]: res.result.list[i].count,
                 })
             }
         })

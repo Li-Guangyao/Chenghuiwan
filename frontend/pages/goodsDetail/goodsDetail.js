@@ -1,9 +1,6 @@
 const db = wx.cloud.database()
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		goods: {},
 		goodsId: null,
@@ -13,6 +10,10 @@ Page({
 
 		// 用于初始化整个页面的高度
 		pageHeight: null,
+		// 弹出选择框
+		showPopup: false,
+		// 商品规格选择
+		option: []
 	},
 
 	onLoad: function (e) {
@@ -25,16 +26,10 @@ Page({
 
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
 	onHide: function () {
 		console.log('onHide')
 	},
 
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
 	onUnload: function () {
 		// 判断用户是否（取消）收藏该商品
 		if (this.data.isCollected == true && this.data.originIsCollected == false) {
@@ -113,6 +108,7 @@ Page({
 
 	},
 
+	// 点击展示图片
 	previewImage(e) {
 		wx.previewImage({
 			urls: this.data.goods.display_photo,
@@ -121,22 +117,30 @@ Page({
 		})
 	},
 
-	tapCollection() {
-		console.log("shoucang")
+	// 点击商品介绍图片
+	previewDetailImage(e) {
+		wx.previewImage({
+			urls: this.data.goods.detail_photo,
+			current: this.data.goods.detail_photo[e.currentTarget.dataset.index],
+			showmenu: true,
+		})
 	},
 
+	// 点击客服按键
 	tapService() {
 		wx.navigateTo({
 			url: '../customerService/customerService',
 		})
 	},
 
+	// 点击购买按键
 	tapBuy() {
 		wx.navigateTo({
 			url: '../orderGenerate/orderGenerate?goodsId='+this.data.goodsId,
 		})
 	},
 
+	// 点击收藏按钮
 	collectGoods() {
 		if (this.data.isCollected == false) {
 			this.setData({
@@ -147,5 +151,12 @@ Page({
 				isCollected: false
 			})
 		}
+	},
+
+	// 选择商品规格，弹出选择框
+	showPopup(){
+		this.setData({
+			showPopup: true
+		})
 	}
 })

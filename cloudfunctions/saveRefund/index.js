@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
 			_openid: event.userInfo.openId,
 			refund_type: event.refundType,
 			refund_reason: event.refundReason,
-			detailed_refund_reason: event.detaiiledRefundReason,
+			detailed_refund_reason: event.detailedRefundReason,
 			file_list: event.fileList,
 			created_at: event.createdAt
 		}

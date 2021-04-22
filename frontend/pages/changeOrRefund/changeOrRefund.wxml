@@ -1,3 +1,5 @@
+<!-- 退款售后 -->
+
 <van-card custom-class="order-card" price="{{order.price_paid}}" title="{{order.goods.title}}"
 	thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{order.item_number}}">
 	<!-- 如果订单在运输途中，可以申请退换货 -->

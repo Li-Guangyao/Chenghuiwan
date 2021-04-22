@@ -1,4 +1,3 @@
-// pages/orders/orders.js
 Page({
 
 	/**

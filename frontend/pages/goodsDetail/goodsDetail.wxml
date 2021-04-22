@@ -19,13 +19,18 @@
     </view>
   </view>
 
+  <view class="goods-option" bindtap="showPopup">
+    <view>选择规格</view>
+    <van-icon name="arrow" />
+  </view>
+
   <navigator class="comment" url="../buyerComments/buyerComments">
     <view class="all-comment">买家评论</view>
     <van-icon name="arrow" />
   </navigator>
 
   <view class="goods-image">
-    <image wx:for="{{goods.detail_photo}}" wx:key="index" src="{{item}}" mode="widthFix"></image>
+    <image wx:for="{{goods.detail_photo}}" wx:key="index" src="{{item}}" mode="widthFix" data-index="{{index}}" bindtap="previewDetailImage" ></image>
   </view>
 
 </view>
@@ -35,3 +40,4 @@
   <van-goods-action-icon icon="chat-o" text="客服" bind:click="tapService" />
   <van-goods-action-button text="立即购买" bind:click="tapBuy" />
 </van-goods-action>
+

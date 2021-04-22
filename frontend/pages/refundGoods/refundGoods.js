@@ -114,7 +114,7 @@ Page({
 						data: {
 							orderId: this.data.order._id,
 							refundType: this.data.refundType,
-							refundReason: this.refundReason[this.data.radio],
+							refundReason: this.data.refundReason[this.data.radio],
 							fileList: uploadedFileList,
 							detailedRefundReason: this.data.detailedRefundReason,
 							createdAt: date()
@@ -131,6 +131,11 @@ Page({
 							delta: 2,
 						})
 					}).catch(err => {
+						wx.showToast({
+							title: '保存失败',
+							icon: 'none'
+						});
+
 						wx.hideLoading()
 					})
 
