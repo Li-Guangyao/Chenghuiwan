@@ -30,7 +30,8 @@
   </navigator>
 
   <view class="goods-image">
-    <image wx:for="{{goods.detail_photo}}" wx:key="index" src="{{item}}" mode="widthFix" data-index="{{index}}" bindtap="previewDetailImage" ></image>
+    <image wx:for="{{goods.detail_photo}}" wx:key="index" src="{{item}}" mode="widthFix" data-index="{{index}}"
+      bindtap="previewDetailImage"></image>
   </view>
 
 </view>
@@ -41,3 +42,5 @@
   <van-goods-action-button text="立即购买" bind:click="tapBuy" />
 </van-goods-action>
 
+<van-share-sheet show="{{ showShareSheet }}" title="立即分享给好友" options="{{ shareOptions }}" bind:select="selectShareOption"
+  bind:close="closeShareSheet" bind:click-overlay="closeShareSheet"/>

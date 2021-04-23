@@ -5,14 +5,14 @@ cloud.init()
 
 const db = cloud.database()
 
-async function judgeCollected(openId, goodsId){
+async function judgeCollected(openId, goodsId) {
 	return db.collection('t_collection').where({
 		_openid: openId,
 		goods_id: goodsId
-	}).count().then(res=>{
-		if(res.total==0){
+	}).count().then(res => {
+		if (res.total == 0) {
 			return false
-		}else{
+		} else {
 			return true
 		}
 	})
@@ -25,9 +25,16 @@ exports.main = async (event, context) => {
 	var openId = event.userInfo.openId
 	var goodsId = event.goodsId
 	var isCollected = false
+	var goodsOption = null
 
 	await db.collection('t_goods').doc(goodsId).get().then(res => {
 		goods = res.data
+	})
+
+	await db.collection('t_goods_option').where({
+		goods_id: goodsId
+	}).get().then(res => {
+		goodsOption = res.data[0].option
 	})
 
 	isCollected = await judgeCollected(openId, goodsId)
@@ -35,6 +42,6 @@ exports.main = async (event, context) => {
 	return {
 		'isCollected': isCollected,
 		'goods': goods,
+		'goodsOption': goodsOption
 	}
 }
-
