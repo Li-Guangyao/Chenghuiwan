@@ -1,14 +1,18 @@
 <!-- 用户搜索完商品后的展示页面 -->
+<view class="goods-display" wx:if="{{goodsList.length != 0}}">
+	<van-dropdown-menu active-color="#1ae6e6">
+		<van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+		<van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+		<van-dropdown-item value="{{ value3 }}" options="{{ option3 }}" />
+	</van-dropdown-menu>
 
-<van-dropdown-menu active-color="#1ae6e6">
-	<van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
-	<van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
-	<van-dropdown-item value="{{ value3 }}" options="{{ option3 }}" />
-</van-dropdown-menu>
+	<van-card wx:for="{{goodsList}}" wx:key="index" price="{{item.price}}" desc=""
+		title="{{item.title}}" thumb="{{item.display_photo[0]}}" thumb-mode="aspectFill" custom-class="goods-card"
+		price-class="price" data-index="{{index}}" bindtap="viewGoods">
+		<view slot="footer">
+			<van-button size="mini">购买</van-button>
+		</view>
+	</van-card>
+</view>
 
-<van-card price="10.00" desc="描述信息" title="商品标题" thumb="../../image/postphoto2.png" thumb-mode="aspectFill"
-	custom-class="goods-card" price-class="price" bindtap="viewGoods">
-	<view slot="footer">
-		<van-button size="mini">购买</van-button>
-	</view>
-</van-card>
+<van-empty image="search" description="没有搜索到商品" wx:if="{{isEmpty}}" />

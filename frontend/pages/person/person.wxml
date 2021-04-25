@@ -10,7 +10,6 @@
     </view>
 </view>
 
-
 <view class="post">
     <post-display postList="{{postList}}"></post-display>
 </view>

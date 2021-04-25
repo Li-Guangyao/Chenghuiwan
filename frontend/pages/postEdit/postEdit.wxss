@@ -1,9 +1,9 @@
-.van-field--textarea{
-	height: 900rpx;
-	background: black;
-}
 page{
-	background-color: var(--themebackgroundcolor)
+	background-color: var(--themebackgroundcolor);
+}
+
+.post-edit{
+	overflow-x: hidden;
 }
 
 .title-tip, .content-tip{

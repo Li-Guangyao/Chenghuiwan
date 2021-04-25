@@ -2,7 +2,7 @@
 
 	<!-- 待付款 -->
 	<view class="order-item" wx:if="{{item.status==0}}">
-		<van-card num="{{item.item_number}}" tag="待付款" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="待付款" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0]}}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -14,7 +14,7 @@
 
 	<!-- 待发货 -->
 	<view class="order-item" wx:if="{{item.status==1}}">
-		<van-card num="{{item.item_number}}" tag="待发货" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="待发货" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -26,7 +26,7 @@
 
 	<!-- 待收货 -->
 	<view class="order-item" wx:if="{{item.status==2}}">
-		<van-card num="{{item.item_number}}" tag="待收货" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="待收货" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -38,7 +38,7 @@
 
 	<!-- 待评价 -->
 	<view class="order-item" wx:if="{{item.status==3}}">
-		<van-card num="{{item.item_number}}" tag="待评价" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="待评价" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -49,7 +49,7 @@
 
 	<!-- 退货中 -->
 	<view class="order-item" wx:if="{{item.status==4}}" data-index="{{index}}" bindtap="clickOrder">
-		<van-card num="{{item.item_number}}" tag="退货中" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="退货中" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price">
 		</van-card>
@@ -60,7 +60,7 @@
 
 	<!-- 换货中 -->
 	<view class="order-item" wx:if="{{item.status==5}}">
-		<van-card num="{{item.item_number}}" tag="换货中" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="换货中" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -71,7 +71,7 @@
 
 	<!-- 退货完成 -->
 	<view class="order-item" wx:if="{{item.status==6}}">
-		<van-card num="{{item.item_number}}" tag="退货成功" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="退货成功" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -79,7 +79,7 @@
 
 	<!-- 换货完成 -->
 	<view class="order-item" wx:if="{{item.status==7}}">
-		<van-card num="{{item.item_number}}" tag="换货成功" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="换货成功" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -90,7 +90,7 @@
 
 	<!-- 订单完成 -->
 	<view class="order-item" wx:if="{{item.status==8}}">
-		<van-card num="{{item.item_number}}" tag="已评价" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="已评价" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
@@ -98,10 +98,12 @@
 
 	<!-- 订单作废 -->
 	<view class="order-item" wx:if="{{item.status==9}}">
-		<van-card num="{{item.item_number}}" tag="已取消" price="{{item.price_paid}}" desc="" title="{{item.goods.title}}"
+		<van-card num="{{item.item_number}}" tag="已取消" price="{{item.price_paid/100}}" desc="" title="{{item.goods.title}}"
 			thumb="{{ item.goods.display_photo[0] }}" thumb-mode="aspectFill" custom-class="order-card"
 			price-class="price" data-index="{{index}}" bindtap="clickOrder">
 		</van-card>
 	</view>
 
 </view>
+
+<van-empty image="search" description="没有相关订单" wx:if="{{isEmpty}}" />

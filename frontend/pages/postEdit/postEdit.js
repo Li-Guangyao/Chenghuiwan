@@ -13,7 +13,7 @@ Page({
 		fileList: [],
 	},
 
-	onLoad(){
+	onLoad() {
 		console.log(date())
 	},
 
@@ -50,16 +50,16 @@ Page({
 				this.setData({
 					[item]: {
 						url: fileList[i - oldArrayLength].url,
-						name: openId + '-' + Date.now() + '-' + i +'.' + imageFormat,
+						name: openId + '-' + Date.now() + '-' + i + '.' + imageFormat,
 						isImage: true,
 					}
 				})
 			}
 		}
 	},
-
+	
+	//删除点击的图片
 	removeImage(e) {
-		//删除点击的图片
 		this.data.fileList.splice(e.detail.index, 1)
 		//然后赋值回去，更新前端
 		this.setData({
@@ -106,30 +106,32 @@ Page({
 
 	},
 
-	publishPost(){
-		if(this.data.title==''){
+	publishPost() {
+		if (this.data.title == '') {
 			wx.showToast({
 				title: '标题不能为空！',
 				icon: 'none'
 			});
-		}else{
+		} else {
 			wx.showModal({
 				content: '确定要发布吗？',
-				success: async(e) => {
+				success: async (e) => {
 					if (e.confirm) {
 						// 用户点击了确定
 						var uploadedFileList = await this.uploadImage()
-						
-						db.collection('t_post').add({
-							data:{
+
+						await wx.cloud.callFunction({
+							name: 'saveNewPost',
+							data: {
 								title: this.data.title,
 								content: this.data.content,
-								created_at: date(),
-								post_photo: uploadedFileList,
-								like_amount: 0,
-								is_deleted: false,
+								createdAt: date(),
+								postPhoto: uploadedFileList,
+								likeAmount: 0,
+								isDeleted: false,
 							}
 						})
+
 						// 保存内容之后删除该页的数据
 						this.clearContentExecute()
 					} else if (e.cancel) {
@@ -161,10 +163,8 @@ Page({
 					// console.log(data)
 					//上传成功后，返回一个列表，fileID为图片的固定地址
 					var uploadedFileList = []
-					for(var i=0; i< data.length; i++){
-						uploadedFileList.push({
-							url: data[i].fileID
-						})
+					for (var i = 0; i < data.length; i++) {
+						uploadedFileList.push(data[i].fileID)
 					}
 					//把固定地址返回，保存进数据库
 					return uploadedFileList;

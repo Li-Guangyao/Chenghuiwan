@@ -24,6 +24,16 @@
     <van-icon name="arrow" />
   </view>
 
+  <!-- 用下拉列表代替商品规格选择框 -->
+  <!-- <van-collapse value="{{ activeCollapse }}" bind:change="openCollapse">
+    <van-collapse-item title="选择规格" name="1">
+      <view class="option" wx:for="{{goodsOption}}" wx:key="index">
+        <view class="option-title">{{item.name}}</view>
+        <view class="option-content" wx:for="{{item.attribute}}" wx:key="index">{{item.name}}</view>
+      </view>
+    </van-collapse-item>
+  </van-collapse> -->
+
   <navigator class="comment" url="../buyerComments/buyerComments">
     <view class="all-comment">买家评论</view>
     <van-icon name="arrow" />
@@ -42,5 +52,23 @@
   <van-goods-action-button text="立即购买" bind:click="tapBuy" />
 </van-goods-action>
 
-<van-share-sheet show="{{ showShareSheet }}" title="立即分享给好友" options="{{ shareOptions }}" bind:select="selectShareOption"
-  bind:close="closeShareSheet" bind:click-overlay="closeShareSheet"/>
+<van-share-sheet show="{{ showShareSheet }}" title="立即分享给好友" options="{{ shareOptions }}"
+  bind:select="selectShareOption" bind:close="closeShareSheet" bind:click-overlay="closeShareSheet" />
+
+<van-popup show="{{ showPopup }}" position="bottom" bind:close="closePopup" round="{{true}}" custom-style="van-popup">
+  <view class="popup-goods-info">
+    <image class="popup-image" mode="aspectFill" src="{{goods.display_photo[0]}}"></image>
+    <view class="popup-price">￥{{changedPrice}}</view>
+  </view>
+
+  <!-- 商品选项总共有两级，为l1和l2 -->
+  <view class="option" wx:for="{{goodsOption}}" wx:for-item="l1" wx:for-index="l1idx" wx:key="l1idx">
+    <view class="option-title">{{l1.name}}</view>
+    <view class="option-content {{l2.isChosen? 'isChosen': ' '}}" wx:for="{{l1.attribute}}" wx:for-item="l2" wx:for-index="l2idx" wx:key="l2idx"
+      data-l1idx="{{l1idx}}" data-l2idx="{{l2idx}}" bindtap="choseOption">{{l2.name}}</view>
+  </view>
+
+  <view class="button-area">
+  <van-button custom-class="popup-button" type="default" bindtap="tapBuy" color="#f11b27">购买</van-button>
+  </view>
+</van-popup>

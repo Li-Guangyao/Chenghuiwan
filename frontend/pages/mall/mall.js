@@ -4,7 +4,8 @@ Page({
 
     data: {
         swiperList:[],
-        goodsList:[]
+        goodsList:[],
+        keyWords: ''
     },
 
     /**
@@ -30,20 +31,6 @@ Page({
 
 	},
 
-        // wx.request({
-        //     url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
-        //     // url: 'https://www.fastmock.site/mock/6a7cf8cb5c42cda6181f1696b06383cc/test/api/public/v1/home/swiperdata',
-        //     success: (res) => {
-        //         this.setData({
-        //             swiperList: res.data.message
-        //         })
-        //         console.log(this.data.swiperList)
-        //     }
-        // })
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     onReady: function () {
         //获取全部分类列表，并保存到storage，当用户点击分类列表时，减少等待时间
         wx.cloud.callFunction({
@@ -55,9 +42,6 @@ Page({
 		})
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function () {
 
     },
@@ -97,10 +81,9 @@ Page({
 
     },
 
-    searchGoods(e){
-        console.log(e);
+    searchGoods(){
         wx.navigateTo({
-          url: '../goodsList/goodsList',
+          url: '../goodsList/goodsList?keyWords='+ this.data.keyWords,
         })
     }
 })

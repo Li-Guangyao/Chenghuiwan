@@ -7,6 +7,7 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+	var userAvatatUrl = null
 
 	if (event.isDefaultAddress == true) {
 		var openId = event.userInfo.openId

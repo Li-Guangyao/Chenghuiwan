@@ -14,13 +14,20 @@ Page({
         pagesize: 10
     },
 
-    onLoad: async function(options) {
-        // 显示加载中提示框
-        wx.showLoading({
-          title: '加载中',
+    onLoad: function(options) {
+
+        wx.cloud.callFunction({
+            name: 'getuser',
+            data: {
+                openId: this.data.userInfo._openid
+            }
+        }).then(res=>{
+            this.setData({
+                userInfo: res.res.data
+            })
         })
         
-        await wx.cloud.callFunction({
+        wx.cloud.callFunction({
             name: 'getPost'
         }).then(res=>{
             this.setData({
@@ -28,10 +35,6 @@ Page({
             })
         })
 
-        //关闭加载中提示框
-        wx.hideLoading({
-          success: (res) => {},
-        })
     },
 
     onReady: function() {

@@ -5,7 +5,8 @@ Page({
 	 */
 	data: {
 		orderType: null,
-		orderList: []
+		orderList: [],
+		isEmpty: false
 	},
 
 	onLoad: async function (e) {
@@ -23,9 +24,7 @@ Page({
 				orderType: Number(e.orderType)
 			}
 		}).then(res => {
-			console.log(res)
 			if (res.result.data) {
-				console.log(res)
 				this.setData({
 					orderList: res.result.data
 				})
@@ -37,7 +36,21 @@ Page({
 			}
 		})
 
+		this.judgeIsEmpty()
+
 		wx.hideLoading({})
+	},
+
+	judgeIsEmpty(){
+		if(this.data.orderList.length==0){
+			this.setData({
+				isEmpty: true
+			})
+		}else{
+			this.setData({
+				isEmpty: false
+			})
+		}
 	},
 
 	// 点击订单，跳转
@@ -133,6 +146,6 @@ Page({
 		wx.navigateTo({
 			url: '../commentOrder/commentOrder?order=' + order,
 		})
-	}
+	},
 
 })

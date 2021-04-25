@@ -1,35 +1,35 @@
-const db = wx.cloud.database()
-
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		post: {},
-		postPhotoList: [],
-		currentPhotoIndex:1,
+		postId: {},
+		commentList: [],
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (e) {
-		//从post-display组件中直接跳转过来，传递这个帖子的_id
-		//下次优化，可以使用JSON.parse，前端使用data-index绑定index，后端用JSON传递对象
-		db.collection('t_post').doc(e.postId).get().then(e => {
-			console.log(e)
-			let postPhotoList = e.data.post_photo.map(item => item.url)
-			this.setData({
-				post: e.data,
-				postPhotoList:postPhotoList
-			})
+	onLoad: async function (e) {
+		this.setData({
+			postId: e.postId
 		})
+
+		wx.showLoading({
+			title: '加载中',
+		})
+
+		await wx.cloud.callFunction({
+			name: 'getPost',
+			data: {
+				postId: e.postId
+			}
+		}).then(res => {
+			console.log(res)
+			// this.setData({
+			// 	post: res.result.data[0]
+			// })
+		})
+
+		wx.hideLoading()
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
 	onReady: function () {
 
 	},
@@ -76,22 +76,11 @@ Page({
 
 	},
 
-
 	previewImage(e) {
 		wx.previewImage({
-			urls: this.data.postPhotoList,
-			current: this.data.postPhotoList[e.currentTarget.dataset.index],
+			urls: this.data.post.post_photo,
+			current: this.data.post.post_photo[e.currentTarget.dataset.index],
 			showmenu: true,
-			success: (res) => {
-				console.log('预览图片chenggong')
-			},
-			fail: (res) => {
-				console.log(res)
-				console.log(this.data.postPhotoList[e.currentTarget.dataset.index])
-			},
-			complete: (res) => {
-				console.log('预览图片jieshu')
-			},
 		})
 	}
 })

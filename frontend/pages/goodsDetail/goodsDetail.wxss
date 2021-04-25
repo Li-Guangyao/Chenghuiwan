@@ -1,35 +1,35 @@
-page{
+page {
 	background-color: var(--themebackgroundcolor);
 }
 
-.page{
+.page {
 	overflow: scroll;
 }
 
-.swiper-region{
+.swiper-region {
 	height: 600rpx;
 	border-radius: 10rpx;
-	margin:0 5rpx;
+	margin: 0 5rpx;
 	background: white;
 }
 
-.swiper-region swiper{
+.swiper-region swiper {
 	height: 100%;
-	width:100%;
+	width: 100%;
 }
 
-.swiper-region swiper swiper-item{
+.swiper-region swiper swiper-item {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.swiper-region swiper swiper-item image{
-	width:100%;
+.swiper-region swiper swiper-item image {
+	width: 100%;
 	height: 100%;
 }
 
-.goods-info{
+.goods-info {
 	background: white;
 	box-shadow: rgb(200, 200, 200) 2rpx 2rpx 2rpx;
 	border-radius: 10rpx;
@@ -38,23 +38,23 @@ page{
 	display: flex;
 }
 
-.goods-info .goods-price-desc{
+.goods-info .goods-price-desc {
 	display: flex;
 	flex-direction: column;
 	flex: 5;
 }
 
-.goods-info .price{
+.goods-info .price {
 	font-size: 40rpx;
 	margin: 10rpx 20rpx 0 20rpx;
 }
 
-.goods-info .desc{
+.goods-info .desc {
 	font-size: 25rpx;
 	margin: 10rpx 20rpx 10rpx 20rpx;
 }
 
-.goods-collect{
+.goods-collect {
 	border-left: 2rpx solid rgb(220, 220, 220);
 
 	display: flex;
@@ -64,7 +64,7 @@ page{
 	justify-content: center;
 }
 
-.goods-option{
+.goods-option {
 	background: white;
 	height: 60rpx;
 	font-size: 30rpx;
@@ -76,7 +76,7 @@ page{
 	align-items: center;
 }
 
-.comment{
+.comment {
 	background: white;
 	height: 60rpx;
 	font-size: 30rpx;
@@ -88,13 +88,72 @@ page{
 	align-items: center;
 }
 
-.goods-image{
+.goods-image {
 	background-color: white;
 	margin: 5rpx 5rpx;
 	border-radius: 10rpx;
 	display: block;
 }
 
-.goods-image image{
+.goods-image image {
 	width: 100%;
+}
+
+.van-popup {
+	max-height: 1200rpx;
+	overflow: scroll;
+}
+
+.popup-goods-info {
+	display: flex;
+}
+
+.popup-goods-info .popup-image {
+	width: 150rpx;
+	height: 150rpx;
+	padding: 20rpx;
+}
+
+.popup-goods-info .popup-price {
+	font-size: 35rpx;
+	margin: 30rpx;
+}
+
+.option {
+	border-top: 2rpx rgb(107, 107, 107);
+}
+
+.option .option-title {
+	margin: 20rpx 20rpx;
+	font-size: 26rpx;
+
+	display: block;
+}
+
+.option .option-content {
+	padding: 10rpx;
+	margin: 10rpx;
+	font-size: 26rpx;
+	background-color: rgb(245, 245, 245);
+
+	display: inline;
+}
+
+.isChosen {
+	border: solid 2rpx var(--themeolor) !important;
+	background-color: rgb(155, 237, 252) !important;
+}
+
+.button-area{
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-area .popup-button{
+	width: 700rpx;
+	margin: 30rpx 0;
+	border-radius: 40rpx;
 }

@@ -1,10 +1,9 @@
-<van-search value="{{ value }}" use-left-icon-slot="{{false}}" placeholder="搜索商品" bind:search="searchGoods"/>
+<van-search model:value="{{ keyWords }}" use-left-icon-slot="{{false}}" placeholder="搜索商品" bind:search="searchGoods"/>
 
 <view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
   <swiper autoplay="true" interval="2500">
     <swiper-item wx:for="{{swiperList}}" wx:key="index">
       <navigator>
-        <!-- <image mode="widthFix" src="{{item.image_src}}"></image> -->
         <image mode="widthFix" src="{{item.url}}"></image>
       </navigator>
     </swiper-item>

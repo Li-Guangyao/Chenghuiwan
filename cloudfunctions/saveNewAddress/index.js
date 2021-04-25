@@ -7,16 +7,6 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-	// return defaultAddressExist(event)
-
-	// if (! await defaultAddressExist(event)) {
-	// 	// 如果数据库中没有其他默认地址，就设置当前的
-	// 	event.a = 2
-	// } else {}
-
-	// // event.a = 2
-
-	// return event
 
 	if (event.isDefaultAddress == true) {
 		var openId = event.userInfo.openId
