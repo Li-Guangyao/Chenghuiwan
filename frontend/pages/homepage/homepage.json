@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "post-display":"../../components/post-display/post-display"
+  },
+  "navigationBarTitleText": "个人主页"
+}

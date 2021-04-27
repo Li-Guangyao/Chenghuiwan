@@ -3,6 +3,7 @@ const db = wx.cloud.database()
 Page({
 
     data: {
+        // 在my页面，必定会储存userInfo，因为需要授权
         userInfo: wx.getStorageSync('userInfo'),
         postList: []
     },
@@ -14,21 +15,12 @@ Page({
         pagesize: 10
     },
 
-    onLoad: function(options) {
-
-        wx.cloud.callFunction({
-            name: 'getuser',
-            data: {
-                openId: this.data.userInfo._openid
-            }
-        }).then(res=>{
-            this.setData({
-                userInfo: res.res.data
-            })
-        })
+    onLoad: function(e) {
         
+        // 不指定data，说明获取自己的帖子
         wx.cloud.callFunction({
-            name: 'getPost'
+            name: 'getPost',
+            data:{}
         }).then(res=>{
             this.setData({
                 postList: res.result.data

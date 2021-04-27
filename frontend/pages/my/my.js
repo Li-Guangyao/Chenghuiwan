@@ -12,16 +12,9 @@ Page({
             status1: null,
             status2: null,
             status3: null,
-            status15: null
         },
-        test: {
-            1: 33
-        }
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         //     wx.getSetting({
         //         success: (res) => {
@@ -129,16 +122,10 @@ Page({
 
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     onReady: function () {
 
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function () {
         // var userInfo = wx.getStorageSync('userInfo')
         // this.setData({
@@ -147,13 +134,6 @@ Page({
 
         //每次载入刷新
         this.getOrderNum()
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
     },
 
     tapOrders(e) {

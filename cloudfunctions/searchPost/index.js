@@ -5,17 +5,17 @@ cloud.init()
 const db = cloud.database()
 const _ = db.command
 
-// 查询商品，模糊匹配
+// 查询帖子，模糊匹配
 exports.main = async (event, context) => {
-	var keyWords = event.keyWords
+	var keyWords = event.searchKeyWords
 
-	return db.collection('t_goods').where(_.or([{
+	return db.collection('t_post').where(_.or([{
 		title: db.RegExp({
 			regexp: '.*' + keyWords,
 			options: 'i',
 		})
 	}, {
-		detail: db.RegExp({
+		content: db.RegExp({
 			regexp: '.*' + keyWords,
 			options: 'i',
 		})

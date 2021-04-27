@@ -1,0 +1,101 @@
+page {
+	background-color: var(--themebackgroundcolor);
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.person {
+	height: 330rpx;
+	background: #ffffff;
+	border-radius: 30rpx;
+	margin-bottom: 20rpx;
+	overflow-x: hidden;
+}
+
+.profile {
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.profile-photo {
+	height: 160rpx;
+	width: 160rpx;
+	border-radius: 80rpx;
+	margin: 20rpx 35rpx;
+}
+
+.user-info {
+	margin: 0 330rpx 0 0;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.user-name {
+	font-size: 45rpx;
+	margin: 20rpx 15rpx;
+}
+
+.gender-img {
+	height: 25rpx;
+	width: 25rpx;
+}
+
+.user-introduction {
+	font-size: 25rpx;
+	margin: 20rpx 15rpx;
+}
+
+.fan-info {
+	display: flex;
+	flex-direction: row;
+}
+
+.fan-info .fan-item{
+	margin: 10rpx 5rpx;
+
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.fan-info .number {
+	font-size: 30rpx;
+	width: 100%;
+
+	text-align: center;
+}
+
+.fan-info .tip {
+	font-size: 20rpx;
+	width: 100%;
+
+	text-align: center;
+
+}
+
+.fan-info .fan-btn{
+	display: flex;
+	flex: 5;
+}
+
+.fan-info .fan-btn .follow-btn{
+	background-color: rgb(248, 96, 134);
+	border-radius: 20rpx;
+	width: 50%;
+}
+
+.fan-info .fan-btn .follow-btn-ed{
+	background-color: rgb(161, 161, 161);
+	border-radius: 20rpx;
+	width: 50%;
+}
+
+.post {
+	overflow-x: hidden;
+}

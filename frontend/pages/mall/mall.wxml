@@ -11,37 +11,37 @@
 </view>
 
 <view class="goods-cate">
-  <navigator>
+  <navigator url="../goodsList/goodsList?keyWords=数码">
     <image mode="widthFix" src="../../image/digit.png"></image>
     <text>数码</text>
   </navigator>
-  <navigator>
+  <navigator url="../goodsList/goodsList?keyWords=ACG">
     <image mode="widthFix" src="../../image/acg.png"></image>
     <text>ACG</text>
   </navigator>
-  <navigator>
+  <navigator url="../goodsList/goodsList?keyWords=玩具">
     <image mode="widthFix" src="../../image/toy.png"></image>
     <text>玩具</text>
   </navigator>
-  <navigator>
+  <navigator url="../goodsList/goodsList?keyWords=美术">
     <image mode="widthFix" src="../../image/art.png"></image>
     <text>美术</text>
   </navigator>
 </view>
 
 <view class="goods-cate">
-  <navigator>
+  <navigator url="../goodsList/goodsList?keyWords=音乐">
     <image mode="widthFix" src="../../image/music.png"></image>
     <text>音乐</text>
   </navigator>
-  <navigator>
+  <navigator url="../goodsList/goodsList?keyWords=模型">
     <image mode="widthFix" src="../../image/model.png"></image>
     <text>模型</text>
   </navigator>
-  <navigator>
+  <navigator url="../goodsList/goodsList?keyWords=生活">
     <image mode="widthFix" src="../../image/lives.png"></image>
     <text>生活</text>
-  </navigator>
+  </navigator >
   <navigator url="../goodsCate/goodsCate">
     <image mode="widthFix" src="../../image/others.png"></image>
     <text>全部</text>

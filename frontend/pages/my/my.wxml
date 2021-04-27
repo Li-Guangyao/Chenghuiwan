@@ -1,4 +1,4 @@
-<navigator class="profile" url="/pages/person/person">
+<navigator class="profile" url="/pages/myPage/myPage">
 	<image class="profile-photo" src="{{userInfo.avatarUrl}}"></image>
 	<!-- <text class="user-name">{{userInfo.nickName}}</text> -->
 	<view class="user-info">
@@ -30,7 +30,7 @@
 		<van-grid-item icon="goods-collect-o" text="收货地址" url="/pages/addressList/addressList" link-type="navigateTo" />
 		<van-grid-item icon="service-o" text="客服" url="/pages/customerService/customerService" link-type="navigateTo" />
 		<van-grid-item icon="setting-o" text="设置" url="/pages/setting/setting" link-type="navigateTo" />
-		<van-grid-item icon="refund-o" link-type="navigateTo" info="{{orderNum.status15}}" text="退款售后" url="../orders/orders?orderType=15" />
+		<van-grid-item icon="refund-o" link-type="navigateTo" text="退款售后" url="../orders/orders?orderType=15" />
 	</van-grid>
 </view>
 

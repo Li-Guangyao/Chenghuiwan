@@ -3,12 +3,15 @@
   <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
 </van-dropdown-menu> -->
 
-
-<view>{{searchKeyWords}}</view>
-<view>
+<!-- <view> -->
 	<!-- <navigator wx:for="{{goodsList}}" wx:key="goodsId"> -->
-	<navigator wx:for="{{goodsList}}" wx:key="goodsId">
+	<!-- <navigator wx:for="{{goodsList}}" wx:key="goodsId">
 		<van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" />
 	</navigator>
-</view>
+</view> -->
+
+<post-display postList="{{postList}}"></post-display>
+
+
+<van-empty image="search" description="没有搜索到内容" wx:if="{{isEmpty}}" />
 

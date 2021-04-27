@@ -1,0 +1,39 @@
+<view class="person">
+	<view class="profile">
+		<image class="profile-photo" src="{{userInfo.avatarUrl}}"></image>
+		<view class="user-info">
+			<view>
+				<text class="user-name">{{userInfo.nickname}}</text>
+				<image wx:if="{{userInfo.gender==1}}" mode="widthFix" class="gender-img" src="../../image/male.png">
+				</image>
+				<image wx:if="{{userInfo.gender==0}}" mode="widthFix" class="gender-img" src="../../image/remale.png">
+				</image>
+			</view>
+			<text class="user-introduction">啦啦啦啦啦啦</text>
+		</view>
+	</view>
+
+	<view class="fan-info">
+		<view class="fan-item" bindtap="viewFollowed">
+			<view class="number">45</view>
+			<view class="tip">关注</view>
+		</view>
+		<view class="fan-item" bindtap="viewFan">
+			<view class="number">35</view>
+			<view class="tip">粉丝</view>
+		</view>
+		<view class="fan-item">
+			<view class="number">20</view>
+			<view class="tip">获赞/收藏</view>
+		</view>
+		<view class="fan-btn">
+			<button class="follow-btn" bindtap="followBtn" wx:if="{{isFollowed==false}}">关注</button>
+			<button class="follow-btn-ed" bindtap="followBtn" wx:if="{{isFollowed==true}}">已关注</button>
+		</view>
+
+	</view>
+</view>
+
+<view class="post">
+	<post-display postList="{{postList}}"></post-display>
+</view>

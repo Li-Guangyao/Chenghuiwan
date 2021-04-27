@@ -6,7 +6,7 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-	return await db.collection('t_goods').get().then(res=>{
+	return db.collection('t_goods').get().then(res=>{
 		return res.data
 	})
 }

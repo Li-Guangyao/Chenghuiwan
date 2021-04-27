@@ -1,9 +1,5 @@
-// pages/searchResult/searchResult.js
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		option1: [
 		  { text: '全部商品', value: 0 },
@@ -18,18 +14,46 @@ Page({
 		value1: 0,
 		value2: 'a',
 		searchKeyWords:'',
+		isEmpty: false
 	  },
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (e) {
+
+	onLoad: async function (e) {
 		this.setData({
 			searchKeyWords:e.searchKeyWords
 		})
-		console.log(e)
-		console.log(e.searchKeyWords)
-		console.log(this.data.searchKeyWords)
+
+		wx.showLoading({
+			title: '搜索中',
+		})
+		
+		await wx.cloud.callFunction({
+			name: 'searchPost',
+			data:{
+				searchKeyWords: e.searchKeyWords
+			}
+		}).then(res=>{
+			this.setData({
+				postList: res.result.data
+			})
+		})
+
+		this.judgeIsEmpty()
+
+		wx.hideLoading({})
+		
+	},
+
+	judgeIsEmpty(){
+		if(this.data.postList.length==0){
+			this.setData({
+				isEmpty: true
+			})
+		}else{
+			this.setData({
+				isEmpty: false
+			})
+		}
 	},
 
 	/**

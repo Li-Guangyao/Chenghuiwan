@@ -1,38 +1,37 @@
 <view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
-  <swiper autoplay="{{false}}">
-    <swiper-item wx:for="{{post.post_photo}}" wx:key="index">
-      <image class="post-image" mode="aspectFill" src="{{item}}" data-index="{{index}}" bindtap="previewImage" />
-    </swiper-item>
-  </swiper>
+    <swiper autoplay="{{false}}">
+        <swiper-item wx:for="{{post.post_photo}}" wx:key="index">
+            <image class="post-image" mode="aspectFill" src="{{item}}" data-index="{{index}}" bindtap="previewImage" />
+        </swiper-item>
+    </swiper>
 </view>
 
 <view class="post">
-  <view class="post-text">
-    <rich-text class="post-title">{{post.title}}</rich-text>
-    <rich-text class="post-content">{{post.content}}</rich-text>
-  </view>
+    <view class="post-text">
+        <rich-text class="post-title">{{post.title}}</rich-text>
+        <rich-text class="post-content" nodes="{{post.content}}"></rich-text>
+    </view>
 
-  <view class="user-info">
-    <navigator url="../person/person?userId=">
-      <image class="avatar" mode="aspectFill" src="{{post.user_avatar_url}}"></image>
-    </navigator>
-    <view class="nickname">{{post.user_nickname}}</view>
-    <view class="pub-time">{{post.created_at}}</view>
-  </view>
-  
+    <view class="user-info">
+        <image class="avatar" mode="aspectFill" src="{{post.user_avatar_url}}" bindtap="toHomepage"></image>
+        <view class="nickname" bindtap="toHomepage">{{post.user_nickname}}</view>
+        <view class="pub-time">{{post.created_at}}</view>
+    </view>
+
 </view>
 
-<view class="comment">
-  <view class="user-info">
-    <image class="avatar" mode="aspectFill" src="../../image/postavatar.png"></image>
-    <view class="nickname">评论者昵称</view>
-  </view>
-  <view class="comment-content">用户评论</view>
+<view class="comment" wx:for="{{commentList}}" wx:key="index">
+    <view class="user-info">
+        <image class="avatar" mode="aspectFill" src="{{item.user_avatar_url}}"></image>
+        <view class="nickname">{{item.user_nickname}}</view>
+    </view>
+    <rich-text class="comment-content" nodes="{{item.content}}"></rich-text>
 </view>
 
 
 <view class="fixed-region">
-  <text class="iconfont icon-like">点赞</text>
-  <text class="iconfont icon-collect">收藏</text>
-  <textarea class="input-comment" placeholder="说点什么吧！" placeholder-style="text-align:center" auto-height="true" />
+    <text class="iconfont icon-like" bindtap="tapLike" wx:if="{{!isLiked}}"></text>
+    <text class="iconfont icon-liked" bindtap="tapLike" wx:if="{{isLiked}}"></text>
+    <editor class="input-comment" model:value="{{commentContent}}" placeholder="说点什么吧！" placeholder-style="text-align:center" bindinput="commentInput" auto-height="{{true}}" maxlength="-1" />
+    <van-icon name="success" custom-class="publishBtn" bindtap="publishComment" size="50rpx" />
 </view>

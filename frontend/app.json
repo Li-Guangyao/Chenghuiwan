@@ -14,10 +14,12 @@
 		"pages/commentOrder/commentOrder",
 		"pages/customerService/customerService",
 		"pages/fanList/fanList",
+		"pages/followedList/followedList",
 		"pages/goodsCate/goodsCate",
 		"pages/goodsDetail/goodsDetail",
 		"pages/goodsList/goodsList",
 		"pages/goodsRank/goodsRank",
+		"pages/homepage/homepage",
 		"pages/orderDetail/orderDetail",
 		"pages/orderGenerate/orderGenerate",
 		"pages/orders/orders",
@@ -32,7 +34,7 @@
 		"pages/privacyAgreement/privacyAgreement",
 		"pages/businessLicense/businessLicense",
 		"pages/feedback/feedback",
-		"pages/person/person",
+		"pages/myPage/myPage",
 		"pages/authorize/authorize",
 		"pages/postLocation/postLocation",
 		"pages/topic/topic",
@@ -52,8 +54,7 @@
 		"backgroundColor": "#FFF",
 		"position": "bottom",
 		"borderStyle": "black",
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/index/index",
 				"text": "首页",
 				"iconPath": "icon/index.png",
@@ -90,7 +91,7 @@
 	},
 	"permission": {
 		"scope.userLocation": {
-		  "desc": "你的位置信息只用于发布帖子，不做其他用途"
+			"desc": "你的位置信息只用于发布帖子，不做其他用途"
 		}
 	}
 }

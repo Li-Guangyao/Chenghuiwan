@@ -25,7 +25,7 @@ Page({
 
 	contentInput(e) {
 		this.setData({
-			content: e.detail.text
+			content: e.detail.html
 		})
 	},
 
@@ -57,7 +57,7 @@ Page({
 			}
 		}
 	},
-	
+
 	//删除点击的图片
 	removeImage(e) {
 		this.data.fileList.splice(e.detail.index, 1)

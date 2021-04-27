@@ -2,22 +2,25 @@ Page({
 
 	data: {
 		openId: null,
-		fanList: []
+		followedList: []
 	},
 
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
 	onLoad: function (e) {
 		this.setData({
 			openId: e.openId
 		})
 
 		wx.cloud.callFunction({
-			name: 'getFan',
+			name: 'getFollowed',
 			data: {
 				openId: e.openId
 			}
 		}).then(res=>{
 			this.setData({
-				fanList: res.result
+				followedList: res.result
 			})
 		})
 	},
@@ -30,9 +33,6 @@ Page({
 
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
 	onHide: function () {
 
 	},
