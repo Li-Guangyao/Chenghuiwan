@@ -1,23 +1,28 @@
-// pages/buyerComments/buyerComments.js
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
+		goodsId: null,
+		goodsCommentList: []
+	},
+
+	onLoad: function (e) {
+		this.setData({
+			goodsId : e.goodsId
+		})
+
+		wx.cloud.callFunction({
+			name: 'getGoodsComment',
+			data:{
+				goodsId: e.goodsId
+			}
+		}).then(res=>{
+			this.setData({
+				goodsCommentList: res.result
+			})
+		})
 
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (options) {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
 	onReady: function () {
 
 	},

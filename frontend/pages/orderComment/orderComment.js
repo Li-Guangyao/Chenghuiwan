@@ -23,7 +23,7 @@ Page({
 
 	contentInput(e) {
 		this.setData({
-			content: e.detail.text
+			content: e.detail.html
 		})
 	},
 
@@ -82,6 +82,7 @@ Page({
 							name: 'saveOrderComment',
 							data: {
 								orderId: this.data.order._id,
+								goodsId: this.data.order.goods._id,
 								content:this.data.content,
 								// 晒单照片
 								fileList: uploadedFileList,
@@ -89,7 +90,7 @@ Page({
 								descRate: this.data.descRate,
 								expressRate: this.data.expressRate,
 								serviceRate: this.data.serviceRate,
-								createdDate: date()
+								createdAt: date()
 							}
 						}).then(res=>{
 							wx.showToast({

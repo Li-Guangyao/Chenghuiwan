@@ -1,0 +1,45 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.user-info {
+	width: 100%;
+	
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.user-info .avatar {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    margin: 10rpx 0 10rpx 30rpx;
+}
+
+.user-info .nickname {
+    color: rgb(51, 51, 51);
+    font-size: 30rpx;
+    margin: 10rpx 0 10rpx 30rpx;
+}
+
+.comment {
+    background: white;
+    margin: 5rpx 10rpx;
+    padding: 0rpx 10rpx;
+    border-radius: 10rpx;
+	font-size: 30rpx;
+	
+    display: flex;
+    flex-direction: column;
+}
+
+.comment .comment-content {
+    font-size: 25rpx;
+	margin: 10rpx 10rpx;
+
+	display:flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+}

@@ -34,7 +34,7 @@
     </van-collapse-item>
   </van-collapse> -->
 
-  <navigator class="comment" url="../buyerComments/buyerComments">
+  <navigator class="comment" url="../goodsComment/goodsComment?goodsId={{goodsId}}">
     <view class="all-comment">买家评论</view>
     <van-icon name="arrow" />
   </navigator>

@@ -79,10 +79,40 @@ Page({
 		// 	})
 		// })
 
-		wx.chooseAddress({
-		  success: (res) => {
-			  console.log(res)
-		  },
+		// wx.chooseAddress({
+		//   success: (res) => {
+		// 	  console.log(res)
+		//   },
+		// })
+
+		wx.chooseLocation({
+			success(res){
+				console.log(res)
+			}
 		})
+
+		// wx.getLocation({
+		//   altitude: true,
+		//   type: 'gcj02',
+		//   success(res){
+		// 	const latitude = res.latitude
+		// 	const longitude = res.longitude
+		// 	wx.chooseAddress({
+		// 		latitude,
+		// 		longitude,
+		// 		success: (res) => {
+		// 			console.log(res)
+		// 		},
+		// 	  })
+		//   }
+		// })
+
+		// wx.choosePoi({
+		// 	success(res){
+		// 		console.log(res)
+		// 	}
+		// })
+
+
 	}
 })

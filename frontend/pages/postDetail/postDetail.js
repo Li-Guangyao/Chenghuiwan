@@ -9,7 +9,9 @@ Page({
 		commentContent: null,
 
 		isLiked: false,
-		originIsLiked: false
+		originIsLiked: false,
+
+		pageHeight: null
 	},
 
 	onLoad: async function (e) {
@@ -19,6 +21,16 @@ Page({
 
 		wx.showLoading({
 			title: '加载中',
+		})
+
+		//根据底部下单区域的高矮，来初始化页面的大小
+		var query = wx.createSelectorQuery()
+		query.select('.input-comment').boundingClientRect()
+		query.exec(res => {
+			console.log(res)
+			this.setData({
+				pageHeight: res[0].top
+			})
 		})
 
 		await wx.cloud.callFunction({

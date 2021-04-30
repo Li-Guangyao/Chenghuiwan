@@ -1,8 +1,5 @@
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
         tabbar: [
             {
@@ -18,41 +15,38 @@ Page({
         ],
         chosenTabIndex: 0,
         swiperHeight: 0,
+
+        followedPostList:[],
+        localPostList:[]
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         wx.getSystemInfo({
             success: (res) => {
-                console.log(res.windowHeight)
-                console.log(res.statusBarHeight)
                 this.setData({
                     swiperHeight: res.windowHeight
                 })
             }
         })
 
+        wx.cloud.callFunction({
+            name: 'getFollowedPost'
+        }).then(res=>{
+            this.setData({
+                followedPostList: res.result.followedPostList
+            })
+        })
+
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     onReady: function () {
 
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function () {
 
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
     onHide: function () {
 
     },

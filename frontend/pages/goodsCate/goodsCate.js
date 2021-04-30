@@ -5,6 +5,7 @@ Page({
 	data: {
 		firstLevelCate: wx.getStorageSync('firstLevelCate'),
 		secondLevelCate: [],
+		
 		goodsCateTrans: wx.getStorageSync('goodsCateTrans'),
 		currentIndex: 0,
 		currentCateName: ''

@@ -1,2 +1,4 @@
-<!--pages/followedList/followedList.wxml-->
-<text>pages/followedList/followedList.wxml</text>
+<view class="list" wx:for="{{followedList}}" wx:key="index">
+	<image class="avatar" src="{{item.avatarUrl}}"></image>
+	<view class="nickname">{{item.nickname}}</view>
+</view>

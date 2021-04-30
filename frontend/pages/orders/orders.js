@@ -144,7 +144,7 @@ Page({
 	toComment(e) {
 		var order = JSON.stringify(this.data.orderList[e.currentTarget.dataset.index])
 		wx.navigateTo({
-			url: '../commentOrder/commentOrder?order=' + order,
+			url: '../orderComment/orderComment?order=' + order,
 		})
 	},
 

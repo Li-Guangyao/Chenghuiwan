@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
 		foreignField: '_openid',
 		as: 'fanList',
 	}).end().then(res => {
-		fanList = res.list
+		fanList = res.list[0]
 	}).catch(err => {})
 
 	return fanList

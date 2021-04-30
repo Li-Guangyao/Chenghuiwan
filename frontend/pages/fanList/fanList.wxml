@@ -1,2 +1,4 @@
-<!--pages/fanList/fanList.wxml-->
-<text>pages/fanList/fanList.wxml</text>
+<view class="list" wx:for="{{fanList}}" wx:key="index">
+	<image class="avatar" src="{{item.avatarUrl}}"></image>
+	<view class="nickname">{{item.nickname}}</view>
+</view>

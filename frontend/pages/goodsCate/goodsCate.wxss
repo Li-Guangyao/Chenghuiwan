@@ -1,7 +1,32 @@
+page{
+	background-color: var(--themebackgroundcolor);
+}
+
+.cates-container{
+	display: flex;
+}
+
 .left-menu{
-	width: 200rpx !important;
+	background-color: white !important;
+
+	display: flex;
+	flex: 2 !important;
+}
+
+.left-menu .left-content{
+	background-color: white !important;
 }
 
 .right-menu{
 	width: 500rpx;
+	flex: 3;
 }
+
+.right-menu .right-content{
+	background-color: white;
+	border-bottom: rgb(231, 231, 231) 2rpx solid;
+	border-top:  rgb(231, 231, 231) 2rpx solid;
+	font-size: 30rpx;
+	padding: 10rpx 10rpx; 
+}
+

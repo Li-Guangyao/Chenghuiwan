@@ -5,9 +5,6 @@ Page({
 		followedList: []
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
 	onLoad: function (e) {
 		this.setData({
 			openId: e.openId
@@ -20,7 +17,7 @@ Page({
 			}
 		}).then(res=>{
 			this.setData({
-				followedList: res.result
+				followedList: res.result.followedList
 			})
 		})
 	},

@@ -1,1 +1,24 @@
-/* pages/followedList/followedList.wxss */
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.list {
+	background-color: white;
+	border-top:2rpx solid rgb(240, 240, 240);
+	border-bottom:2rpx solid rgb(240, 240, 240);
+
+	display: flex;
+	align-items: center;
+}
+
+.list .avatar {
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	margin: 20rpx;
+}
+
+.list .nickname {
+	font-size: 30rpx;
+	margin: 0 30rpx;
+}

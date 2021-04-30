@@ -1,0 +1,8 @@
+<view class="comment" wx:for="{{goodsCommentList}}" wx:key="index">
+	<view class="user-info">
+		<image class="avatar" mode="aspectFill" src="{{item.user_avatar_url}}"></image>
+		<view class="nickname">{{item.user_nickname}}</view>
+		<view class="pub-time">{{item.created_at}}</view>
+	</view>
+	<rich-text class="comment-content" nodes="{{item.content}}"></rich-text>
+</view>

@@ -1,37 +1,42 @@
-<view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
+<view class="page" style="height: {{pageHeight? pageHeight+'px': 'auto'}}">
+
+  <view class="swiper-region" hover-class="none" hover-stop-propagation="{{false}}">
     <swiper autoplay="{{false}}">
-        <swiper-item wx:for="{{post.post_photo}}" wx:key="index">
-            <image class="post-image" mode="aspectFill" src="{{item}}" data-index="{{index}}" bindtap="previewImage" />
-        </swiper-item>
+      <swiper-item wx:for="{{post.post_photo}}" wx:key="index">
+        <image class="post-image" mode="aspectFill" src="{{item}}" data-index="{{index}}" bindtap="previewImage" />
+      </swiper-item>
     </swiper>
-</view>
+  </view>
 
-<view class="post">
+  <view class="post">
     <view class="post-text">
-        <rich-text class="post-title">{{post.title}}</rich-text>
-        <rich-text class="post-content" nodes="{{post.content}}"></rich-text>
+      <rich-text class="post-title">{{post.title}}</rich-text>
+      <rich-text class="post-content" nodes="{{post.content}}"></rich-text>
     </view>
 
     <view class="user-info">
-        <image class="avatar" mode="aspectFill" src="{{post.user_avatar_url}}" bindtap="toHomepage"></image>
-        <view class="nickname" bindtap="toHomepage">{{post.user_nickname}}</view>
-        <view class="pub-time">{{post.created_at}}</view>
+      <image class="avatar" mode="aspectFill" src="{{post.user_avatar_url}}" bindtap="toHomepage"></image>
+      <view class="nickname" bindtap="toHomepage">{{post.user_nickname}}</view>
+      <view class="pub-time">{{post.created_at}}</view>
     </view>
+  </view>
 
-</view>
-
-<view class="comment" wx:for="{{commentList}}" wx:key="index">
+  <view class="comment" wx:for="{{commentList}}" wx:key="index">
     <view class="user-info">
-        <image class="avatar" mode="aspectFill" src="{{item.user_avatar_url}}"></image>
-        <view class="nickname">{{item.user_nickname}}</view>
+      <image class="avatar" mode="aspectFill" src="{{item.user_avatar_url}}"></image>
+      <view class="nickname">{{item.user_nickname}}</view>
+      <view class="pub-time">{{item.created_at}}</view>
     </view>
     <rich-text class="comment-content" nodes="{{item.content}}"></rich-text>
+  </view>
+
 </view>
 
 
 <view class="fixed-region">
-    <text class="iconfont icon-like" bindtap="tapLike" wx:if="{{!isLiked}}"></text>
-    <text class="iconfont icon-liked" bindtap="tapLike" wx:if="{{isLiked}}"></text>
-    <editor class="input-comment" model:value="{{commentContent}}" placeholder="说点什么吧！" placeholder-style="text-align:center" bindinput="commentInput" auto-height="{{true}}" maxlength="-1" />
-    <van-icon name="success" custom-class="publishBtn" bindtap="publishComment" size="50rpx" />
+  <text class="iconfont icon-like" bindtap="tapLike" wx:if="{{!isLiked}}"></text>
+  <text class="iconfont icon-liked" bindtap="tapLike" wx:if="{{isLiked}}"></text>
+  <editor class="input-comment" model:value="{{commentContent}}" placeholder="说点什么吧！"
+    placeholder-style="text-align:center" bindinput="commentInput" auto-height="{{true}}" maxlength="-1" />
+  <van-icon name="success" custom-class="publishBtn" bindtap="publishComment" size="50rpx" />
 </view>

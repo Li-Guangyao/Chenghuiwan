@@ -17,7 +17,7 @@ Page({
 			}
 		}).then(res=>{
 			this.setData({
-				fanList: res.result
+				fanList: res.result.fanList
 			})
 		})
 	},

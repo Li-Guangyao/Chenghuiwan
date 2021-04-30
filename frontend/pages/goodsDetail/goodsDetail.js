@@ -2,8 +2,8 @@ const db = wx.cloud.database()
 Page({
 
 	data: {
-		goods: {},
 		goodsId: null,
+		goods: {},
 
 		isCollected: false,
 		originIsCollected: false,
@@ -87,7 +87,7 @@ Page({
 		// })
 	},
 
-	initPageContent() {
+	async initPageContent() {
 		wx.showLoading({
 			title: '获取商品中',
 		})
@@ -102,7 +102,7 @@ Page({
 		})
 
 		//返回一个商品的基本信息，这个商品的购买选项，和用户是否收藏这个商品，以及买家的评论
-		wx.cloud.callFunction({
+		await wx.cloud.callFunction({
 			name: 'getGoods',
 			data: {
 				goodsId: this.data.goodsId

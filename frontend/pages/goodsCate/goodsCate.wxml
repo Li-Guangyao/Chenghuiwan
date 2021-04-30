@@ -3,7 +3,6 @@
 
 <view class="cates">
 	<view class="cates-container">
-
 		<!-- <scroll-view scroll-y="{{true}}" class="left-menu">
 			<view class="left_menu {{index===currentindex?'active':''}}" wx:for="{{firstLevelCate}}" wx:key="index"
 				bindtap="handleCateChange" data-index="{{index}}">
@@ -12,11 +11,11 @@
 		</scroll-view> -->
 
 		<van-sidebar active-key="{{ activeKey }}" bind:change="handleCateChange" custom-style="left-menu">
-			<van-sidebar-item title="{{item}}" wx:for="{{firstLevelCate}}" wx:key="index" />
+			<van-sidebar-item title="{{item}}" wx:for="{{firstLevelCate}}" wx:key="index" custom-class="left-content"/>
 		</van-sidebar>
 
 		<scroll-view scroll-top="{{scrolltop}}" scroll-y="{{true}}" class="right-menu">
-			<navigator class="right-content" wx:for="{{secondLevelCate}}" wx:key="index">
+			<navigator class="right-content" wx:for="{{secondLevelCate}}" wx:key="index" url="../goodsList/goodsList?keyWords={{secondLevelCate[index]}}">
 				{{item}}
 			</navigator>
 		</scroll-view>

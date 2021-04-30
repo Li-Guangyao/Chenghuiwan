@@ -4,21 +4,21 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
 
-// 查找关注的人
+// 查找已关注的人的动态
 exports.main = async (event, context) => {
 	var openId = event.openId
-	var followedList = []
+	var followedPostList = []
 
 	await db.collection('t_fan').aggregate().match({
 		fan_openid: openId
 	}).lookup({
-		from: 't_user',
+		from: 't_post',
 		localField: 'followed_openid',
 		foreignField: '_openid',
-		as: 'followedList',
+		as: 'followedPostList',
 	}).end().then(res => {
-		followedList = res.list[0]
+		followedPostList = res.list[0]
 	}).catch(err => {})
 
-	return followedList
+	return followedPostList
 }
