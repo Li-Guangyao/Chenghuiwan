@@ -5,18 +5,16 @@ Page({
     data: {
         // 在my页面，必定会储存userInfo，因为需要授权
         userInfo: wx.getStorageSync('userInfo'),
-        postList: []
+        postList: [],
+        inputIntroFocused: false
     },
 
     queryParams: {
-        query: "",
-        cid: "",
-        pagenum: 1,
-        pagesize: 10
+        pagenum: 0,
+        pagesize: 20
     },
 
-    onLoad: function(e) {
-        
+    onLoad: function(e) { 
         // 不指定data，说明获取自己的帖子
         wx.cloud.callFunction({
             name: 'getPost',
@@ -26,7 +24,6 @@ Page({
                 postList: res.result.data
             })
         })
-
     },
 
     onReady: function() {
@@ -74,5 +71,20 @@ Page({
 
     chosePost: function(e) {
         console.log(e)
+    },
+
+    // 点击了自我介绍
+    tapIntro(){
+        this.setData({
+            inputIntroFocused: ! this.data.inputIntroFocused
+        })
+    },
+
+    inputIntro(e){
+        var item = 'userInfo.introduction'
+        console.log(e)
+        this.setData({
+            [item]: e.detail.value
+        })
     }
 })

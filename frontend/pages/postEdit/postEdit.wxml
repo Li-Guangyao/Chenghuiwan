@@ -1,32 +1,38 @@
 <view class="post-edit">
 	<view class="input-region">
-		<view class="title-tip">标题</view>
-		<input class="title-input" model:value="{{title}}" focus="true" bindinput="titleInput"></input>
-		<view class="content-tip">添加正文</view>
-		<editor class="content-input" model:value="{{content}}" bindinput="contentInput" bindready="onEditorReady">
-		</editor>
+		<input class="title-input" model:value="{{title}}" focus="true" placeholder="输入标题~"></input>
+		<textarea class="content-input" value="{{content}}" placeholder="输入正文~" auto-height="{{true}}"
+			bindinput="contentInput" bindready="onEditorReady">
+		</textarea>
 	</view>
 
 	<view class="location-topic">
-		<navigator id="add-location" url="../../pages/postLocation/postLocation">
+		<view class="add-location" wx:if="{{!location}}" bindtap="getLocation">
 			<van-icon name="location-o" />
 			<text>添加地点</text>
 			<van-icon class="location" name="arrow" />
-		</navigator>
+		</view>
 
-		<navigator id="add-topic" url="../../pages/topic/topic">
+		<view class="show-location" wx:if="{{location}}">
+			<van-icon name="location-o" />
+			<view class="location-name">{{location.name}}</view>
+			<van-icon class="location-delete" name="cross" bindtap="removeLocation" />
+		</view>
+
+		<!-- 该功能暂不启用 -->
+		<!-- <navigator id="add-topic" url="../../pages/topic/topic">
 			<text># 添加话题</text>
 			<van-icon class="topic" name="arrow" />
-		</navigator>
+		</navigator> -->
 	</view>
 
 	<view class="upload-photo">
 		<van-uploader file-list="{{fileList}}" accept="image" bind:after-read="chosenImage" bind:delete="removeImage"
-			multiple preview-size="235rpx" image-fit="aspectFill" preview-image="true" max-count="9" />
+			multiple preview-size="221rpx" image-fit="aspectFill" preview-image="true" max-count="9" />
 	</view>
 </view>
 
-<view class="buttons">
-	<van-button custom-class="clearContent" bindtap="clearContent">清空内容</van-button>
-	<van-button custom-class="publishPost" bindtap="publishPost">发布笔记</van-button>
+<view class="fixed-region">
+	<van-button custom-class="clear-btn" bindtap="clearContent">清空内容</van-button>
+	<van-button custom-class="pub-btn" bindtap="publishPost">发布帖子</van-button>
 </view>

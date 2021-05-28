@@ -1,10 +1,39 @@
-.swiper_region {
-  swiper {
-    width: 750 rpx;
-    height: 340 rpx;
+page {
+  background-color: var(--themebackgroundcolor);
+}
 
-    image {
-      width: 750 rpx;
-    }
+.tab-region {
+  white-space: nowrap;
+  box-sizing: border-box;
+  z-index: 100;
+  top: 100rpx;
+  margin: 5rpx 0;
+
+  .tab-item {
+    width: 150rpx;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 40rpx;
   }
+  
+  .tab-region .chosen-tab {
+    color: var(--themecolor)
+  }
+}
+
+
+.swiper-item {
+  overflow: scroll;
+  /* display: flex; */
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+/* .slide-view{ */
+  /* column-count: 2; */
+/* } */
+
+post-display{
+  flex:1;
 }

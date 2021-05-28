@@ -101,6 +101,10 @@ Page({
 			})
 		})
 
+		wx.getSystemInfo({
+		  success: (result) => {console.log(result)},
+		})
+
 		//返回一个商品的基本信息，这个商品的购买选项，和用户是否收藏这个商品，以及买家的评论
 		await wx.cloud.callFunction({
 			name: 'getGoods',
@@ -108,6 +112,7 @@ Page({
 				goodsId: this.data.goodsId
 			}
 		}).then(res => {
+			console.log(res)
 			this.setData({
 				goods: res.result.goods,
 				isCollected: res.result.isCollected,

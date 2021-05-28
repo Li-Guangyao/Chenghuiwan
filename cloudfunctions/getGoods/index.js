@@ -25,14 +25,17 @@ exports.main = async (event, context) => {
 	var openId = event.userInfo.openId
 	var goodsId = event.goodsId
 	var isCollected = false
+
 	var goodsOption = null
+	var goodsOptionId = null
 
 	await db.collection('t_goods').doc(goodsId).get().then(res => {
-		goods = res.data
+		goods = res.data,
+		goodsOptionId = res.data.pk_goods_option
 	})
 
 	await db.collection('t_goods_option').where({
-		goods_id: goodsId
+		_id: goodsOptionId
 	}).get().then(res => {
 		goodsOption = res.data[0].option
 	})

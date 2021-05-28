@@ -21,5 +21,5 @@
 <van-uploader file-list="{{photoList}}" accept="media" bind:after-read="afterRead" max-count="11" />
 <view class="buttons">
 	<van-button custom-class="clearContent" bindtap="clearContent">清空内容</van-button>
-	<van-button custom-class="uploadPost" bindtap="uploadPost">发布笔记</van-button>
+	<van-button custom-class="uploadPost" bindtap="uploadPost">发布帖子</van-button>
 </view>

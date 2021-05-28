@@ -1,65 +1,62 @@
-page{
-	background-color: var(--themebackgroundcolor);
+page {
+  background-color: var(--themebackgroundcolor);
 }
-
-.post-edit{
-	overflow-x: hidden;
+.post-edit {
+  overflow-x: hidden;
 }
-
-.title-tip, .content-tip{
-	margin: 10rpx;
-	font-size: 35rpx;
+.input-region .title-input {
+  height: 60rpx;
+  margin: 0 15rpx 15rpx 15rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
 }
-
-.title-input{
-	height: 50rpx;
-	margin: 0 10rpx;
-	background-color: #ffffff;
-	border-radius: 5rpx;
+.input-region .content-input {
+  margin: 0 15rpx 0 15rpx;
+  width: 96%;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  min-height: 400rpx;
+  max-height: 600rpx;
+  overflow: scroll;
 }
-
-.content-input{
-	margin: 0 10rpx;
-	background-color: #ffffff;
-	border-radius: 5rpx;
+.location-topic {
+  font-size: 30rpx;
 }
-
-.location-topic{
-	font-size: 30rpx;
+.location-topic .add-location {
+  margin: 20rpx 20rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
 }
-
-#add-location{
-	margin: 25rpx 20rpx;
-	font-size: 30rpx;
-	display: flex;
-	align-items: center;
+.location-topic .show-location {
+  background-color: white;
+  font-size: 30rpx;
+  margin: 10rpx 10rpx;
+  padding: 10rpx 10rpx;
+  border-radius: 10rpx;
+  display: inline-flex;
 }
-
-#add-topic{
-	margin: 25rpx 27rpx;
-	font-size: 30rpx;
-	display:flex;
-	align-items: center;
+.location-topic #add-topic {
+  margin: 25rpx 27rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
 }
-
-.upload-photo{
-	padding: 10rpx 10rpx;
-	margin: 0 0 70rpx 0;
-	width: 100% !important;
-	background-color: #ffffff;
+.upload-photo {
+  padding: 10rpx 10rpx;
+  margin: 0 15rpx 50rpx 15rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
 }
-
-.buttons{
-	margin: 30rpx 0 0 0;
-	position: fixed;
-	bottom: 0;
+.fixed-region {
+  margin: 30rpx 0 0 0;
+  position: fixed;
+  bottom: 0;
 }
-
-.clearContent{
-	width: 150rpx !important;
-} 
-
-.publishPost{
-	width: 600rpx !important;
-	background-color:var(--themecolor) !important;
+.fixed-region .clear-btn {
+  width: 150rpx !important;
+}
+.fixed-region .pub-btn {
+  width: 600rpx !important;
+  background-color: var(--themecolor) !important;
 }

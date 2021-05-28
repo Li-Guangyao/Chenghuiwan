@@ -8,30 +8,58 @@ Page({
 	data: {
 		title: '',
 		content: '',
-		location: '',
+		location: null,
 		topic: [],
 		fileList: [],
 	},
 
-	onLoad() {
-		console.log(date())
-	},
-
-	titleInput(e) {
-		this.setData({
-			title: e.detail.value
-		})
-	},
+	onLoad() {},
 
 	contentInput(e) {
 		this.setData({
-			content: e.detail.html
+			content: e.detail.value
+		})
+	},
+
+	// 获得定位
+	getLocation() {
+		wx.chooseLocation({
+			success: res => {
+				if (res.name) {
+					this.setData({
+						location: res
+					})
+				} else {
+					// 用户没有选择一个地址，所以没有具体的地名
+				}
+			},
+			fail: res => {
+				if (res.errMsg == "chooseLocation:fail auth deny") {
+					wx.showModal({
+						title: '点击右上角，授权获取位置信息',
+						showCancel: true,
+						success(res) {
+							if (res.confirm) {
+								wx.openSetting()
+							}
+						}
+					})
+				} else {
+					// 可能是点击了取消按钮，所以获取失败
+				}
+			}
+		})
+	},
+
+	// 去除这个位置信息
+	removeLocation() {
+		this.setData({
+			location: null
 		})
 	},
 
 	// upload选择完会触发这个函数，把所有选择的图片生成临时地址
 	chosenImage(e) {
-		// console.log(e)
 		const openId = wx.getStorageSync('openId')
 		var fileList = e.detail.file
 		var oldArrayLength = this.data.fileList.length
@@ -157,7 +185,7 @@ Page({
 			return Promise.all(uploadTasks)
 				.then(data => {
 					wx.showToast({
-						title: '发布笔记成功',
+						title: '发布帖子成功',
 						icon: 'none'
 					});
 					// console.log(data)

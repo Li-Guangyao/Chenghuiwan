@@ -39,6 +39,7 @@ Page({
 				postId: e.postId
 			}
 		}).then(res => {
+			console.log(res)
 			this.setData({
 				post: res.result.post,
 				isLiked: res.result.isLiked,

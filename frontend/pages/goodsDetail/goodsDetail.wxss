@@ -2,6 +2,7 @@ page {
 	background-color: var(--themebackgroundcolor);
 }
 
+/* wxss */
 .page {
 	overflow: scroll;
 }

@@ -101,6 +101,7 @@ page {
     background: white;
     border-radius: 10rpx;
     margin: 5rpx 5rpx;
+    
     position: fixed;
     display: flex;
     justify-content: center;

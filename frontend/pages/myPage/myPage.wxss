@@ -1,51 +1,63 @@
 page {
-    background-color: var(--themebackgroundcolor);
-    width: 100%;
-    overflow-x: hidden;
+  background-color: var(--themebackgroundcolor);
+  width: 100%;
+  overflow-x: hidden;
 }
-
 .profile {
-    height: 240rpx;
-    background: #ffffff;
-    border-radius: 30rpx;
-    margin-bottom: 20rpx;
-    overflow-x: hidden;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin: 0 15rpx 15rpx 15rpx;
 }
-
-.profile-photo {
-    height: 160rpx;
-    width: 160rpx;
-    border-radius: 80rpx;
-    margin: 20rpx 35rpx;
+.profile .user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-
-.user-info {
-    margin: 0 330rpx 0 0;  
-
-    display: flex;
-    flex-direction: column;
+.profile .user-info .user-avatar {
+  height: 150rpx;
+  width: 150rpx;
+  border-radius: 75rpx;
+  margin: 20rpx;
 }
-
-.user-name {
-    font-size: 45rpx;
-    margin: 20rpx 15rpx;
+.profile .user-info .user-info-text {
+  display: flex;
+  flex-direction: column;
 }
-
-.gender-img {
-    height: 25rpx;
-    width: 25rpx;
+.profile .user-info .user-info-text .user-name-gender .user-name {
+  font-size: 40rpx;
+  margin: 20rpx 15rpx;
 }
-
-.user-introduction {
-    font-size: 25rpx;
-    margin: 20rpx 15rpx;
+.profile .user-info .user-info-text .user-name-gender .user-gender-img {
+  height: 30rpx;
+  width: 30rpx;
 }
-
-.post{
-    overflow-x: hidden;
+.profile .user-info .user-info-text .user-introduction {
+  font-size: 25rpx;
+  margin: 20rpx 15rpx;
+  flex: 3;
+}
+.profile .fan-info {
+  display: flex;
+  flex-direction: row;
+}
+.profile .fan-info .fan-item {
+  margin: 10rpx 10rpx;
+  width: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.profile .fan-info .fan-item .number {
+  font-size: 30rpx;
+  width: 100%;
+  text-align: center;
+}
+.profile .fan-info .fan-item .tip {
+  font-size: 20rpx;
+  width: 100%;
+  text-align: center;
+}
+.post {
+  overflow-x: hidden;
 }

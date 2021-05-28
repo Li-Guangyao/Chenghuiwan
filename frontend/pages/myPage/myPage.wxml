@@ -1,12 +1,37 @@
-<view class="profile">
-    <image class="profile-photo" src="{{userInfo.avatarUrl}}"></image>
+<view class="profile" url="/pages/myPage/myPage">
     <view class="user-info">
-        <view>
-            <text class="user-name">{{userInfo.nickname}}</text>
-            <image mode="widthFix" class="gender-img" src="../../image/male.png"></image>
+        <image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
+        <view class="user-info-text">
+            <view class="user-name-gender">
+                <text class="user-name">{{userInfo.nickname}}</text>
+                <image class="user-gender-img" mode="widthFix" wx:if="{{userInfo.gender==1}}"
+                    src="../../image/male.png"></image>
+                <image class="user-gender-img" mode="widthFix" wx:if="{{userInfo.gender==2}}"
+                    src="../../image/female.png"></image>
+            </view>
+            <text class="user-introduction" wx:if="{{userInfo.introduction && !inputIntroFocused}}"
+                bindtap="tapIntro">{{userInfo.introduction}}</text>
+            <text class="user-introduction" wx:if="{{!userInfo.introduction && !inputIntroFocused}}"
+                bindtap="tapIntro">点击输入个人简介</text>
+            <input class="user-introduction" model:value="{{userInfo.introduction}}" auto-focus="{{true}}"
+                wx:if="{{ inputIntroFocused}}" bindtap="tapIntro" bindblur="tapIntro" bindinput="inputIntro"></input>
         </view>
-        <text class="user-introduction">啦啦啦啦啦啦</text>
     </view>
+
+    <view class="fan-info">
+		<view class="fan-item" bindtap="viewFollowed">
+			<view class="number">45</view>
+			<view class="tip">关注</view>
+		</view>
+		<view class="fan-item" bindtap="viewFan">
+			<view class="number">35</view>
+			<view class="tip">粉丝</view>
+		</view>
+		<view class="fan-item">
+			<view class="number">20</view>
+			<view class="tip">获赞</view>
+		</view>
+	</view>
 </view>
 
 <view class="post">

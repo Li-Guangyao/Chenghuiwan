@@ -25,6 +25,14 @@ exports.main = async (event, context) => {
 			postCommentList = res.data
 		})
 
+		// 获取这个帖子的内容
+		post = db.collection('t_post').doc(event.postId).get()
+
+		// 获取这个帖子的所有评论
+		postCommentList = db.collection('t_post_comment').where({
+			post_id: event.postId
+		}).get()
+
 		return {
 			'isLiked': isLiked,
 			'post': post,

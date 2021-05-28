@@ -1,15 +1,15 @@
-<view class="person">
-	<view class="profile">
-		<image class="profile-photo" src="{{userInfo.avatarUrl}}"></image>
-		<view class="user-info">
+<view class="profile">
+	<view class="user-info">
+		<image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
+		<view class="user-info-text">
 			<view>
 				<text class="user-name">{{userInfo.nickname}}</text>
-				<image wx:if="{{userInfo.gender==1}}" mode="widthFix" class="gender-img" src="../../image/male.png">
-				</image>
-				<image wx:if="{{userInfo.gender==0}}" mode="widthFix" class="gender-img" src="../../image/remale.png">
-				</image>
+				<image class="user-gender-img" wx:if="{{userInfo.gender==1}}" mode="widthFix"
+					src="../../image/male.png"></image>
+				<image class="user-gender-img" wx:if="{{userInfo.gender==0}}" mode="widthFix"
+					src="../../image/remale.png"></image>
 			</view>
-			<text class="user-introduction">啦啦啦啦啦啦</text>
+			<text class="user-introduction">{{userInfo.introduction}}</text>
 		</view>
 	</view>
 
@@ -24,14 +24,16 @@
 		</view>
 		<view class="fan-item">
 			<view class="number">20</view>
-			<view class="tip">获赞/收藏</view>
+			<view class="tip">获赞</view>
 		</view>
 		<view class="fan-btn">
-			<button class="follow-btn" bindtap="followBtn" wx:if="{{isFollowed==false}}">关注</button>
-			<button class="follow-btn-ed" bindtap="followBtn" wx:if="{{isFollowed==true}}">已关注</button>
+			<button class="follow-btn" bindtap="followBtn" wx:if="{{isFollowed==false}}"
+				style="position: relative; left: 13rpx; top: 0rpx">关注</button>
+			<button class="follow-btn-ed" bindtap="followBtn" wx:if="{{isFollowed==true}}"
+				style="position: relative; left: 13rpx; top: 0rpx">已关注</button>
 		</view>
-
 	</view>
+
 </view>
 
 <view class="post">

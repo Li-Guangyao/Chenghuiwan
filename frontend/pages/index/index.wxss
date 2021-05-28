@@ -1,7 +1,6 @@
 page {
   background-color: var(--themebackgroundcolor);
 }
-
 .tab-region {
   white-space: nowrap;
   box-sizing: border-box;
@@ -9,30 +8,25 @@ page {
   top: 100rpx;
   margin: 5rpx 0;
 }
-
-.tab-item {
+.tab-region .tab-item {
   width: 150rpx;
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
   font-size: 40rpx;
 }
-
-.tab-region .chosen-tab {
-  color: var(--themecolor)
+.tab-region .tab-region .chosen-tab {
+  color: var(--themecolor);
 }
-
 .swiper-item {
   overflow: scroll;
   /* display: flex; */
   /* flex-direction: column; */
   align-items: center;
 }
-
 /* .slide-view{ */
-  /* column-count: 2; */
+/* column-count: 2; */
 /* } */
-
-post-display{
-  flex:1;
+post-display {
+  flex: 1;
 }

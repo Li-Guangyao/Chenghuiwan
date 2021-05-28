@@ -4,5 +4,5 @@
 		"van-uploader": "@vant/weapp/uploader/index",
 		"van-button": "@vant/weapp/button/index"
   },
-  "navigationBarTitleText": "编辑笔记"
+  "navigationBarTitleText": "编辑帖子"
 }

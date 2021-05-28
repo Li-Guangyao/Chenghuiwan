@@ -1,0 +1,102 @@
+page {
+	background-color: var(--themebackgroundcolor);
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.profile {
+	height: 330rpx;
+	background: #ffffff;
+	border-radius: 30rpx;
+	margin-bottom: 20rpx;
+
+	overflow-x: hidden;
+
+    .user-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    
+        .user-avatar {
+            height: 150rpx;
+            width: 150rpx;
+            border-radius: 75rpx;
+            margin: 20rpx 35rpx;
+        }
+    
+        .user-info-text {
+            margin: 0 330rpx 0 0;
+        
+            display: flex;
+            flex-direction: column;
+        
+            .user-name {
+                font-size: 45rpx;
+                margin: 20rpx 15rpx;
+            }
+            
+            .user-gender-img {
+                height: 25rpx;
+                width: 25rpx;
+            }
+            
+            .user-introduction {
+                font-size: 25rpx;
+                margin: 20rpx 15rpx;
+            }
+        }
+    }
+    
+    .fan-info {
+        display: flex;
+        flex-direction: row;
+    
+        .fan-item{
+            margin: 10rpx 5rpx;
+        
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+    
+            .number {
+                font-size: 30rpx;
+                width: 100%;
+            
+                text-align: center;
+            }
+    
+            .tip {
+                font-size: 20rpx;
+                width: 100%;
+            
+                text-align: center;
+            }
+        }
+    
+        .fan-btn{
+            display: flex;
+            flex: 3;
+    
+            .follow-btn{
+                background-color: var(--themecolor);
+                border-radius: 20rpx;
+                width: 50%;
+            }
+    
+            .follow-btn-ed{
+                background-color: rgb(161, 161, 161);
+                border-radius: 20rpx;
+                width: 50%;
+            }
+        }
+    }
+}
+
+
+
+.post {
+	overflow-x: hidden;
+}

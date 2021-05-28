@@ -29,7 +29,7 @@
     </view>
     <rich-text class="comment-content" nodes="{{item.content}}"></rich-text>
   </view>
-
+  
 </view>
 
 
