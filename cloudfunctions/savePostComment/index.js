@@ -20,12 +20,12 @@ exports.main = async (event, context) => {
 	return db.collection('t_post_comment').add({
 		data:{
 			_openid: event.userInfo.openId,
-			user_avatar_url: userAvatarUrl,
-			user_nickname: userNickname,
+			userAvatar: userAvatarUrl,
+			nickname: userNickname,
 
-			post_id: event.postId,
+			postId: event.postId,
 			content: event.content,
-			created_at: event.createdAt,
+			createdAt: new Date(),
 		}
 	})
 }

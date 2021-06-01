@@ -1,19 +1,80 @@
 page {
-	background-color: var(--themebackgroundcolor);
+  background-color: var(--themebackgroundcolor);
 }
-
-.order-card {
-	background-color: white !important;
-	margin: 10rpx 5rpx !important;
-	border-radius: 20rpx !important;
+.order {
+  background-color: white;
+  margin: 0rpx 15rpx 10rpx 15rpx;
+  border-radius: 15rpx;
 }
-
-.option{
-	background-color: white !important;
-	margin: 10rpx 5rpx !important;
-	border-radius: 20rpx !important;
+.order .order-card {
+  background-color: white !important;
+  margin: 10rpx 5rpx !important;
+  border-radius: 20rpx !important;
 }
-
-.arrow{
-	float: right;
+.title {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding: 20rpx 30rpx;
+}
+.info {
+  background-color: white;
+  margin: 0rpx 15rpx 10rpx 15rpx;
+  border-radius: 20rpx;
+}
+.info van-uploader {
+  margin: 10rpx;
+}
+.van-popup {
+  max-height: 1200rpx;
+  overflow: scroll;
+}
+.popup-goods-info {
+  display: flex;
+}
+.popup-goods-info .popup-image {
+  width: 150rpx;
+  height: 150rpx;
+  padding: 20rpx;
+}
+.popup-goods-info .popup-price {
+  font-size: 35rpx;
+  margin: 30rpx;
+}
+.option {
+  border-top: 2rpx #6b6b6b;
+}
+.option .option-title {
+  margin: 20rpx 20rpx;
+  font-size: 26rpx;
+  display: block;
+}
+.option .option-content {
+  padding: 5rpx;
+  margin: 10rpx 5rpx 10rpx 20rpx;
+  font-size: 26rpx;
+  background-color: #f5f5f5;
+  display: inline;
+}
+.isChosen {
+  border: solid 2rpx var(--themeolor) !important;
+  background-color: #9bedfc !important;
+}
+.buy-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buy-btn .popup-button {
+  width: 700rpx;
+  margin: 30rpx 10rpx;
+  border-radius: 40rpx;
+}
+.fixed-region {
+  width: 100%;
+  border-radius: 10rpx;
+  background-color: white;
+  bottom: 0;
+  position: fixed;
+  padding-bottom: env(safe-area-inset-bottom);
 }

@@ -1,160 +1,115 @@
 page {
-	background-color: var(--themebackgroundcolor);
+  background-color: var(--themebackgroundcolor);
 }
-
-/* wxss */
 .page {
-	overflow: scroll;
+  overflow: scroll;
 }
-
 .swiper-region {
-	height: 600rpx;
-	border-radius: 10rpx;
-	margin: 0 5rpx;
-	background: white;
+  height: 600rpx;
+  border-radius: 10rpx;
+  background: white;
+  margin: 0 0 5rpx 0;
 }
-
 .swiper-region swiper {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
 }
-
 .swiper-region swiper swiper-item {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .swiper-region swiper swiper-item image {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
-
 .goods-info {
-	background: white;
-	box-shadow: rgb(200, 200, 200) 2rpx 2rpx 2rpx;
-	border-radius: 10rpx;
-	margin: 10rpx 5rpx;
-
-	display: flex;
+  background: white;
+  margin: 0 0 5rpx 0;
+  display: flex;
 }
-
 .goods-info .goods-price-desc {
-	display: flex;
-	flex-direction: column;
-	flex: 5;
+  display: flex;
+  flex-direction: column;
+  flex: 5;
 }
-
-.goods-info .price {
-	font-size: 40rpx;
-	margin: 10rpx 20rpx 0 20rpx;
+.goods-info .goods-price-desc .price {
+  font-size: 40rpx;
+  margin: 10rpx 20rpx 0 20rpx;
 }
-
-.goods-info .desc {
-	font-size: 25rpx;
-	margin: 10rpx 20rpx 10rpx 20rpx;
+.goods-info .goods-price-desc .desc {
+  font-size: 25rpx;
+  margin: 10rpx 20rpx 10rpx 20rpx;
 }
-
-.goods-collect {
-	border-left: 2rpx solid rgb(220, 220, 220);
-
-	display: flex;
-	flex: 1;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+.goods-info .goods-collect {
+  border-left: 2rpx solid #f8f8f8;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-.goods-option {
-	background: white;
-	height: 60rpx;
-	font-size: 30rpx;
-	margin: 10rpx 5rpx;
-	padding: 0rpx 25rpx;
-	border-radius: 10rpx;
-
-	display: flex;
-	align-items: center;
+.goods-option,
+.goods-comment {
+  background: white;
+  height: 60rpx;
+  font-size: 30rpx;
+  padding: 0rpx 25rpx;
+  display: flex;
+  align-items: center;
 }
-
-.comment {
-	background: white;
-	height: 60rpx;
-	font-size: 30rpx;
-	margin: 10rpx 5rpx;
-	padding: 0rpx 25rpx;
-	border-radius: 10rpx;
-
-	display: flex;
-	align-items: center;
-}
-
 .goods-image {
-	background-color: white;
-	margin: 5rpx 5rpx;
-	border-radius: 10rpx;
-	display: block;
+  background-color: white;
+  margin: 5rpx 5rpx;
+  border-radius: 10rpx;
+  display: block;
 }
-
 .goods-image image {
-	width: 100%;
+  width: 100%;
 }
-
 .van-popup {
-	max-height: 1200rpx;
-	overflow: scroll;
+  max-height: 1200rpx;
+  overflow: scroll;
 }
-
 .popup-goods-info {
-	display: flex;
+  display: flex;
 }
-
 .popup-goods-info .popup-image {
-	width: 150rpx;
-	height: 150rpx;
-	padding: 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  padding: 20rpx;
 }
-
 .popup-goods-info .popup-price {
-	font-size: 35rpx;
-	margin: 30rpx;
+  font-size: 35rpx;
+  margin: 30rpx;
 }
-
 .option {
-	border-top: 2rpx rgb(107, 107, 107);
+  border-top: 2rpx #6b6b6b;
 }
-
 .option .option-title {
-	margin: 20rpx 20rpx;
-	font-size: 26rpx;
-
-	display: block;
+  margin: 20rpx 20rpx;
+  font-size: 26rpx;
+  display: block;
 }
-
 .option .option-content {
-	padding: 10rpx;
-	margin: 10rpx;
-	font-size: 26rpx;
-	background-color: rgb(245, 245, 245);
-
-	display: inline;
+  padding: 5rpx;
+  margin: 10rpx 5rpx 10rpx 20rpx;
+  font-size: 26rpx;
+  background-color: #f5f5f5;
+  display: inline;
 }
-
 .isChosen {
-	border: solid 2rpx var(--themeolor) !important;
-	background-color: rgb(155, 237, 252) !important;
+  border: solid 2rpx var(--themeolor) !important;
+  background-color: #9bedfc !important;
 }
-
-.button-area{
-	width: 100%;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.buy-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.button-area .popup-button{
-	width: 700rpx;
-	margin: 30rpx 0;
-	border-radius: 40rpx;
+.buy-btn .popup-button {
+  width: 700rpx;
+  margin: 30rpx 10rpx;
+  border-radius: 40rpx;
 }

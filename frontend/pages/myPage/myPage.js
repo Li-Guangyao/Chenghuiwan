@@ -6,7 +6,10 @@ Page({
         // 在my页面，必定会储存userInfo，因为需要授权
         userInfo: wx.getStorageSync('userInfo'),
         postList: [],
-        inputIntroFocused: false
+        inputIntroFocused: false,
+
+        fanNum: 0,
+        followedNum: 0
     },
 
     queryParams: {
@@ -16,45 +19,46 @@ Page({
 
     onLoad: function(e) { 
         // 不指定data，说明获取自己的帖子
-        wx.cloud.callFunction({
-            name: 'getPost',
-            data:{}
-        }).then(res=>{
-            this.setData({
-                postList: res.result.data
-            })
+		wx.cloud.callFunction({
+			name: 'getHomepage',
+			data: {
+				openId: this.data.userInfo._openid
+			}
+		}).then(res => {
+			this.setData({
+				userInfo: res.result.userInfo,
+				postList: res.result.postList,
+			})
         })
+        
+        this.getNum()
     },
+
+    getNum(){
+		wx.cloud.callFunction({
+			name: 'getFollowedNum',
+			data:{
+				openId: this.data.userInfo._openid
+			}
+		}).then(res=>{
+			this.setData({
+				followedNum: res.result
+			})
+		})
+
+		wx.cloud.callFunction({
+			name: 'getFanNum',
+			data:{
+				openId: this.data.userInfo._openid
+			}
+		}).then(res=>{
+			this.setData({
+				fanNum: res.result
+			})
+		})
+	},
 
     onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
 
     },
 

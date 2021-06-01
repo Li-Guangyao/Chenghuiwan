@@ -10,6 +10,11 @@ Page({
         postList: {},
     },
 
+    queryParams: {
+		pageNum: 0,
+		pageSize: 20
+	},
+
     onLoad: function () {
         wx.getSystemInfo({
             success: (res) => {
@@ -21,22 +26,56 @@ Page({
             }
         })
 
+        this.getPost()
+    },
+
+    // 从服务器获得帖子
+    getPost() {
+        this.queryParams.pageNum = 0
+
         wx.cloud.callFunction({
             name: 'getRandomPost',
         }).then(res => {
+            console.log(res)
             this.setData({
-                'postList.random': res.result.data
+                'postList.random': res.result
             })
         })
-
     },
 
-    onReachBottom: function () {
-        console.log("index页面触底")
+    // 触底加载
+    async onReachBottom() {
+		wx.showLoading({
+			title: '加载中',
+		})
+
+		this.queryParams.pageNum++
+		await wx.cloud.callFunction({
+			name: 'getRandomPost',
+			data: {
+				skipNum: this.queryParams.pageNum * this.queryParams.pageSize,
+				newestDate: this.data.postList.random[0].createdAt
+			}
+		}).then(res => {
+			if (res.result.length == 0) {
+				wx.showToast({
+					icon: 'error',
+					title: '没有更多了~',
+				})
+			} else {
+				this.setData({
+					fileList: [...this.data.fileList].concat(...res.result)
+				})
+			}
+		})
+
+		wx.hideLoading()        
     },
 
+    // 下拉刷新
     onPullDownRefresh: function () {
-        console.log("index下拉刷新")
+        this.getPost()
+		wx.stopPullDownRefresh()
     },
 
     // 点击tab某个选项

@@ -1,0 +1,101 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.order{
+	background-color: white;
+	margin: 0rpx 15rpx 10rpx 15rpx;
+	border-radius: 15rpx;
+
+    .order-card {
+        background-color: white !important;
+        margin: 10rpx 5rpx !important;
+        border-radius: 20rpx !important;
+    }
+}
+
+.title{
+	font-size: 30rpx;
+	font-weight: bold;
+	padding: 20rpx 30rpx;
+}
+
+.info{
+	background-color: white;
+	margin: 0rpx 15rpx 10rpx 15rpx;
+	border-radius: 20rpx;
+
+	van-uploader{
+		margin: 10rpx;
+	}
+}
+
+.van-popup {
+	max-height: 1200rpx;
+	overflow: scroll;
+}
+
+.popup-goods-info {
+	display: flex;
+
+    .popup-image {
+        width: 150rpx;
+        height: 150rpx;
+        padding: 20rpx;
+    }
+
+    .popup-price {
+        font-size: 35rpx;
+        margin: 30rpx;
+    }
+}
+
+.option {
+	border-top: 2rpx rgb(107, 107, 107);
+
+    .option-title {
+        margin: 20rpx 20rpx;
+        font-size: 26rpx;
+    
+        display: block;
+    }
+
+    .option-content {
+        padding: 5rpx;
+        margin: 10rpx 5rpx 10rpx 20rpx;
+        font-size: 26rpx;
+        background-color: rgb(245, 245, 245);
+    
+        display: inline;
+    }
+}
+
+.isChosen {
+	border: solid 2rpx var(--themeolor) !important;
+	background-color: rgb(155, 237, 252) !important;
+}
+
+.buy-btn{
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+    .popup-button{
+        width: 700rpx;
+        margin: 30rpx 10rpx;
+        border-radius: 40rpx;
+    }
+}
+
+
+.fixed-region{
+    width: 100%;
+	border-radius: 10rpx;
+	background-color: white;
+
+	bottom: 0;
+	position: fixed;
+	padding-bottom: env(safe-area-inset-bottom);
+}

@@ -26,25 +26,33 @@ exports.main = async (event, context) => {
 	var goodsId = event.goodsId
 	var isCollected = false
 
-	var goodsOption = null
+	var goodsOption = []
 	var goodsOptionId = null
 
 	await db.collection('t_goods').doc(goodsId).get().then(res => {
-		goods = res.data,
-		goodsOptionId = res.data.pk_goods_option
+		goods = res.data
+		if (res.data.pk_goods_option) {
+			goodsOptionId = res.data.pk_goods_option
+		}
 	})
 
-	await db.collection('t_goods_option').where({
-		_id: goodsOptionId
-	}).get().then(res => {
-		goodsOption = res.data[0].option
-	})
+	if (goodsOptionId) {
+		await cloud.callFunction({
+			name: 'getGoodsOption',
+			data: {
+				goodsOptionId: goodsOptionId
+			}
+		}).then(res => {
+			goodsOption = res.result
+		})
+	}
 
 	isCollected = await judgeCollected(openId, goodsId)
 
 	return {
 		'isCollected': isCollected,
 		'goods': goods,
-		'goodsOption': goodsOption
+		'goodsOption': goodsOption,
+		'goodsOptionId': goodsOptionId
 	}
 }

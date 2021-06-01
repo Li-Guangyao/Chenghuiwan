@@ -1,36 +1,34 @@
-<!-- 用户针对某个订单发表评论 -->
-<view class="goods">
-	<image class="goods-image" src="{{order.goods.display_photo[0]}}"></image>
-	<view class="goods-desc">
-		<view class="goods-title">{{order.goods.title}}</view>
-		<view class="goods-option">{{order.goods.option}}</view>
-	</view>
+<view class="page" style="height:{{pageHeight?pageHeight+'px':'auto'}}">
+    <!-- 用户针对某个订单发表评论 -->
+    <view class="goods">
+        <image class="goods-image" src="{{order.goods.display_photo[0]}}"></image>
+        <view class="goods-desc">
+            <view class="goods-title">{{order.goods.title}}</view>
+            <view class="goods-option">{{order.goods.option}}</view>
+        </view>
+    </view>
+
+    <view class="comment">
+        <textarea class="content-input" model:value="{{content}}" placeholder="说点什么吧……" maxlength="1000" auto-height="{{true}}" bindinput="contentInput"></textarea>
+        <van-uploader file-list="{{fileList}}" accept="image" bind:after-read="chosenImage" bind:delete="removeImage" multiple preview-size="166rpx" image-fit="aspectFill" preview-image="true" max-count="8" />
+    </view>
+
+    <view class="score-region">
+        <view class="score-item">
+            <view class="desc">描述相符</view>
+            <van-rate model:value="{{ descRate}}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star" />
+        </view>
+
+        <view class="score-item">
+            <view class="desc">物流服务</view>
+            <van-rate model:value="{{ expressRate }}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star" />
+        </view>
+
+        <view class="score-item">
+            <view class="desc">服务态度</view>
+            <van-rate model:value="{{ serviceRate }}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star" />
+        </view>
+    </view>
 </view>
 
-<view class="comment">
-	<editor class="content-input" model:value="{{content}}" placeholder="说点什么吧……" bindinput="contentInput"
-		bindready="onEditorReady"></editor>
-	<van-uploader file-list="{{fileList}}" accept="image" bind:after-read="chosenImage" bind:delete="removeImage"
-		multiple preview-size="172rpx" image-fit="aspectFill" preview-image="true" max-count="8" />
-</view>
-
-<view class="score-region">
-
-	<view class="score-item">
-		<view class="desc">描述相符</view>
-		<van-rate model:value="{{ descRate}}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star" />
-	</view>
-
-	<view class="score-item">
-		<view class="desc">物流服务</view>
-		<van-rate model:value="{{ expressRate }}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star" />
-	</view>
-
-	<view class="score-item">
-		<view class="desc">服务态度</view>
-		<van-rate model:value="{{ serviceRate }}" size="{{ 25 }}" color="#ffd21e" void-color="#eee" void-icon="star" />
-	</view>
-
-</view>
-
-<button class="save" bindtap="saveComment">保存评论</button>
+<button class="fixed-region" bindtap="saveComment">保存评论</button>

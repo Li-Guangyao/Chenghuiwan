@@ -43,34 +43,12 @@ exports.main = async (event, context) => {
 		postList = res.data
 	})
 
-	// // 获取该人关注了多少人
-	// await db.collection('t_fan').aggregate().match({
-	// 	fan_openid: event.openId
-	// }).group({
-	// 	_id: '$fan_openid',
-	// 	count: $.sum(1)
-	// }).end().then(res => {
-	// 	followedNum = res.data
-	// })
-
-	// // 获取多少人关注了该人
-	// await db.collection('t_fan').aggregate().match({
-	// 	followed_openid: event.openId
-	// }).group({
-	// 	_id: '$followed_openid',
-	// 	count: $.sum(1)
-	// }).end().then(res => {
-	// 	fanNum = res.data
-	// })
-
 	// 查询自己是否关注了该人
 	isFollowed = await judgeFollowed(event.userInfo.openId, event.openId)
 
 	return {
 		'userInfo': userInfo,
 		'postList': postList,
-		// 'fanNum': fanNum,
-		// 'followedNum': followedNum,
 		'isFollowed': isFollowed
 	}
 }

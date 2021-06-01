@@ -20,17 +20,17 @@
 
     <view class="fan-info">
 		<view class="fan-item" bindtap="viewFollowed">
-			<view class="number">45</view>
+			<view class="number">{{followedNum}}</view>
 			<view class="tip">关注</view>
 		</view>
 		<view class="fan-item" bindtap="viewFan">
-			<view class="number">35</view>
+			<view class="number">{{fanNum}}</view>
 			<view class="tip">粉丝</view>
 		</view>
-		<view class="fan-item">
+		<!-- <view class="fan-item">
 			<view class="number">20</view>
 			<view class="tip">获赞</view>
-		</view>
+		</view> -->
 	</view>
 </view>
 

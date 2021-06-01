@@ -9,23 +9,23 @@
 				<image class="user-gender-img" wx:if="{{userInfo.gender==0}}" mode="widthFix"
 					src="../../image/remale.png"></image>
 			</view>
-			<text class="user-introduction">{{userInfo.introduction}}</text>
+			<text class="user-introduction" wx:if="{{userInfo.introduction}}">{{userInfo.introduction}}</text>
 		</view>
 	</view>
 
 	<view class="fan-info">
 		<view class="fan-item" bindtap="viewFollowed">
-			<view class="number">45</view>
+			<view class="number">{{followedNum}}</view>
 			<view class="tip">关注</view>
 		</view>
 		<view class="fan-item" bindtap="viewFan">
-			<view class="number">35</view>
+			<view class="number">{{fanNum}}</view>
 			<view class="tip">粉丝</view>
 		</view>
-		<view class="fan-item">
+		<!-- <view class="fan-item">
 			<view class="number">20</view>
 			<view class="tip">获赞</view>
-		</view>
+		</view> -->
 		<view class="fan-btn">
 			<button class="follow-btn" bindtap="followBtn" wx:if="{{isFollowed==false}}"
 				style="position: relative; left: 13rpx; top: 0rpx">关注</button>

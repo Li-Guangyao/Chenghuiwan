@@ -5,6 +5,7 @@ Page({
 		postId: null,
 		post: {},
 		commentList: [],
+
 		// 用户在这一个页面发表的评论内容
 		commentContent: null,
 
@@ -33,65 +34,51 @@ Page({
 			})
 		})
 
+		await this.getPost()
+		await this.getComment()
+
+		wx.hideLoading()
+	},
+
+	async getPost() {
 		await wx.cloud.callFunction({
 			name: 'getPost',
 			data: {
-				postId: e.postId
+				postId: this.data.postId
 			}
 		}).then(res => {
 			console.log(res)
 			this.setData({
 				post: res.result.post,
 				isLiked: res.result.isLiked,
-				commentList: res.result.postCommentList
 			})
 		})
-
-		wx.hideLoading()
 	},
 
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	onPullDownRefresh: function () {
-
-	},
-
-	onReachBottom: function () {
-
-	},
-
-	onShareAppMessage: function () {
-
+	async getComment(){
+		wx.cloud.callFunction({
+			name: "getPostComment",
+			data:{
+				postId: this.data.postId
+			}
+		}).then(res=>{
+			this.setData({
+				commentList: res.result
+			})
+		})
 	},
 
 	// 预览帖子中的图片
 	previewImage(e) {
 		wx.previewImage({
-			urls: this.data.post.post_photo,
-			current: this.data.post.post_photo[e.currentTarget.dataset.index],
+			urls: this.data.post.photo,
+			current: this.data.post.photo[e.currentTarget.dataset.index],
 			showmenu: true,
 		})
 	},
 
 	// 点击点赞按钮
 	tapLike() {
-		console.log('tapLike')
 		if (this.data.isLiked == false) {
 			this.setData({
 				isLiked: true
@@ -110,7 +97,7 @@ Page({
 			wx.cloud.callFunction({
 				name: 'updatePostLike',
 				data: {
-					postId: this.data.openId,
+					postId: this.data.postId,
 					add: true
 				}
 			})
@@ -118,35 +105,43 @@ Page({
 			wx.cloud.callFunction({
 				name: 'updatePostLike',
 				data: {
-					openId: this.data.openId,
+					openId: this.data.postId,
 					add: false
 				}
 			})
 		} else {}
 	},
 
+	// 用户输入评论
 	commentInput(e) {
 		this.setData({
-			commentContent: e.detail.html
+			commentContent: e.detail.value
 		})
 	},
 
 	// 发表评论
 	publishComment() {
-		wx.cloud.callFunction({
-			name: 'savePostComment',
-			data: {
-				postId: this.data.post._id,
-				content: this.data.commentContent,
-				createdAt: date()
-			}
-		}).then(res => {
-			wx.showToast({
-				title: '保存成功',
-			})
-		}).catch(
-			wx.hideLoading()
-		)
+		if (this.data.commentContent) {
+			wx.cloud.callFunction({
+				name: 'savePostComment',
+				data: {
+					postId: this.data.post._id,
+					content: this.data.commentContent,
+					createdAt: date()
+				}
+			}).then(res => {
+				wx.showToast({
+					title: '保存成功',
+				})
+				this.setData({
+					commentContent: ''
+				})
+
+				this.getComment()
+			}).catch(
+				wx.hideLoading()
+			)
+		}
 	},
 
 	// 点击了用户头像和昵称区域

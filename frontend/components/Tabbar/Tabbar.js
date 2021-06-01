@@ -32,6 +32,7 @@ Component({
             // 	tabbar
             // })
             // console.log({index});
+
             this.triggerEvent("tabbarChange", {index});
         },
     }

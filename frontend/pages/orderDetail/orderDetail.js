@@ -1,3 +1,5 @@
+import dateTrans from "../../utils/dateTrans"
+
 Page({
 	data: {
 		order: null,
@@ -23,7 +25,8 @@ Page({
 	},
 
 	onLoad: function (e) {
-		var order = JSON.parse(e.order)
+		var order = JSON.parse(decodeURIComponent(e.order))
+		order.createdAt = dateTrans(order.createdAt)
 		this.setData({
 			order: order
 		})
@@ -67,17 +70,15 @@ Page({
 
 	selectPopupChange(e) {
 		var order = JSON.stringify(this.data.order)
-		console.log(order)
-		console.log(typeof(order))
 		wx.navigateTo({
-			url: '../changeGoods/changeGoods?changeType=' + e.detail.index + '&order=' + order
+			url: '../goodsChange/goodsChange?changeType=' + e.detail.index + '&order=' + encodeURIComponent(order)
 		})
 	},
 
 	selectPopupRefund(e) {
 		var order = JSON.stringify(this.data.order)
 		wx.navigateTo({
-			url: '../refundGoods/refundGoods?refundType=' + e.detail.index + '&order=' + order
+			url: '../goodsRefund/goodsRefund?refundType=' + e.detail.index + '&order=' + encodeURIComponent(order)
 		})
 	}
 })

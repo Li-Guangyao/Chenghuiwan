@@ -27,7 +27,6 @@
 		"pages/orderList/orderList",
 		"pages/peopleLikeList/peopleLikeList",
 		"pages/postDetail/postDetail",
-		"pages/postLocation/postLocation",
 		"pages/goodsRefund/goodsRefund",
 		"pages/search/search",
 		"pages/searchResult/searchResult",

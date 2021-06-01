@@ -1,11 +1,9 @@
 Page({
-
     data: {
-        tabbar: [
-            {
-            id: 0,
-            name: "我的关注",
-            isChosen: true
+        tabbar: [{
+                id: 0,
+                name: "我的关注",
+                isChosen: true
             },
             {
                 id: 1,
@@ -16,8 +14,11 @@ Page({
         chosenTabIndex: 0,
         swiperHeight: 0,
 
-        followedPostList:[],
-        localPostList:[]
+        followedPostList: [],
+        localPostList: [],
+
+        latitude: null,
+        longitude: null
     },
 
     onLoad: function (options) {
@@ -28,70 +29,87 @@ Page({
                 })
             }
         })
+        this.getPost()
+    },
 
-        wx.cloud.callFunction({
+    async getPost() {
+        wx.showLoading({
+            title: '加载中',
+        })
+
+        await wx.cloud.callFunction({
             name: 'getFollowedPost'
-        }).then(res=>{
+        }).then(res => {
             this.setData({
                 followedPostList: res.result.followedPostList
             })
         })
 
+        wx.hideLoading()
     },
 
-    onReady: function () {
+    async getNearPost() {
+        wx.showLoading({
+          title: '加载中',
+        })
 
+        wx.getLocation({
+            success: res => {
+                this.setData({
+                    latitude: res.latitude,
+                    longitude: res.longitude
+                })
+
+                wx.cloud.callFunction({
+                    name: 'getNearPost',
+                    data:{
+                        latitude: res.latitude,
+                        longitude: res.longitude
+                    }
+                }).then(res=>{
+                    console.log(res)
+                    this.setData({
+                        localPostList: res.result.data
+                    })
+                })
+            },
+            fail: res => {
+                if (res.errMsg == "chooseLocation:fail auth deny") {
+                    wx.showModal({
+                        title: '点击右上角，授权获取位置信息',
+                        showCancel: true,
+                        success(res) {
+                            if (res.confirm) {
+                                wx.openSetting()
+                            }
+                        }
+                    })
+                } else {}
+            }
+        })
+
+        wx.hideLoading()
     },
 
-    onShow: function () {
-
+    onPullDownRefresh() {
+        this.getPost()
+        wx.stopPullDownRefresh()
     },
 
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-        console.log("community页面触底！")
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
-
+    // 点击改变
     handleTabbarChange(e) {
         //获取点击的tabbar项下标
         const chosenTabIndex = e.detail.index;
         let tabbar = this.data.tabbar;
         //根据获取的下表，改变tabbar
         tabbar.forEach((v, i) => i === chosenTabIndex ? v.isChosen = true : v.isChosen = false);
-        // console.log(this)
         this.setData({
             tabbar,
             chosenTabIndex
         });
     },
 
+    // 滑动改变
     handleSwiperChange: function (e) {
         var chosenTabIndex = e.detail.current
         let tabbar = this.data.tabbar;
@@ -101,7 +119,9 @@ Page({
             tabbar,
             chosenTabIndex
         })
+        if (chosenTabIndex == 1) {
+            this.getNearPost()
+        }
     }
-
 
 })

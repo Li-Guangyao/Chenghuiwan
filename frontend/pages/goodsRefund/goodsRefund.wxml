@@ -10,33 +10,19 @@
 <view class="info">
 	<view class="title">退款信息</view>
 	<van-cell-group>
-		<van-field model:value="{{ refundReason[radio] }}" label="退款原因" required="{{true}}" readonly="{{true}}" placeholder=""
-			border="{{ false }}" is-link bindtap="showPopup" />
-		<van-field label="详细描述" type="textarea" autosize="{{true}}" maxlength="300" value="{{ detailedRefundReason }}" placeholder="退货的具体原因" border="{{ false }}" bind:change="detailedReasonChange" />
+		<van-field model:value="{{ refundReason[radio] }}" label="退款原因" required="{{true}}" readonly="{{true}}"
+			placeholder="" border="{{ false }}" is-link bindtap="showPopup" />
+		<van-field label="详细描述" type="textarea" autosize="{{true}}" maxlength="300" value="{{ detailedRefundReason }}"
+			placeholder="退货的具体原因" border="{{ false }}" bind:change="detailedReasonChange" />
 	</van-cell-group>
 	<view class="title">图片凭证</view>
 	<van-uploader file-list="{{fileList}}" accept="image" bind:after-read="chosenImage" bind:delete="removeImage"
-		multiple preview-size="170rpx" image-fit="aspectFill" preview-image="true" max-count="4"/>
+		multiple preview-size="166rpx" image-fit="aspectFill" preview-image="true" max-count="4" />
 </view>
 
 <van-popup show="{{ showPopup }}" bind:close="closePopup" position="bottom">
-
-	<!-- <van-checkbox-group value="{{ choseResult }}" bind:change="choseRefundReason" max="{{ 1 }}">
-		<van-checkbox name="{{index}}" label-position="left" checked-color="#1989fa" custom-class="checkbox">{{item}}
-		</van-checkbox>
-	</van-checkbox-group> -->
-
-	<!-- <van-radio-group model:value="{{radio}}" bind:change="onChange">
-		<van-cell-group>
-			<van-cell title="{{item}}" clickable data-index="{{index}}" bind:click="choseRefundReason"  wx:for="{{refundReason}}" wx:key="index">
-				应该要求name必须为字符串形式，但是前端无法向index（数字）转化
-				<van-radio slot="right-icon" name="{{index}}" />
-			</van-cell>
-		</van-cell-group>
-	</van-radio-group> -->
-
-	<van-picker columns="{{ refundReason }}" default-index="{{ 0 }}" bind:confirm="closePopup" bind:cancel="closePopup" bind:change="pickerChange" show-toolbar="{{true}}"/>
-
+	<van-picker columns="{{ reason }}" default-index="{{ 0 }}" bind:confirm="closePopup" bind:cancel="closePopup"
+		bind:change="pickerChange" show-toolbar="{{true}}" />
 </van-popup>
 
-<button class="save" bindtap="submit">提交</button>
+<button class="fixed-region" bindtap="submit">提交</button>

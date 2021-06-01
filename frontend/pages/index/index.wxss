@@ -15,7 +15,7 @@ page {
   text-align: center;
   font-size: 40rpx;
 }
-.tab-region .tab-region .chosen-tab {
+.tab-region .chosen-tab {
   color: var(--themecolor);
 }
 .swiper-item {

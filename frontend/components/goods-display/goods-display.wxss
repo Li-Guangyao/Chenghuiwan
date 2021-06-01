@@ -1,42 +1,42 @@
 .list {
-	padding: 15rpx;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+  padding: 15rpx;
+  width: 100%;
+  display: flex;
 }
-
 .list .list-half {
-	width: 346rpx;
-	box-sizing: border-box;
+  width: 346rpx;
+  margin: 0 8rpx;
+  display: flex;
+  flex-direction: column;
 }
-
-.list-half .goods-panel {
-	background-color: #fff;
-	border-radius: 10rpx;
-	overflow: hidden;
-	margin-bottom: 30rpx;
-	padding-bottom: 20rpx;
-
-	display: flex;
-	flex-direction: column;
+.list .list-half .goods-panel {
+  background-color: #fff;
+  border-radius: 15rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
 }
-
-.goods-panel image{
-	width: 100%;
+.list .list-half .goods-panel image {
+  width: 100%;
+  max-height: 400rpx;
 }
-
-.goods-panel .desc{
-	font-size: 35rpx;
-	margin: 7rpx;
+.list .list-half .goods-panel .desc {
+  font-size: 35rpx;
+  margin: 7rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
-
-.goods-panel .price{
-	font-size: 30rpx;
-
-	float: left;
+.list .list-half .goods-panel .price {
+  font-size: 30rpx;
+  float: left;
 }
-
-.goods-panel .sales{
-	float: right;
-	margin-right: 20rpx;
+.list .list-half .goods-panel .sales {
+  float: right;
+  margin-right: 20rpx;
 }

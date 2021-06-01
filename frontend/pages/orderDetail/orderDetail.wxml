@@ -1,10 +1,11 @@
-<van-cell icon="logistics" title="物流信息" is-link></van-cell>
+<van-cell-group custom-class="group" border="{{false}}">
+	<van-cell custom-class="express-info" icon="logistics" title="物流信息" is-link></van-cell>
+	<van-cell custom-class="address-info" title="{{order.receiverName}}" value="{{order.receiverPhone}}" size="large"
+		label="{{order.receiverAddress}}" icon="location-o" />
+</van-cell-group>
 
-<van-cell title="{{order.receiver_name}}" value="{{order.receiver_phone}}" size="large"
-	label="{{order.receiver_address}}" icon="location-o" />
-
-<van-card custom-class="order-card" price="{{order.price_paid}}" title="{{order.goods.title}}"
-	thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{order.item_number}}">
+<van-card custom-class="order-card" price="{{order.totalPrice}}" title="{{order.goods.title}}" desc="{{order.option}}"
+	thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{order.number}}">
 	<!-- 如果订单在运输途中，可以申请退换货 -->
 	<view slot="footer" wx:if="{{order.status==2}}">
 		<van-button size="mini" bind:click="clickChange">换货</van-button>
@@ -14,11 +15,12 @@
 
 <view class="order-info">
 	<view class="info-item">订单编号：{{order._id}}</view>
-	<view class="info-item">物流公司：{{order.express_company==''?order.express_company:'未发货'}}</view>
-	<view class="info-item">快递单号：{{order.express_number==''?order.express_number: '未发货'}}</view>
-	<view class="info-item">下单时间：{{order.created_date}}</view>
-	<view class="info-item">发货时间：{{order.sent_date==''?order.sent_date:'未发货'}}</view>
-	<view class="info-item">收货时间：{{order.delivery_date==''?order.delivery_date:'未发货'}}</view>
+	<view class="info-item">订单备注：{{order.remark?order.remark:'无'}}</view>
+	<view class="info-item">物流公司：{{order.expressCompany==null?order.expressCompany:'未发货'}}</view>
+	<view class="info-item">快递单号：{{order.expressNumber==null?order.expressNumber: '未发货'}}</view>
+	<view class="info-item">下单时间：{{order.createdAt}}</view>
+	<view class="info-item">发货时间：{{order.sentDate==''?order.sentDate:'未发货'}}</view>
+	<view class="info-item">收货时间：{{order.deliveryDate==''?order.deliveryDate:'未发货'}}</view>
 </view>
 
 <van-action-sheet show="{{ showPopupChange }}" actions="{{ actionsChange }}" bind:close="closePopupChange"

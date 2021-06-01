@@ -5,25 +5,36 @@ import uploadImage from '../../utils/uploadImage'
 Page({
 	data: {
 		order: null,
-		content:'',
+		content: '',
 		// 晒单照片
 		fileList: [],
 		// 评分项
 		descRate: 0,
 		expressRate: 0,
-		serviceRate: 0
+		serviceRate: 0,
+
+		pageHeight: null
 	},
 
 	onLoad: function (e) {
-		var order = JSON.parse(e.order)
+		var order = JSON.parse(decodeURIComponent(e.order))
 		this.setData({
 			order: order
+		})
+
+		//根据底部下单区域的高矮，来初始化页面的大小
+		var query = wx.createSelectorQuery()
+		query.select('.fixed-region').boundingClientRect()
+		query.exec(res => {
+			this.setData({
+				pageHeight: res[0].top
+			})
 		})
 	},
 
 	contentInput(e) {
 		this.setData({
-			content: e.detail.html
+			content: e.detail.value
 		})
 	},
 
@@ -83,7 +94,7 @@ Page({
 							data: {
 								orderId: this.data.order._id,
 								goodsId: this.data.order.goods._id,
-								content:this.data.content,
+								content: this.data.content,
 								// 晒单照片
 								fileList: uploadedFileList,
 								// 评分项
@@ -92,14 +103,14 @@ Page({
 								serviceRate: this.data.serviceRate,
 								createdAt: date()
 							}
-						}).then(res=>{
+						}).then(res => {
 							wx.showToast({
 								title: '保存成功',
 								icon: 'none'
 							});
 
 							wx.navigateBack({
-							  delta: 2,
+								delta: 2,
 							})
 						})
 

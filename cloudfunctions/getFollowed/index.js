@@ -8,6 +8,7 @@ const db = cloud.database()
 exports.main = async (event, context) => {
 	var openId = event.openId
 	var followedList = []
+	var followedNum = null
 
 	await db.collection('t_fan').aggregate().match({
 		fan_openid: openId

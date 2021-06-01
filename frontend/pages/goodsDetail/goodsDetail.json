@@ -11,6 +11,6 @@
     "van-button": "@vant/weapp/button/index"
   },
   "navigationBarTitleText": "商品详情",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true
 }
 

@@ -12,9 +12,10 @@ Page({
 			type: 'warn',
 			text: '删除',
 		}],
+
 		//由于底部设置了保存按键，如果列表太长，就会把他覆盖
 		//用这个高度，初始化列表内容
-		addressListHeight:null,
+		pageHeight:null,
 	},
 
 	onLoad: function (e) {
@@ -26,9 +27,8 @@ Page({
 		var query = wx.createSelectorQuery()
 		query.select('.add-address').boundingClientRect()
 		query.exec(res=>{
-			console.log(res)
 			this.setData({
-				addressListHeight: res[0].top
+				pageHeight: res[0].top
 			})
 		})
 	},
@@ -78,7 +78,7 @@ Page({
 
 	addAddress() {
 		wx.navigateTo({
-			url: '../addAddress/addAddress',
+			url: '../addressAdd/addressAdd',
 		})
 	},
 

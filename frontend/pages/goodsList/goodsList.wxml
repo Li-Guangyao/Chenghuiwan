@@ -15,4 +15,4 @@
 	</van-card>
 </view>
 
-<van-empty image="search" description="没有搜索到商品" wx:if="{{isEmpty}}" />
+<van-empty image="search" description="没有搜索到商品" wx:if="{{goodsList.length==0}}" />

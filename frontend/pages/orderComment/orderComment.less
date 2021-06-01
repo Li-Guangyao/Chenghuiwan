@@ -1,0 +1,88 @@
+page {
+    background-color: var(--themebackgroundcolor);
+}
+
+.page{
+    overflow-x: hidden;
+    overflow-y:scroll;
+}
+
+.goods{
+	background-color: white;
+	border-radius: 10rpx;
+	margin: 0 15rpx 10rpx 15rpx;
+
+	display: flex;
+	flex-direction: row;
+
+    .goods-image{
+        width: 150rpx;
+        height: 150rpx;
+        margin: 30rpx;
+    }
+
+    .good-desc{
+        display: flex;
+        flex-direction: column;
+
+        .goods-title{
+            font-size: 32rpx;
+            color: rgb(24, 24, 24);
+            margin: 10rpx 10rpx;
+            overflow: hidden;
+        }
+
+        .goods-option{
+            font-size: 25rpx;
+            color: rgb(41, 41, 41);
+            margin: 10rpx 10rpx;
+            overflow: hidden;
+        } 
+    }
+}
+
+.comment{
+	background-color: white;
+	margin: 0 15rpx 10rpx 15rpx;
+
+    .content-input{
+        padding: 20rpx;
+        width: 96%;
+        overflow: scroll;
+        min-height: 300rpx;
+        max-height: 600rpx;
+    }
+
+    van-uploader{
+        margin: 10rpx;
+    }
+}
+
+.score-region{
+	background-color: white;
+	margin: 0rpx 15rpx 10rpx 15rpx; 
+	border-radius: 15rpx;
+	padding: 10rpx 0 0 20rpx;
+
+    .score-item{
+        display: flex;
+        justify-content: left;
+
+        .desc{
+            margin: 0 20rpx 0 0;
+        
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.fixed-region{
+    width: 100%;
+	border-radius: 10rpx;
+	background-color: white;
+
+	bottom: 0;
+	position: fixed;
+	padding-bottom: env(safe-area-inset-bottom);
+}

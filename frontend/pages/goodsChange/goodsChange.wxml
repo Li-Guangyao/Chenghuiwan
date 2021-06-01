@@ -1,16 +1,50 @@
-
-<van-card custom-class="order-card" price="{{order.price_paid}}" title="{{order.goods.title}}"
-	thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price" num="{{order.item_number}}">
-	<!-- 如果订单在运输途中，可以申请退换货 -->
-</van-card>
-
-<view class="option" bindtap="changeGoods">
-	换货
-	<van-icon name="arrow" custom-class="arrow"/>
-</view>
-<view class="option" bindtap="refund">
-	退货
-	<van-icon name="arrow" custom-class="arrow"/>
+<view class="order">
+	<view class="title">换货商品</view>
+	<van-card custom-class="order-card" price="{{order.price_paid}}" title="{{order.goods.title}}"
+		thumb="{{order.goods.display_photo[0]}}" thumb-mode="aspectFill" price-class="price"
+		num="{{order.item_number}}">
+	</van-card>
 </view>
 
+<view class="info">
+	<view class="title">换货信息</view>
+	<van-cell-group>
+		<van-field model:value="{{ reason[radio] }}" label="换货原因" required="{{true}}" readonly="{{true}}" placeholder=""
+			border="{{ false }}" is-link bindtap="showReasonPopup" />
+		<van-field model:value="{{ chosenGoodsOption }}" label="选择规格" required="{{false}}" readonly="{{true}}"
+			placeholder="" border="{{ false }}" is-link bindtap="showOptionPopup" />
+		<van-field label="详细描述" type="textarea" autosize="{{true}}" maxlength="300" value="{{ detailedReason }}"
+			placeholder="换货的具体原因" border="{{ false }}" bind:change="detailedReasonChange" />
+	</van-cell-group>
+	<view class="title">图片凭证</view>
+	<van-uploader file-list="{{fileList}}" accept="image" bind:after-read="chosenImage" bind:delete="removeImage"
+		multiple preview-size="166rpx" image-fit="aspectFill" preview-image="true" max-count="4" />
+</view>
 
+<van-popup show="{{ showReasonPopup }}" bind:close="closeReasonPopup" position="bottom">
+	<van-picker columns="{{ reason }}" default-index="{{ 0 }}" bind:confirm="closeReasonPopup"
+		bind:cancel="closeReasonPopup" bind:change="pickerChange" show-toolbar="{{true}}" />
+</van-popup>
+
+<van-popup custom-class="van-popup" show="{{ showOptionPopup }}" position="bottom" bind:close="closeOptionPopup"
+	round="{{true}}">
+
+	<view class="popup-goods-info">
+		<image class="popup-image" mode="aspectFill" src="{{order.goods.display_photo[0]}}"></image>
+		<view class="popup-price">￥{{priceDiff + order.goods.price}}</view>
+	</view>
+
+	<!-- 商品选项总共有两级，为l1和l2 -->
+	<view class="option" wx:for="{{goodsOption}}" wx:for-item="l1" wx:for-index="l1idx" wx:key="l1idx">
+		<view class="option-title">{{l1.name}}</view>
+		<view class="option-content {{l2.isChosen? 'isChosen': ' '}}" wx:for="{{l1.attribute}}" wx:for-item="l2"
+			wx:for-index="l2idx" wx:key="l2idx" data-l1idx="{{l1idx}}" data-l2idx="{{l2idx}}" bindtap="choseOption">
+			{{l2.name}}</view>
+	</view>
+
+	<view class="buy-btn">
+		<van-button custom-class="popup-button" type="default" bindtap="closeOptionPopup" color="#f11b27">确定</van-button>
+	</view>
+</van-popup>
+
+<button class="fixed-region" bindtap="submit">提交</button>

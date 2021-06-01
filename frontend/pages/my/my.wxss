@@ -5,7 +5,7 @@ page {
   height: 240rpx;
   background: #ffffff;
   border-radius: 20rpx;
-  margin: 0 15rpx 15rpx 15rpx;
+  margin: 0 15rpx 10rpx 15rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,7 +45,7 @@ page {
 .all-order {
   background-color: white;
   color: #474747;
-  margin: 0 15rpx 15rpx 15rpx;
+  margin: 0 15rpx 10rpx 15rpx;
   padding: 10rpx 25rpx;
   border-radius: 15rpx;
 }

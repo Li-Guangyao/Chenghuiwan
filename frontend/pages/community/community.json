@@ -8,5 +8,6 @@
 		"van-uploader": "@vant/weapp/uploader/index",
 		"van-button": "@vant/weapp/button/index"
   },
-  "navigationBarTitleText": "社区"
+  "navigationBarTitleText": "社区",
+  "enablePullDownRefresh": true
 }

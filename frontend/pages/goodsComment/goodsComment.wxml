@@ -4,5 +4,9 @@
 		<view class="nickname">{{item.user_nickname}}</view>
 		<view class="pub-time">{{item.created_at}}</view>
 	</view>
-	<rich-text class="comment-content" nodes="{{item.content}}"></rich-text>
+	<text class="comment-content">{{item.text_content}}</text>
+	<view class="comment-photo" wx:for="{{item.image_list}}" wx:for-item="item2" wx:key="index">
+		<image mode="aspectFill" src="{{item2}}"></image>
+	</view>
+	<view>综合评分：{{(item.desc_rate+item.express_rate+item.service_rate)/3}}</view>
 </view>

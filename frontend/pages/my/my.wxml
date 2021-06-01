@@ -30,11 +30,11 @@
 <!-- <open-data type="userAvatarUrl"></open-data> -->
 
 <navigator class="all-order" url="../orderList/orderList?orderType=10">
-	全部订单>
+	<text>全部订单</text>
+	<van-icon class="arrow" name="arrow" size="25rpx" />
 </navigator>
 
-
-<van-grid custom-class="order-type" clickable column-num="4">
+<van-grid custom-class="order-type" clickable column-num="4" border="{{false}}">
 	<van-grid-item icon="credit-pay" link-type="navigateTo" info="{{orderNum.status0}}" text="待付款"
 		url="../orderList/orderList?orderType=0" />
 	<van-grid-item icon="paid" link-type="navigateTo" info="{{orderNum.status1}}" text="待发货"
@@ -45,8 +45,7 @@
 		url="../orderList/orderList?orderType=3" />
 </van-grid>
 
-
-<van-grid custom-class="setting" clickable column-num="5">
+<van-grid custom-class="setting" clickable column-num="5" border="{{false}}">
 	<van-grid-item icon="credit-pay" text="我的收藏" url="/pages/goodsCollection/goodsCollection" link-type="navigateTo" />
 	<van-grid-item icon="goods-collect-o" text="收货地址" url="/pages/addressList/addressList" link-type="navigateTo" />
 	<van-grid-item icon="service-o" text="客服" url="/pages/customerService/customerService" link-type="navigateTo" />

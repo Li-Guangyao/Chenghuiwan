@@ -6,6 +6,6 @@
     "van-icon": "@vant/weapp/icon/index",
     "goods-display": "../../components/goods-display/goods-display"
   },
-  "navigationBarTitleText": "商城"
-
+  "navigationBarTitleText": "商城",
+  "enablePullDownRefresh": true
 }

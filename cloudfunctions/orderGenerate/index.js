@@ -12,26 +12,28 @@ exports.main = async (event, context) => {
 			goods: event.goods,
 			_openid: event.userInfo.openId,
 
-			item_number: event.number,
-			price_paid: event.totalPrice,
-			status: event.orderStatus,
+			option: event.option,
+			number: event.number,
+			unitPrice: event.unitPrice,
+			totalPrice: event.totalPrice,
+			status: event.status,
 
 			remark: event.remark,
 
-			created_date: event.createdDate,
-			sent_date: null,
-			delivery_date: null,
+			createdAt: new Date(),
+			sentDate: null,
+			deliveryDate: null,
 
-			express_company: '',
-			express_number: '',
+			expressCompany: '',
+			expressNumber: '',
 
-			sender_name: '',
-			sender_address: '',
-			sender_phone: '',
+			senderName: '',
+			senderAddress: '',
+			senderPhone: '',
 
-			receiver_name: event.address.receiverName,
-			receiver_address: event.address.province + event.address.city + event.address.district + event.address.detailedAddress,
-			receiver_phone: event.address.phoneNumber
+			receiverName: event.address.receiverName,
+			receiverAddress: event.address.province + event.address.city + event.address.district + event.address.detailedAddress,
+			receiverPhone: event.address.phoneNumber
 		}
 	})
 }

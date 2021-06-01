@@ -1,3 +1,6 @@
+import changeOptionFormat from "../../utils/changeOptionFormat"
+import changeChosenOptionFormat from "../../utils/changeChosenOptionFormat"
+
 const db = wx.cloud.database()
 Page({
 
@@ -35,10 +38,11 @@ Page({
 		showPopup: false,
 		// 商品规格选择
 		goodsOption: [],
-		// 选择不同规格，改变之后的价格
-		changedPrice: null,
-		// 临时变量，用于记录选择option时的中间结果，如果满足条件，就把这个值赋给changedPrice，显示到popup中
-		tempChangedPrice: null,
+		chosenGoodsOption: [],
+
+		// 选项对商品造成的差价
+		priceDiff: 0,
+
 		// 记录现在已经选择了几个option，用于判断是否选择完，给出价格
 		chosenNum: 0
 	},
@@ -50,7 +54,6 @@ Page({
 		})
 
 		this.initPageContent()
-
 	},
 
 	onHide: function () {
@@ -77,14 +80,13 @@ Page({
 	},
 
 	onPullDownRefresh: function () {
-		// wx.showNavigationBarLoading();
-		// this.initPageContent().then(res => {
-		// 	//隐藏导航条加载动画
-		// 	wx.hideNavigationBarLoading();
-		// 	//停止下拉刷新
-		// 	wx.stopPullDownRefresh();
+		wx.showNavigationBarLoading()
+		this.initPageContent()
 
-		// })
+		//隐藏导航条加载动画
+		wx.hideNavigationBarLoading()
+		//停止下拉刷新
+		wx.stopPullDownRefresh()
 	},
 
 	async initPageContent() {
@@ -101,11 +103,7 @@ Page({
 			})
 		})
 
-		wx.getSystemInfo({
-		  success: (result) => {console.log(result)},
-		})
-
-		//返回一个商品的基本信息，这个商品的购买选项，和用户是否收藏这个商品，以及买家的评论
+		// 返回一个商品的基本信息，这个商品的购买选项，和用户是否收藏这个商品，以及买家的评论
 		await wx.cloud.callFunction({
 			name: 'getGoods',
 			data: {
@@ -117,33 +115,13 @@ Page({
 				goods: res.result.goods,
 				isCollected: res.result.isCollected,
 				originIsCollected: res.result.isCollected,
-				goodsOption: res.result.goodsOption
+				goodsOption: changeOptionFormat(res.result.goodsOption)
 			})
-
-
-			this.changeOptionFormat()
-			this.setData({
-				changedPrice: this.data.goods.price,
-				tempChangedPrice: this.data.goods.price
-			})
-
 		})
 
 		wx.hideLoading({
 			success: (res) => {},
 		})
-	},
-
-	// 虽然goodsOption返回了一个数组，但是数组里面的对象以字符串形式存在
-	// 这里把每项都parse然后写回去，使得数组中对象以正常形式存在
-	changeOptionFormat() {
-		for (var i = 0; i < this.data.goodsOption.length; i++) {
-			var item = JSON.parse(this.data.goodsOption[i])
-			var itemName = 'goodsOption[' + i + ']'
-			this.setData({
-				[itemName]: item
-			})
-		}
 	},
 
 	// 点击展示图片
@@ -178,18 +156,31 @@ Page({
 		})
 	},
 
+	// 在首页点击“立即购买”
+	tapInstantBuy() {
+		// 如果这个商品有选项
+		if (this.data.goods.pk_goods_option) {
+			this.showPopup()
+		} else {
+			this.tapBuy()
+		}
+	},
+
 	// 点击购买按键
 	tapBuy() {
+		var goods = JSON.stringify(this.data.goods)
+		var chosenGoodsOption = JSON.stringify(this.data.chosenGoodsOption)
+		var price = this.data.priceDiff + this.data.goods.price
+
 		if (this.isAllOptionChosen()) {
 			wx.navigateTo({
-				url: '../orderGenerate/orderGenerate?goodsId=' + this.data.goodsId,
+				url: '../orderGenerate/orderGenerate?goods=' + encodeURIComponent(goods) + '&option=' + chosenGoodsOption + '&price=' + price
 			})
 		} else if (this.data.showPopup == false) {
 			this.setData({
 				showPopup: true
 			})
 		} else {}
-
 	},
 
 	// 关闭分享面板
@@ -242,17 +233,13 @@ Page({
 			var item = 'goodsOption[' + l1idx + '].attribute[' + l2idx + '].isChosen'
 			this.setData({
 				[item]: false,
-				tempChangedPrice: this.data.tempChangedPrice - optionItemAttr[l2idx].price,
 				chosenNum: this.data.chosenNum - 1
 			})
 		} else {
-			var changedPrice = this.data.tempChangedPrice
-
 			// 先把价格恢复，之后再把这个option的所有isChosen改为false
 			for (var i = 0; i < optionItemAttr.length; i++) {
 				if (optionItemAttr[i].isChosen == true) {
 					// 点击了其他项，要减去之前点击的项，价格的影响
-					changedPrice = changedPrice - optionItemAttr[i].price
 					this.setData({
 						chosenNum: this.data.chosenNum - 1
 					})
@@ -260,37 +247,35 @@ Page({
 				optionItemAttr[i].isChosen = false
 			}
 
-			// 选中了，并且加上价格
+			// 选中了
 			optionItemAttr[l2idx].isChosen = true
-			changedPrice = changedPrice + optionItemAttr[l2idx].price
-			if (changedPrice < 0) {
-				changedPrice = 0
-			}
 
 			// 把这个属性整体的所有内容赋值回去
 			var item = 'goodsOption[' + l1idx + '].attribute'
 			this.setData({
 				[item]: optionItemAttr,
-				tempChangedPrice: changedPrice,
 				chosenNum: this.data.chosenNum + 1
 			})
-
 		}
-
 		this.isAllOptionChosen()
 	},
 
 	// 检验是否所有的option都被选中，如果是，就把tempChangedPrice赋值给changedPrice
 	// 如果否，就把商品原始的价格赋值给changedPrice
 	isAllOptionChosen() {
-		if (this.data.chosenNum == this.data.goodsOption.length) {
+		if (this.data.goodsOption.length == 0) {
+			return true
+		} else if (this.data.chosenNum == this.data.goodsOption.length) {
+			var res = changeChosenOptionFormat(this.data.goodsOption)
 			this.setData({
-				changedPrice: this.data.tempChangedPrice
+				priceDiff: res.priceDiff,
+				chosenGoodsOption: res.changedOptionArray
 			})
 			return true
 		} else {
 			this.setData({
-				changedPrice: this.data.goods.price
+				priceDiff: 0,
+				chosenGoodsOption: []
 			})
 			return false
 		}

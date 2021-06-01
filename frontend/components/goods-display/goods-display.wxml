@@ -19,21 +19,28 @@
 
 <!-- 以上是死数据，用于测试排版，下面是实时数据 -->
 
-<view class="list" >
+<view class="list">
+
 	<view class='list-half'>
-		<!-- <navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index" wx:if="{{index%2==0}}" url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'> -->
-		<navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index" url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'>
+		<navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index" wx:if="{{index%2==0}}"
+			url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'>
+			<!-- <navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index"
+			url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'> -->
 			<image mode="widthFix" src="{{item.display_photo[0]}}"></image>
 			<text class="desc">{{item.title}}</text>
 			<text class="price">￥{{item.price}}</text>
 		</navigator>
 	</view>
+
 	<view class='list-half'>
-		<!-- <navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index" wx:if="{{index%2==1}}" url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'> -->
-		<navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index" url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'>
+		<navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index" wx:if="{{index%2==1}}"
+			url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'>
+			<!-- <navigator class='goods-panel' wx:for="{{goodsList}}" wx:key="index"
+			url='../../pages/goodsDetail/goodsDetail?goodsId={{item._id}}'> -->
 			<image mode="widthFix" src="{{item.display_photo[0]}}"></image>
 			<text class="desc">{{item.title}}</text>
 			<text class="price">￥{{item.price}}</text>
 		</navigator>
 	</view>
+
 </view>

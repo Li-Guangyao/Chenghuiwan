@@ -1,133 +1,116 @@
 page {
-    background-color: var(--themebackgroundcolor);
+  background-color: var(--themebackgroundcolor);
 }
-
 .page {
-	overflow: scroll;
+  overflow: scroll;
 }
-
 .swiper-region {
-    height: 700rpx;
-    border-radius: 10rpx;
-    margin: 0 5rpx;
-    background: white;
+  height: 700rpx;
+  border-radius: 10rpx;
+  margin: 0 5rpx;
+  background: white;
 }
-
 .swiper-region swiper {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
-
 .swiper-region swiper swiper-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.post-image {
-    width: 100%;
-    height: 100%;
+.swiper-region swiper swiper-item .post-image {
+  width: 100%;
+  height: 100%;
 }
-
 .post {
-    background: white;
-    border-radius: 10rpx;
-    margin: 20rpx 10rpx;
+  background: white;
+  border-radius: 10rpx;
+  margin: 20rpx 10rpx;
 }
-
 .post .post-text {
-    margin: 10rpx 10rpx;
+  margin: 5rpx 10rpx;
 }
-
 .post .post-text .post-title {
-    font-size: 35rpx;
+  font-size: 35rpx;
 }
-
 .post .post-text .post-content {
-    font-size: 25rpx;
+  font-size: 25rpx;
 }
-
-.user-info {
-	width: 100%;
-	
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
+.post .location {
+  margin: 5rpx 10rpx;
+  display: flex;
 }
-
-.user-info .avatar {
-    width: 60rpx;
-    height: 60rpx;
-    border-radius: 30rpx;
-    margin: 10rpx 0 10rpx 30rpx;
+.post .location .location-name {
+  font-size: 25rpx;
+  color: #555555;
 }
-
-.user-info .nickname {
-    color: rgb(51, 51, 51);
-    font-size: 30rpx;
-    margin: 10rpx 0 10rpx 30rpx;
-}
-
 .comment {
-    background: white;
-    margin: 5rpx 10rpx;
-    padding: 0rpx 10rpx;
-    border-radius: 10rpx;
-	font-size: 30rpx;
-	
-    display: flex;
-    flex-direction: column;
+  background: white;
+  margin: 5rpx 10rpx;
+  padding: 0rpx 10rpx;
+  border-radius: 15rpx;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: column;
 }
-
 .comment .comment-content {
-    font-size: 25rpx;
-	margin: 10rpx 10rpx;
-
-	display:flex;
-	justify-content: flex-start;
-	align-items: flex-start;
+  font-size: 25rpx;
+  margin: 10rpx 10rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-
-.pub-time {
-    color: rgb(146, 146, 146);
-    font-size: 25rpx;
-    margin: 10rpx 0 10rpx 30rpx;
+.user-info {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }
-
+.user-info .avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  margin: 10rpx 0 10rpx 30rpx;
+}
+.user-info .nickname {
+  color: #333333;
+  font-size: 30rpx;
+  margin: 10rpx 0 10rpx 30rpx;
+}
+.user-info .pub-time {
+  color: #929292;
+  font-size: 25rpx;
+  margin: 10rpx 0 10rpx 30rpx;
+}
 .fixed-region {
-    bottom: 0rpx;
-    width: 100%;
-    background: white;
-    border-radius: 10rpx;
-    margin: 5rpx 5rpx;
-    
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: env(safe-area-inset-bottom);
+  bottom: 0rpx;
+  width: 100%;
+  background: white;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom);
 }
-
 .fixed-region text {
-    flex: 1;
-    margin: 10rpx 5rpx;
-    text-align: center;
-    font-size: 35rpx;
+  font-size: 35rpx;
+  flex: 1;
+  margin: 10rpx 5rpx;
+  text-align: center;
 }
-
-.input-comment {
-    border-radius: 15rpx;
-    border: 1rpx solid grey;
-    margin: 10rpx 10rpx;
-    min-height: 50rpx;
-    height: 50rpx;
-    max-height: 600rpx;
-    overflow: scroll;
-    flex: 5;
+.fixed-region .input-comment {
+  border-radius: 15rpx;
+  border: 1rpx solid grey;
+  margin: 10rpx 10rpx;
+  min-height: 50rpx;
+  height: 50rpx;
+  max-height: 600rpx;
+  overflow: scroll;
+  flex: 5;
 }
-
-.publishBtn {
-    flex: 2;
-    width: 80rpx;
+.fixed-region .pub-btn {
+  flex: 3;
+  width: 80rpx;
 }

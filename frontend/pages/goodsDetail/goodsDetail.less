@@ -1,0 +1,144 @@
+page {
+	background-color: var(--themebackgroundcolor);
+}
+
+.page {
+	overflow: scroll;
+}
+
+.swiper-region {
+	height: 600rpx;
+	border-radius: 10rpx;
+	background: white;
+    margin: 0 0 5rpx 0;
+
+    swiper {
+        height: 100%;
+        width: 100%;
+
+        swiper-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.goods-info {
+	background: white;
+	margin: 0 0 5rpx 0;
+
+	display: flex;
+
+    .goods-price-desc {
+        display: flex;
+        flex-direction: column;
+        flex: 5;
+
+        .price {
+            font-size: 40rpx;
+            margin: 10rpx 20rpx 0 20rpx;
+        }
+
+        .desc {
+            font-size: 25rpx;
+            margin: 10rpx 20rpx 10rpx 20rpx;
+        }
+        
+    }
+
+    .goods-collect {
+        border-left: 2rpx solid rgb(248, 248, 248);
+    
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.goods-option, .goods-comment {
+	background: white;
+	height: 60rpx;
+	font-size: 30rpx;
+	padding: 0rpx 25rpx;
+
+	display: flex;
+	align-items: center;
+}
+
+.goods-image {
+	background-color: white;
+	margin: 5rpx 5rpx;
+	border-radius: 10rpx;
+	display: block;
+
+    image {
+        width: 100%;
+    }
+}
+
+.van-popup {
+	max-height: 1200rpx;
+	overflow: scroll;
+}
+
+.popup-goods-info {
+	display: flex;
+
+    .popup-image {
+        width: 150rpx;
+        height: 150rpx;
+        padding: 20rpx;
+    }
+
+    .popup-price {
+        font-size: 35rpx;
+        margin: 30rpx;
+    }
+}
+
+.option {
+	border-top: 2rpx rgb(107, 107, 107);
+
+    .option-title {
+        margin: 20rpx 20rpx;
+        font-size: 26rpx;
+    
+        display: block;
+    }
+
+    .option-content {
+        padding: 5rpx;
+        margin: 10rpx 5rpx 10rpx 20rpx;
+        font-size: 26rpx;
+        background-color: rgb(245, 245, 245);
+    
+        display: inline;
+    }
+}
+
+.isChosen {
+	border: solid 2rpx var(--themeolor) !important;
+	background-color: rgb(155, 237, 252) !important;
+}
+
+.buy-btn{
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+    .popup-button{
+        width: 700rpx;
+        margin: 30rpx 10rpx;
+        border-radius: 40rpx;
+    }
+}

@@ -11,13 +11,13 @@ exports.main = async (event, context) => {
 		db.collection('t_like_post').add({
 			data: {
 				_openid: event.userInfo.openId,
-				post_id: event.postId
+				postId: event.postId
 			}
 		})
 	} else {
 		db.collection('t_like_post').where({
 			_openid: event.userInfo.openId,
-			post_id: event.postId
+			postId: event.postId
 		}).remove()
 	}
 }

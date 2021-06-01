@@ -1,63 +1,43 @@
 Page({
-
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		orderType: null,
-		orderList: [],
-		isEmpty: false
+		orderList: null,
 	},
 
 	onLoad: async function (e) {
-		wx.showLoading({
-			title: '加载中',
-		})
-
 		this.setData({
 			orderType: Number(e.orderType)
+		})
+		await this.getOrder(e.orderType)
+	},
+
+	async getOrder(orderType) {
+		wx.showLoading({
+		  title: '加载中',
 		})
 
 		await wx.cloud.callFunction({
 			name: 'getOrder',
 			data: {
-				orderType: Number(e.orderType)
+				orderType: Number(orderType)
 			}
 		}).then(res => {
-			if (res.result.data) {
-				this.setData({
-					orderList: res.result.data
-				})
-			} else {
-				wx.showToast({
-					icon: 'error',
-					title: '空空如也',
-				})
-			}
+			console.log(res)
+			this.setData({
+				orderList: res.result.data
+			})
 		})
 
-		this.judgeIsEmpty()
-
-		wx.hideLoading({})
-	},
-
-	judgeIsEmpty(){
-		if(this.data.orderList.length==0){
-			this.setData({
-				isEmpty: true
-			})
-		}else{
-			this.setData({
-				isEmpty: false
-			})
-		}
+		wx.hideLoading({
+		  success: (res) => {},
+		})
 	},
 
 	// 点击订单，跳转
 	clickOrder(e) {
 		var order = JSON.stringify(this.data.orderList[e.currentTarget.dataset.index])
 		wx.navigateTo({
-			url: '../orderDetail/orderDetail?order=' + order,
+			url: '../orderDetail/orderDetail?order=' + encodeURIComponent(order),
 		})
 	},
 
@@ -136,6 +116,12 @@ Page({
 						orderId: this.data.orderList[e.currentTarget.dataset.index]._id
 					}
 				})
+
+				this.setData({
+					orderList: this.data.orderList.splice(e.currentTarget.dataset.index,1)
+				})
+
+				this.getOrder(2)
 			} else {}
 		})
 	},
@@ -144,7 +130,7 @@ Page({
 	toComment(e) {
 		var order = JSON.stringify(this.data.orderList[e.currentTarget.dataset.index])
 		wx.navigateTo({
-			url: '../orderComment/orderComment?order=' + order,
+			url: '../orderComment/orderComment?order=' + encodeURIComponent(order),
 		})
 	},
 

@@ -4,10 +4,6 @@ page {
 
 .goods-card{
 	background-color: white !important;
-	margin: 10rpx 5rpx !important;
-	border-radius: 20rpx !important;
-}
-
-.price{
-	color: black !important;
+	margin: 10rpx 15rpx !important;
+	border-radius: 15rpx !important;
 }

@@ -1,5 +1,4 @@
-<tabbar tabbar="{{tabbar}}" bindtabbarChange="handleTabbarChange">
-</tabbar>
+<tabbar tabbar="{{tabbar}}" bindtabbarChange="handleTabbarChange"></tabbar>
 
 <swiper style="height: {{swiperHeight?swiperHeight+'px':'auto'}}" current="{{chosenTabIndex}}" class="swiper-region"
 	bindchange="handleSwiperChange">

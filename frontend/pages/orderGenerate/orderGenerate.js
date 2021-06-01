@@ -2,51 +2,51 @@ const db = wx.cloud.database()
 
 //获取标准的时间格式yyyy-mm-dd hh:mm，而非时间戳
 import date from '../../utils/date'
+
 Page({
 	data: {
 		defaultAddress: {},
-		goodsItem: {},
+		goods: {},
 
 		// 买几个
 		number: 1,
 		// 订单总价，单位为分
 		totalPrice: 0,
+		unitPrice: 0,
+
+		chosenGoodsOption: [],
 
 		// 订单的留言
 		remark: null
-
 	},
 
 	onLoad: async function (e) {
-		console.log(e)
-
 		wx.showLoading({
 			title: '生成订单中',
 		})
 
-		//找到默认地址
-		await wx.cloud.callFunction({
-			name: 'getDefaultAddress'
-		}).then(res => {
-			console.log(res)
-			this.setData({
-				defaultAddress: res.result.defaultAddress
-			})
-		})
-
-		// 获取商品
-		await db.collection('t_goods').doc(e.goodsId).get().then(res => {
-			this.setData({
-				goodsItem: res.data
-			})
-		})
+		this.getDefaultAddress()
 
 		this.setData({
-			totalPrice: this.data.goodsItem.price * 100
+			goods: JSON.parse(decodeURIComponent(e.goods)),
+			chosenGoodsOption: JSON.parse(e.option),
+			unitPrice: Number(e.price),
+			totalPrice: Number(e.price)
 		})
 
 		wx.hideLoading({
 			success: (res) => {},
+		})
+	},
+
+	//找到默认地址
+	async getDefaultAddress(){
+		await wx.cloud.callFunction({
+			name: 'getDefaultAddress'
+		}).then(res => {
+			this.setData({
+				defaultAddress: res.result.defaultAddress
+			})
 		})
 	},
 
@@ -83,7 +83,7 @@ Page({
 					if (res.confirm) {
 						// 到订单列表，催促支付
 						wx.redirectTo({
-							url: '../orders/orders?orderType=0',
+							url: '../orderList/orderList?orderType=0',
 						})
 					}
 				})
@@ -95,7 +95,7 @@ Page({
 	addOne() {
 		this.setData({
 			number: this.data.number + 1,
-			totalPrice: this.data.totalPrice + this.data.goodsItem.price * 100
+			totalPrice: this.data.totalPrice + this.data.unitPrice
 		})
 	},
 
@@ -104,7 +104,7 @@ Page({
 		if (this.data.number == 1) {} else {
 			this.setData({
 				number: this.data.number - 1,
-				totalPrice: this.data.totalPrice - this.data.goodsItem.price * 100
+				totalPrice: this.data.totalPrice - this.data.unitPrice
 			})
 		}
 	},
@@ -114,13 +114,14 @@ Page({
 			name: 'orderGenerate',
 			data: {
 				address: this.data.defaultAddress,
-				goods: this.data.goodsItem,
+				goods: this.data.goods,
+				option: this.data.chosenGoodsOption,
 				number: this.data.number,
+				unitPrice: this.data.unitPrice,
+				totalPrice: this.data.totalPrice,
 				remark: this.data.remark,
-				totalPrice: this.data.totalPrice/100,
-				createdDate: date(),
 				// 订单生成未支付
-				orderStatus: orderStatus
+				status: orderStatus
 			}
 		})
 	},

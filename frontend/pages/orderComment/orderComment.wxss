@@ -1,79 +1,72 @@
 page {
-    background-color: var(--themebackgroundcolor);
+  background-color: var(--themebackgroundcolor);
 }
-
-.goods{
-	background-color: white;
-	border-radius: 10rpx;
-	margin: 5rpx 5rpx;
-
-	display: flex;
-	flex-direction: row;
+.page {
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
-
-.goods .goods-image{
-	width: 160rpx;
-	height: 160rpx;
-	margin: 30rpx;
+.goods {
+  background-color: white;
+  border-radius: 10rpx;
+  margin: 0 15rpx 10rpx 15rpx;
+  display: flex;
+  flex-direction: row;
 }
-
-.goods .good-desc{
-	display: flex;
-	flex-direction: column;
+.goods .goods-image {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 30rpx;
 }
-
-.goods .goods-desc .goods-title{
-	font-size: 32rpx;
-	color: rgb(24, 24, 24);
-	margin: 10rpx 10rpx;
-	overflow: hidden;
+.goods .good-desc {
+  display: flex;
+  flex-direction: column;
 }
-
-.goods .goods-desc .goods-option{
-	font-size: 25rpx;
-	color: rgb(41, 41, 41);
-	margin: 10rpx 10rpx;
-	overflow: hidden;
+.goods .good-desc .goods-title {
+  font-size: 32rpx;
+  color: #181818;
+  margin: 10rpx 10rpx;
+  overflow: hidden;
 }
-
-.comment{
-	background-color: white;
-	margin: 5rpx 5rpx;
-
+.goods .good-desc .goods-option {
+  font-size: 25rpx;
+  color: #292929;
+  margin: 10rpx 10rpx;
+  overflow: hidden;
 }
-
-.comment .content-input{
-	padding: 20rpx;
-	overflow: scroll;
+.comment {
+  background-color: white;
+  margin: 0 15rpx 10rpx 15rpx;
 }
-
-.score-region{
-	background-color: white;
-	margin: 10rpx 5rpx;
-	border-radius: 10rpx;
-	padding: 10rpx 0 0 20rpx;
-
-	display: flex;
-	flex-direction: column;
+.comment .content-input {
+  padding: 20rpx;
+  width: 96%;
+  overflow: scroll;
+  min-height: 300rpx;
+  max-height: 600rpx;
 }
-
-.score-region .score-item{
-	display: flex;
-	justify-content: left;
+.comment van-uploader {
+  margin: 10rpx;
 }
-
-.score-region .score-item .desc{
-	margin: 0 20rpx 0 0;
-
-	display: flex;
-	align-items: center;
+.score-region {
+  background-color: white;
+  margin: 0rpx 15rpx 10rpx 15rpx;
+  border-radius: 15rpx;
+  padding: 10rpx 0 0 20rpx;
 }
-
-.save{
-	position: fixed;
-	width: 100%;
-	border-radius: 10rpx;
-	bottom: 0;
-	background-color: white;
-	padding-bottom: env(safe-area-inset-bottom);
+.score-region .score-item {
+  display: flex;
+  justify-content: left;
+}
+.score-region .score-item .desc {
+  margin: 0 20rpx 0 0;
+  display: flex;
+  align-items: center;
+}
+.fixed-region {
+  width: 100%;
+  border-radius: 10rpx;
+  background-color: white;
+  bottom: 0;
+  position: fixed;
+  padding-bottom: env(safe-area-inset-bottom);
 }

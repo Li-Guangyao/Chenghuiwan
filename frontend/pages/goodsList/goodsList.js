@@ -65,68 +65,17 @@ Page({
 			})
 		})
 
-		this.judgeIsEmpty()
-
 		wx.hideLoading({
 			success: (res) => {},
 		})
 	},
 
-	judgeIsEmpty() {
-		if (this.data.goodsList.length == 0) {
-			this.setData({
-				isEmpty: true
-			})
-		} else {
-			this.setData({
-				isEmpty: false
-			})
-		}
-	},
 
-	onReady: function () {
 
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	onUnload: function () {
-
-	},
-
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
-	},
-
-	viewGoods() {
+	viewGoods(e) {
+		console.log(e)
 		wx.navigateTo({
-			url: '../goodsDetail/goodsDetail',
+			url: '../goodsDetail/goodsDetail?goodsId='+this.data.goodsList[e.currentTarget.dataset.index]._id,
 		})
 	}
 })

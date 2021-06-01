@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
 		}
 	})
 
-	db.collection('t_refund').add({
+	db.collection('t_order_refund').add({
 		data:{
 			order_id: event.orderId,
 			_openid: event.userInfo.openId,

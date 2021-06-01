@@ -6,5 +6,6 @@
   },
   "navigationBarBackgroundColor": "#1ae6e6",
   "navigationBarTitleText": "诚会玩",
-  "navigationBarTextStyle": "black"
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
 }

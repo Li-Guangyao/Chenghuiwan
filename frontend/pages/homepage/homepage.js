@@ -4,6 +4,9 @@ Page({
 		userInfo: {},
 		postList: [],
 
+		fanNum: null,
+		followedNum: null,
+
 		isFollowed: false,
 		originIsFollowed: false,
 
@@ -38,6 +41,31 @@ Page({
 		  success: (res) => {},
 		})
 
+		this.getNum()
+	},
+
+	getNum(){
+		wx.cloud.callFunction({
+			name: 'getFollowedNum',
+			data:{
+				openId: this.data.openId
+			}
+		}).then(res=>{
+			this.setData({
+				followedNum: res.result
+			})
+		})
+
+		wx.cloud.callFunction({
+			name: 'getFanNum',
+			data:{
+				openId: this.data.openId
+			}
+		}).then(res=>{
+			this.setData({
+				fanNum: res.result
+			})
+		})
 	},
 
 	// 查看该人关注的人
@@ -65,31 +93,6 @@ Page({
 				isFollowed: false
 			})
 		}
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	onHide: function () {
-		console.log('onHide')
 	},
 
 	onUnload: function () {

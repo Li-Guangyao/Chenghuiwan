@@ -11,32 +11,15 @@ exports.main = async (event, context) => {
 		// 本人是否已经点赞了这个帖子
 		var isLiked = await judgeIsLiked(event.userInfo.openId, event.postId)
 		var post = null
-		var postCommentList = []
 
 		// 获取这个帖子的内容
 		await db.collection('t_post').doc(event.postId).get().then(res => {
 			post = res.data
 		})
 
-		// 获取这个帖子的所有评论
-		await db.collection('t_post_comment').where({
-			post_id: event.postId
-		}).get().then(res => {
-			postCommentList = res.data
-		})
-
-		// 获取这个帖子的内容
-		post = db.collection('t_post').doc(event.postId).get()
-
-		// 获取这个帖子的所有评论
-		postCommentList = db.collection('t_post_comment').where({
-			post_id: event.postId
-		}).get()
-
 		return {
 			'isLiked': isLiked,
 			'post': post,
-			'postCommentList': postCommentList
 		}
 	} else {
 		// 获取自己的帖子
@@ -50,7 +33,7 @@ exports.main = async (event, context) => {
 async function judgeIsLiked(openId, postId) {
 	return db.collection('t_like_post').where({
 		_openid: openId,
-		post_id: postId
+		postId: postId
 	}).count().then(res => {
 		if (res.total == 0) {
 			return false
