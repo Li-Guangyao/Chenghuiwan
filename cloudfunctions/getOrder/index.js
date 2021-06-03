@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
 	} else if (event.orderType == 15) {
 		return db.collection('t_order').where({
 			_openid: event.userInfo.openId,
-			status: _.in([4, 7]).or(_.in([11, 14]))
+			status: _.in([4,5,6,7,11,12,13,14])
 		}).get()
 	} else {
 		// 查询某种订单，例如待发货的订单

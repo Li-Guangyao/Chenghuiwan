@@ -12,6 +12,7 @@ Page({
 		await wx.cloud.callFunction({
 			name: 'getCollection'
 		}).then(res=>{
+			console.log(res)
 			this.setData({
 				collectionList: res.result
 			})

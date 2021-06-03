@@ -1,5 +1,5 @@
 <navigator class="await-payment" wx:for="{{collectionList}}" wx:key="index"
-	url="../goodsDetail/goodsDetail?goodsId={{item._id}}">
+	url="../goodsDetail/goodsDetail?goodsId={{item.goods_id}}">
 	<van-card price="{{item.price}}" desc="" title="{{item.title}}" thumb="{{ item.display_photo[0]}}"
 		thumb-mode="aspectFill" custom-class="goods-card" price-class="price">
 		<!-- <view slot="footer">
